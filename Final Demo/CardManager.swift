@@ -9,6 +9,10 @@
 import UIKit
 
 class CardManager: NSObject {
+    var folderArray = [Folder]()
+    var scriptArray = [Folder]()
+    var songArray = [Folder]()
+    var activeArray = [Folder]()
     var cardIndex = 0
     var cardArray = [SampleCard.init(question: "Annabel: I have come all this way for the money Mr. Witherspoon. All six million dollars of it.", answer: "Harry: But I accepted the terms of my Uncle's will, and I'm here, you see, carrying out his wishes. So you people have lost."),
                      SampleCard.init(question: "Annabel: Not yet we haven't. Not by a longshot. You see, there's a loophole.", answer: "Harry: Loophole? What loophole? Where?"),
@@ -18,6 +22,26 @@ class CardManager: NSObject {
     
     static let sharedInstance = CardManager()
     private override init() {}
+    
+    func setUp() {
+        guard let folders = DataManager.sharedInstance.getFolders() else {
+            return
+        }
+        folderArray = folders
+        scriptArray = setUpFolderArray(type: "script")
+        songArray = setUpFolderArray(type: "song")
+        activeArray = scriptArray
+    }
+    
+    func setUpFolderArray(type: String) -> [Folder] {
+        var tempArray = [Folder]()
+        for folder in folderArray {
+            if folder.type == type {
+                tempArray.append(folder)
+            }
+        }
+        return tempArray
+    }
     
     func setCardQuestion() -> String {
         return cardArray[cardIndex].question

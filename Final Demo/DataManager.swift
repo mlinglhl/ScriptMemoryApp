@@ -22,6 +22,18 @@ class DataManager: NSObject {
         })
         return container
     }()
+
+    func getFolders() -> [Folder]? {
+        let context = getContext()
+        let request: NSFetchRequest<NSFetchRequestResult> = Folder.fetchRequest()
+        do {
+            let folderArray = try context.fetch(request) as! [Folder]
+            return folderArray
+        } catch {
+            print("Failed to get results")
+            return nil
+        }
+    }
     
 // MARK: - Core Data Saving support
     
