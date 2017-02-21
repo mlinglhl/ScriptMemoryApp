@@ -12,24 +12,14 @@ class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let graphView = ScrollableGraphView(frame: view.frame)
+        let data: [Double] = [4, 8, 15, 16, 23, 42]
+        let labels = ["one", "two", "three", "four", "five", "six"]
+        graphView.set(data:data, withLabels: labels)
+        view.addSubview(graphView)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func goBack(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
-    */
-
 }
