@@ -13,6 +13,16 @@
 		89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */; };
 		89D279AA1E57B9B600CF4082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D279A91E57B9B600CF4082 /* Assets.xcassets */; };
 		89D279AD1E57B9B600CF4082 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D279AB1E57B9B600CF4082 /* LaunchScreen.storyboard */; };
+		89D279B91E58B07000CF4082 /* SampleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279B81E58B07000CF4082 /* SampleScript.swift */; };
+		89D279BB1E58B52000CF4082 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279BA1E58B52000CF4082 /* TableViewCell.swift */; };
+		89D279BD1E58B75300CF4082 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279BC1E58B75300CF4082 /* Manager.swift */; };
+		89D279BF1E58BC4400CF4082 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279BE1E58BC4400CF4082 /* MemoryViewController.swift */; };
+		89D279C71E58C38A00CF4082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279C61E58C38A00CF4082 /* CardView.swift */; };
+		89D279C91E58C4A200CF4082 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D279C81E58C4A200CF4082 /* CardView.xib */; };
+		89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279CA1E58CC0600CF4082 /* SampleCard.swift */; };
+		89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279D81E5BB0D000CF4082 /* DataManager.swift */; };
+		89D279DB1E5BB2A800CF4082 /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279DA1E5BB2A800CF4082 /* CardManager.swift */; };
+		89D279DD1E5BB41E00CF4082 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +34,22 @@
 		89D279A91E57B9B600CF4082 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89D279AC1E57B9B600CF4082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89D279AE1E57B9B600CF4082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89D279B81E58B07000CF4082 /* SampleScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleScript.swift; sourceTree = "<group>"; };
+		89D279BA1E58B52000CF4082 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		89D279BC1E58B75300CF4082 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		89D279BE1E58BC4400CF4082 /* MemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
+		89D279C61E58C38A00CF4082 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		89D279C81E58C4A200CF4082 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		89D279CA1E58CC0600CF4082 /* SampleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCard.swift; sourceTree = "<group>"; };
+		89D279CE1E5BB09200CF4082 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89D279CF1E5BB09200CF4082 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89D279D01E5BB09200CF4082 /* Division+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Division+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89D279D11E5BB09200CF4082 /* Division+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Division+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89D279D81E5BB0D000CF4082 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		89D279DA1E5BB2A800CF4082 /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		89D279DE1E5BB4C500CF4082 /* Folder+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89D279DF1E5BB4C500CF4082 /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +66,12 @@
 		89D279931E57B9B600CF4082 = {
 			isa = PBXGroup;
 			children = (
+				89D279DE1E5BB4C500CF4082 /* Folder+CoreDataClass.swift */,
+				89D279DF1E5BB4C500CF4082 /* Folder+CoreDataProperties.swift */,
+				89D279CE1E5BB09200CF4082 /* Card+CoreDataClass.swift */,
+				89D279CF1E5BB09200CF4082 /* Card+CoreDataProperties.swift */,
+				89D279D01E5BB09200CF4082 /* Division+CoreDataClass.swift */,
+				89D279D11E5BB09200CF4082 /* Division+CoreDataProperties.swift */,
 				89D2799E1E57B9B600CF4082 /* Final Demo */,
 				89D2799D1E57B9B600CF4082 /* Products */,
 			);
@@ -58,11 +90,21 @@
 			children = (
 				89D2799F1E57B9B600CF4082 /* AppDelegate.swift */,
 				89D279A11E57B9B600CF4082 /* ViewController.swift */,
+				89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */,
+				89D279D81E5BB0D000CF4082 /* DataManager.swift */,
+				89D279DA1E5BB2A800CF4082 /* CardManager.swift */,
+				89D279BC1E58B75300CF4082 /* Manager.swift */,
+				89D279BE1E58BC4400CF4082 /* MemoryViewController.swift */,
+				89D279C61E58C38A00CF4082 /* CardView.swift */,
+				89D279C81E58C4A200CF4082 /* CardView.xib */,
+				89D279BA1E58B52000CF4082 /* TableViewCell.swift */,
 				89D279A31E57B9B600CF4082 /* Main.storyboard */,
 				89D279A91E57B9B600CF4082 /* Assets.xcassets */,
 				89D279AB1E57B9B600CF4082 /* LaunchScreen.storyboard */,
 				89D279AE1E57B9B600CF4082 /* Info.plist */,
 				89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */,
+				89D279B81E58B07000CF4082 /* SampleScript.swift */,
+				89D279CA1E58CC0600CF4082 /* SampleCard.swift */,
 			);
 			path = "Final Demo";
 			sourceTree = "<group>";
@@ -128,6 +170,7 @@
 			files = (
 				89D279AD1E57B9B600CF4082 /* LaunchScreen.storyboard in Resources */,
 				89D279AA1E57B9B600CF4082 /* Assets.xcassets in Resources */,
+				89D279C91E58C4A200CF4082 /* CardView.xib in Resources */,
 				89D279A51E57B9B600CF4082 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +182,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D279BB1E58B52000CF4082 /* TableViewCell.swift in Sources */,
+				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
+				89D279BF1E58BC4400CF4082 /* MemoryViewController.swift in Sources */,
+				89D279BD1E58B75300CF4082 /* Manager.swift in Sources */,
+				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,
 				89D279A21E57B9B600CF4082 /* ViewController.swift in Sources */,
+				89D279B91E58B07000CF4082 /* SampleScript.swift in Sources */,
 				89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */,
+				89D279DD1E5BB41E00CF4082 /* AddCardViewController.swift in Sources */,
+				89D279DB1E5BB2A800CF4082 /* CardManager.swift in Sources */,
+				89D279C71E58C38A00CF4082 /* CardView.swift in Sources */,
 				89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +355,7 @@
 				89D279B31E57B9B600CF4082 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
