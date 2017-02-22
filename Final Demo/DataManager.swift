@@ -23,11 +23,11 @@ class DataManager: NSObject {
         return container
     }()
 
-    func getFolders() -> [Folder]? {
+    func getSetObjects() -> [SetObject]? {
         let context = getContext()
-        let request: NSFetchRequest<NSFetchRequestResult> = Folder.fetchRequest()
+        let request: NSFetchRequest<NSFetchRequestResult> = SetObject.fetchRequest()
         do {
-            let folderArray = try context.fetch(request) as! [Folder]
+            let folderArray = try context.fetch(request) as! [SetObject]
             return folderArray
         } catch {
             print("Failed to get results")
@@ -49,18 +49,18 @@ class DataManager: NSObject {
         }
     }
     
-    func generateFolder() -> Folder {
-        let quoteObject = NSEntityDescription.insertNewObject(forEntityName: "Folder", into: self.getContext()) as! Folder
+    func generateSetObject() -> SetObject {
+        let quoteObject = NSEntityDescription.insertNewObject(forEntityName: "SetObject", into: self.getContext()) as! SetObject
         return quoteObject
     }
     
-    func generateDivision() -> Division {
-        let division = NSEntityDescription.insertNewObject(forEntityName: "Division", into: self.getContext()) as! Division
+    func generateCategoryObject() -> CategoryObject {
+        let division = NSEntityDescription.insertNewObject(forEntityName: "CategoryObject", into: self.getContext()) as! CategoryObject
         return division
     }
 
-    func generateCard() -> Card {
-        let card = NSEntityDescription.insertNewObject(forEntityName: "Card", into: self.getContext()) as! Card
+    func generateCard() -> CardObject{
+        let card = NSEntityDescription.insertNewObject(forEntityName: "CardObject", into: self.getContext()) as! CardObject
         return card
     }
 

@@ -1,8 +1,8 @@
 //
-//  Card+CoreDataClass.swift
+//  CategoryObject+CoreDataClass.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-20.
+//  Created by Minhung Ling on 2017-02-22.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Card)
-public class Card: NSManagedObject {
+@objc(CategoryObject)
+public class CategoryObject: NSManagedObject {
 
 }

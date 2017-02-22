@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         @IBOutlet weak var picker: UIPickerView!
         @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
         let cardManager = CardManager.sharedInstance
     
         @IBOutlet var scriptLabelHeight: NSLayoutConstraint!
@@ -44,10 +45,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         @IBAction func tapScript(_ sender: UITapGestureRecognizer) {
-            scriptLabelHeight.isActive = false
-            pickerHeight.isActive = false
-            scriptFoldedHeight.isActive = true
-            pickerUnfoldedHeight.isActive = true
+            scriptLabelHeight.constant = 0
+            pickerHeight.constant = 100
             scriptLabel.isHidden = true
             picker.isHidden = false
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
@@ -83,13 +82,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            scriptLabel.text = "Script: \(self.sampleArray[row].name)"
+            let type = typeSegmentedControl.titleForSegment(at: typeSegmentedControl.selectedSegmentIndex)
+            let name = sampleArray[picker.selectedRow(inComponent: 0)].name
+            scriptLabel.text = "\(type!): \(name)"
             picker.isHidden = true
             scriptLabel.isHidden = false
-            scriptFoldedHeight.isActive = false
-            pickerUnfoldedHeight.isActive = false
-            scriptLabelHeight.isActive = true
-            pickerHeight.isActive = true
+            scriptLabelHeight.constant = 20.5
+            pickerHeight.constant = 0
             UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
                 self.view.layoutIfNeeded()
             }, completion: { _ in

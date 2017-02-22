@@ -12,10 +12,13 @@ class MemoryViewController: UIViewController {
     var anchorArray = [NSLayoutConstraint]()
     var activeAnchorArray = [[NSLayoutConstraint]]()
     let cardManager = CardManager.sharedInstance
-
+    
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var wrongLabel: UILabel!
     @IBOutlet weak var deckImageView: UIImageView!
+    
     var wrongArray = [CardView]()
-    var rightArray = [CardView]()
+    var correctArray = [CardView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,7 @@ class MemoryViewController: UIViewController {
         cardBack.heightAnchor.constraint(equalTo: cardView.heightAnchor).isActive = true
         cardBack.centerXAnchor.constraint(equalTo: cardView.centerXAnchor).isActive = true
         cardBack.centerYAnchor.constraint(equalTo: cardView.centerYAnchor).isActive = true
-
+        
         anchorArray = [
             cardView.widthAnchor.constraint(equalTo: self.deckImageView.widthAnchor),
             cardView.heightAnchor.constraint(equalTo: self.deckImageView.heightAnchor),
@@ -76,8 +79,10 @@ class MemoryViewController: UIViewController {
             if card.answerLabel.alpha == 1 {
                 wrongArray.append(card)
                 activeAnchorArray[card.tag][2].constant = -400
-                UIView.animate(withDuration: 1.0, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     self.view.layoutIfNeeded()
+                }, completion: { _ in
+                    self.wrongLabel.text = "\(self.wrongArray.count)"
                 })
             }
         }
@@ -86,10 +91,12 @@ class MemoryViewController: UIViewController {
     func markRight(_ sender: UISwipeGestureRecognizer) {
         let card = sender.view as! CardView
         if card.answerLabel.alpha == 1 {
-            rightArray.append(card)
+            correctArray.append(card)
             activeAnchorArray[card.tag][2].constant = 400
-            UIView.animate(withDuration: 1.0, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.correctLabel.text = "\(self.correctArray.count)"
             })
         }
     }
@@ -126,7 +133,7 @@ class MemoryViewController: UIViewController {
         cardFront.layer.borderWidth = 3.0
         cardFront.backgroundColor = UIColor.white
         cardFront.translatesAutoresizingMaskIntoConstraints = false
-
+        
         cardFront.questionLabel.text = cardManager.setCardQuestion()
         cardFront.answerLabel.text = cardManager.setCardAnswer()
         return cardFront
