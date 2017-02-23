@@ -50,18 +50,18 @@ class DataManager: NSObject {
     }
     
     func generateSetObject() -> SetObject {
-        let quoteObject = NSEntityDescription.insertNewObject(forEntityName: "SetObject", into: self.getContext()) as! SetObject
-        return quoteObject
+        let setObject = NSEntityDescription.insertNewObject(forEntityName: "SetObject", into: self.getContext()) as! SetObject
+        return setObject
     }
     
     func generateCategoryObject() -> CategoryObject {
-        let division = NSEntityDescription.insertNewObject(forEntityName: "CategoryObject", into: self.getContext()) as! CategoryObject
-        return division
+        let categoryObject = NSEntityDescription.insertNewObject(forEntityName: "CategoryObject", into: self.getContext()) as! CategoryObject
+        return categoryObject
     }
 
     func generateCard() -> CardObject{
-        let card = NSEntityDescription.insertNewObject(forEntityName: "CardObject", into: self.getContext()) as! CardObject
-        return card
+        let cardObject = NSEntityDescription.insertNewObject(forEntityName: "CardObject", into: self.getContext()) as! CardObject
+        return cardObject
     }
 
     func deleteObject(_ managedObject: NSManagedObject) {

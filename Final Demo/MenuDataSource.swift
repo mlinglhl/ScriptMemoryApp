@@ -1,14 +1,13 @@
 //
-//  StatisticsViewController.swift
+//  MenuDataSource.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-21.
+//  Created by Minhung Ling on 2017-02-23.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
 import UIKit
-// MARK: - Section Data Structure
-//
+
 struct Section {
     var name: String!
     var items: [String]!
@@ -21,24 +20,18 @@ struct Section {
     }
 }
 
-class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    @IBOutlet var optionsTableViewHeight: NSLayoutConstraint!
-    
+class MenuDataSource: NSObject {
     var scriptSection = [Section]()
     var albumSection = [Section]()
     var activeSection = [Section]()
-
-    @IBOutlet weak var graphView: ScrollableGraphView!
-    
-    @IBOutlet weak var optionsTableView: UITableView!
-    
-    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
-    
     let scriptArray = ["Avenue Q", "Les Miserables", "King Lear", "Lucky Stiff", "Hamlet", "Legally Blonde"]
     let albumArray = ["Thriller", "Back in Black", "The Dark Side of the Moon", "The Bodyguard", "Bat Out of Hell"]
     var activeArray = [String]()
     var dataArray = [[Double]]()
+
+}
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +41,7 @@ class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPicker
         scriptSection = [Section(name: scriptArray[0], items: scriptArray),
                          Section(name: "All", items: scriptArray)]
         activeSection = scriptSection
-
+        
         activeArray = scriptArray
         let data: [Double] = [12/17*100, 23/25*100, 13/16*100, 24/36*100, 13/14*100, 12/100*100]
         let data2: [Double] = [7/17*100, 21/25*100, 14/16*100, 33/36*100, 2/14*100, 88/100*100]
@@ -62,7 +55,7 @@ class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPicker
         dataArray.append(data4)
         dataArray.append(data5)
         dataArray.append(data6)
-
+        
         graphView.rangeMax = 100
         graphView.lineColor = UIColor.clear
         graphView.shouldDrawDataPoint = false
@@ -102,7 +95,7 @@ class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return activeArray[row]
     }
-
+    
     @IBAction func changeSegment(_ sender: UISegmentedControl) {
         let type = typeSegmentedControl.titleForSegment(at: typeSegmentedControl.selectedSegmentIndex)
         switch type! {

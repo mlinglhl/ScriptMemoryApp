@@ -11,7 +11,7 @@ import UIKit
 class CardManager: NSObject {
     var setArray = [SetObject]()
     var scriptArray = [SetObject]()
-    var albumArray = [SetObject]()
+    var artistArray = [SetObject]()
     var activeArray = [SetObject]()
     var cardIndex = 0
     var cardArray = [SampleCard.init(question: "Annabel: I have come all this way for the money Mr. Witherspoon. All six million dollars of it.", answer: "Harry: But I accepted the terms of my Uncle's will, and I'm here, you see, carrying out his wishes. So you people have lost."),
@@ -29,7 +29,7 @@ class CardManager: NSObject {
         }
         setArray = folders
         scriptArray = setUpFolderArray(type: "Script")
-        albumArray = setUpFolderArray(type: "Album")
+        artistArray = setUpFolderArray(type: "Artist")
         activeArray = scriptArray
     }
     
@@ -55,4 +55,44 @@ class CardManager: NSObject {
         }
         return answer
     }
+    
+    func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: String) {
+        let cardSet = getSetWithName(set)
+        let cardCategory = getCategoryWithName(category, set: cardSet)
+        let newCard = DataManager.sharedInstance.generateCard()
+        newCard.categoryObject = cardCategory
+        newCard.question = "\(questionSpeaker): \(question)"
+        newCard.answer = "\(answer)"
+        if type == "Artist" {
+            newCard.answer = "\(category): \(answer)"
+        }
+        DataManager.sharedInstance.saveContext()
+    }
+
+func getSetWithName(_ name: String) -> SetObject{
+    for setObject in setArray {
+        if setObject.name == name {
+            return setObject
+        }
+    }
+    let newObject = DataManager.sharedInstance.generateSetObject()
+    newObject.name = name
+    setArray.append(newObject)
+    return newObject
+}
+
+func getCategoryWithName(_ name: String, set: SetObject) -> CategoryObject {
+    if let categories = set.categoryObjects {
+        for categoryObject in categories {
+            if (categoryObject as AnyObject).name == name {
+                return categoryObject as! CategoryObject
+            }
+        }
+    }
+    let categoryObject = DataManager.sharedInstance.generateCategoryObject()
+    categoryObject.name = name
+    set.addToCategoryObjects(categoryObject)
+    return categoryObject
+    
+}
 }

@@ -54,11 +54,13 @@ class MemoryViewController: UIViewController {
             constraint.isActive = false
         }
         anchorArray.removeAll()
+        let randomX = CGFloat(arc4random_uniform(100))-50
+        let randomY = CGFloat(arc4random_uniform(125))-120
         let tempArray = [
-            cardView.widthAnchor.constraint(equalTo: self.deckImageView.widthAnchor, multiplier: 3),
-            cardView.heightAnchor.constraint(equalTo: self.deckImageView.heightAnchor, multiplier: 3),
-            cardView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
-            cardView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100)]
+            cardView.widthAnchor.constraint(equalTo: self.deckImageView.widthAnchor, multiplier: 2.5),
+            cardView.heightAnchor.constraint(equalTo: self.deckImageView.heightAnchor, multiplier: 2.5),
+            cardView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: randomX),
+            cardView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: randomY)]
         for constraint in tempArray {
             constraint.isActive = true
         }
@@ -110,7 +112,7 @@ class MemoryViewController: UIViewController {
     }
     
     func setUpCardBack() -> UIView {
-        let cardBack = UIImageView(image: #imageLiteral(resourceName: "BeeRed"))
+        let cardBack = UIImageView(image: #imageLiteral(resourceName: "cardBack"))
         cardBack.translatesAutoresizingMaskIntoConstraints = false
         cardBack.contentMode = UIViewContentMode.scaleToFill
         cardBack.clipsToBounds = true
@@ -139,4 +141,7 @@ class MemoryViewController: UIViewController {
         return cardFront
     }
     
+    @IBAction func dismiss(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }

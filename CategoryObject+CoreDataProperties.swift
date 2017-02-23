@@ -18,7 +18,6 @@ extension CategoryObject {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var order: Int16
     @NSManaged public var cardObjects: NSSet?
     @NSManaged public var setObject: SetObject?
 

@@ -2,7 +2,7 @@
 //  SetObject+CoreDataProperties.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-22.
+//  Created by Minhung Ling on 2017-02-23.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -19,24 +19,23 @@ extension SetObject {
 
     @NSManaged public var name: String?
     @NSManaged public var type: String?
-    @NSManaged public var writer: String?
-    @NSManaged public var categorieObjectss: NSSet?
+    @NSManaged public var categoryObjects: NSSet?
 
 }
 
-// MARK: Generated accessors for categorieObjectss
+// MARK: Generated accessors for categoryObjects
 extension SetObject {
 
-    @objc(addCategorieObjectssObject:)
-    @NSManaged public func addToCategorieObjectss(_ value: CategoryObject)
+    @objc(addCategoryObjectsObject:)
+    @NSManaged public func addToCategoryObjects(_ value: CategoryObject)
 
-    @objc(removeCategorieObjectssObject:)
-    @NSManaged public func removeFromCategorieObjectss(_ value: CategoryObject)
+    @objc(removeCategoryObjectsObject:)
+    @NSManaged public func removeFromCategoryObjects(_ value: CategoryObject)
 
-    @objc(addCategorieObjectss:)
-    @NSManaged public func addToCategorieObjectss(_ values: NSSet)
+    @objc(addCategoryObjects:)
+    @NSManaged public func addToCategoryObjects(_ values: NSSet)
 
-    @objc(removeCategorieObjectss:)
-    @NSManaged public func removeFromCategorieObjectss(_ values: NSSet)
+    @objc(removeCategoryObjects:)
+    @NSManaged public func removeFromCategoryObjects(_ values: NSSet)
 
 }
