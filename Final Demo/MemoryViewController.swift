@@ -17,8 +17,8 @@ class MemoryViewController: UIViewController {
     @IBOutlet weak var wrongLabel: UILabel!
     @IBOutlet weak var deckImageView: UIImageView!
     
-    var wrongArray = [CardView]()
-    var correctArray = [CardView]()
+    var correctCount = 0
+    var wrongCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,19 +54,18 @@ class MemoryViewController: UIViewController {
             constraint.isActive = false
         }
         anchorArray.removeAll()
-        let randomX = CGFloat(arc4random_uniform(100))-50
-        let randomY = CGFloat(arc4random_uniform(125))-120
-        let tempArray = [
-            cardView.widthAnchor.constraint(equalTo: self.deckImageView.widthAnchor, multiplier: 2.5),
-            cardView.heightAnchor.constraint(equalTo: self.deckImageView.heightAnchor, multiplier: 2.5),
-            cardView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: randomX),
-            cardView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: randomY)]
-        for constraint in tempArray {
-            constraint.isActive = true
-        }
-        activeAnchorArray.append(tempArray)
-        
         UIView.animate(withDuration: 0.2, animations: {
+            let randomX = CGFloat(arc4random_uniform(100))-50
+            let randomY = CGFloat(arc4random_uniform(125))-120
+            let tempArray = [
+                cardView.widthAnchor.constraint(equalTo: self.deckImageView.widthAnchor, multiplier: 2.5),
+                cardView.heightAnchor.constraint(equalTo: self.deckImageView.heightAnchor, multiplier: 2.5),
+                cardView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: randomX),
+                cardView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: randomY)]
+            for constraint in tempArray {
+                constraint.isActive = true
+            }
+            self.activeAnchorArray.append(tempArray)
             self.view.layoutIfNeeded()
             cardFront.questionScrollView.contentSize = cardFront.questionLabel.frame.size
             cardFront.answerScrollView.contentSize = cardFront.answerLabel.frame.size
@@ -78,27 +77,27 @@ class MemoryViewController: UIViewController {
     func markWrong(_ sender: UISwipeGestureRecognizer) {
         let card = sender.view as! CardView
         if card.answerLabel.alpha == 1 {
-            if card.answerLabel.alpha == 1 {
-                wrongArray.append(card)
-                activeAnchorArray[card.tag][2].constant = -400
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.view.layoutIfNeeded()
-                }, completion: { _ in
-                    self.wrongLabel.text = "\(self.wrongArray.count)"
-                })
-            }
+            wrongCount += 1
+            self.wrongLabel.text = "\(wrongCount)"
+            let newFrame = CGRect(x: -400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
+            UIView.animate(withDuration: 0.2, animations: {
+                card.frame = newFrame
+            }, completion: { _ in
+                card.superview?.removeFromSuperview()
+            })
         }
     }
     
     func markRight(_ sender: UISwipeGestureRecognizer) {
         let card = sender.view as! CardView
         if card.answerLabel.alpha == 1 {
-            correctArray.append(card)
-            activeAnchorArray[card.tag][2].constant = 400
+            correctCount += 1
+            self.correctLabel.text = "\(correctCount)"
+            let newFrame = CGRect(x: 400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.layoutIfNeeded()
+                card.frame = newFrame
             }, completion: { _ in
-                self.correctLabel.text = "\(self.correctArray.count)"
+                card.superview?.removeFromSuperview()
             })
         }
     }

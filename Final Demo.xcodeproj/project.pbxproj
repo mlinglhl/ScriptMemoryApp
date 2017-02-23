@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89A07C771E5F622700A80BB4 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C761E5F622700A80BB4 /* MenuDataSource.swift */; };
+		89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */; };
+		89A07C7B1E5F71EE00A80BB4 /* HomeViewControllerTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C7A1E5F71EE00A80BB4 /* HomeViewControllerTableViewExtension.swift */; };
 		89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D2799F1E57B9B600CF4082 /* AppDelegate.swift */; };
 		89D279A51E57B9B600CF4082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D279A31E57B9B600CF4082 /* Main.storyboard */; };
 		89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */; };
@@ -34,7 +35,8 @@
 /* Begin PBXFileReference section */
 		89A07C701E5F399B00A80BB4 /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		89A07C711E5F399B00A80BB4 /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89A07C761E5F622700A80BB4 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
+		89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
+		89A07C7A1E5F71EE00A80BB4 /* HomeViewControllerTableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTableViewExtension.swift; sourceTree = "<group>"; };
 		89D2799C1E57B9B600CF4082 /* Final Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D2799F1E57B9B600CF4082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89D279A41E57B9B600CF4082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,11 +104,12 @@
 			children = (
 				89D2799F1E57B9B600CF4082 /* AppDelegate.swift */,
 				89D279E21E5CBBD700CF4082 /* HomeViewController.swift */,
+				89A07C7A1E5F71EE00A80BB4 /* HomeViewControllerTableViewExtension.swift */,
+				89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */,
 				89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */,
 				89D279E41E5CDF5600CF4082 /* StatisticsViewController.swift */,
 				89D27A101E5E260100CF4082 /* StatisticsViewControllerTableViewExtension.swift */,
 				89D27A121E5E26C700CF4082 /* CollapsibleTableViewHeader.swift */,
-				89A07C761E5F622700A80BB4 /* MenuDataSource.swift */,
 				89D27A141E5E271C00CF4082 /* Extensions.swift */,
 				89D279E81E5D35FB00CF4082 /* ResultsViewController.swift */,
 				89D279BE1E58BC4400CF4082 /* MemoryViewController.swift */,
@@ -203,7 +206,7 @@
 				89D279BB1E58B52000CF4082 /* TableViewCell.swift in Sources */,
 				89D27A151E5E271C00CF4082 /* Extensions.swift in Sources */,
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
-				89A07C771E5F622700A80BB4 /* MenuDataSource.swift in Sources */,
+				89A07C7B1E5F71EE00A80BB4 /* HomeViewControllerTableViewExtension.swift in Sources */,
 				89D279BF1E58BC4400CF4082 /* MemoryViewController.swift in Sources */,
 				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,
 				89D27A111E5E260100CF4082 /* StatisticsViewControllerTableViewExtension.swift in Sources */,
@@ -217,6 +220,7 @@
 				89D279E71E5CE44F00CF4082 /* ScrollableGraphView.swift in Sources */,
 				89D279E31E5CBBD700CF4082 /* HomeViewController.swift in Sources */,
 				89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */,
+				89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */,
 				89D279E51E5CDF5600CF4082 /* StatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

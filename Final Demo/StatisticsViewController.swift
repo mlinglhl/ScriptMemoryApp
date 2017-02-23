@@ -9,29 +9,18 @@
 import UIKit
 // MARK: - Section Data Structure
 //
-struct Section {
-    var name: String!
-    var items: [String]!
-    var collapsed: Bool!
-    
-    init(name: String, items: [String], collapsed: Bool = true) {
-        self.name = name
-        self.items = items
-        self.collapsed = collapsed
-    }
-}
 
-class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class StatisticsViewController: UIViewController {
 
-    @IBOutlet var optionsTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var selectionTableView: UITableView!
     
+    @IBOutlet weak var selectionTableViewHeight: NSLayoutConstraint!
+    let tableViewDataManager = TableViewDataManager()
     var scriptSection = [Section]()
     var albumSection = [Section]()
     var activeSection = [Section]()
 
     @IBOutlet weak var graphView: ScrollableGraphView!
-    
-    @IBOutlet weak var optionsTableView: UITableView!
     
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     
@@ -42,14 +31,11 @@ class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        albumSection = [Section(name: albumArray[0], items: albumArray),
-                        Section(name: "All", items: albumArray)]
-        scriptSection = [Section(name: scriptArray[0], items: scriptArray),
-                         Section(name: "All", items: scriptArray)]
-        activeSection = scriptSection
 
-        activeArray = scriptArray
+        refreshTableViewHeight()
+        selectionTableView.dataSource = tableViewDataManager
+        selectionTableView.delegate = self
+
         let data: [Double] = [12/17*100, 23/25*100, 13/16*100, 24/36*100, 13/14*100, 12/100*100]
         let data2: [Double] = [7/17*100, 21/25*100, 14/16*100, 33/36*100, 2/14*100, 88/100*100]
         let data3: [Double] = [15/17*100, 17/25*100, 8/16*100, 12/36*100, 10/14*100, 85/100*100]
@@ -91,37 +77,14 @@ class StatisticsViewController: UIViewController, UIPickerViewDelegate, UIPicker
         view.addSubview(graphView)
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return activeArray.count
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return activeArray[row]
-    }
-
     @IBAction func changeSegment(_ sender: UISegmentedControl) {
         let type = typeSegmentedControl.titleForSegment(at: typeSegmentedControl.selectedSegmentIndex)
-        switch type! {
-        case "Script":
-            activeArray = scriptArray
-            activeSection = scriptSection
-            break
-        case "Album":
-            activeArray = albumArray
-            activeSection = albumSection
-            break
-        default:
-            break
-        }
-        optionsTableView.reloadData()
+        tableViewDataManager.changeType(type!)
+        selectionTableView.reloadData()
         refreshTableViewHeight()
         graphView.set(data: dataArray[0], withLabels: activeArray)
     }
-    
+        
     @IBAction func goBack(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

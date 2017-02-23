@@ -33,6 +33,9 @@
                                     <segment title="Script"/>
                                     <segment title="Artist"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="YvM-Ch-9DT"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Thingie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slI-jI-x1H">
                                 <rect key="frame" x="103.5" y="15" width="113.5" height="18.5"/>
@@ -41,42 +44,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4s8-m2-g20">
-                                <rect key="frame" x="0.0" y="90.5" width="320" height="192"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="192"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" id="tiE-MZ-Jau" customClass="TableViewCell" customModule="Final_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tiE-MZ-Jau" id="ZeP-UU-q0r">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="4to-xb-JXT"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bTi-S9-m0i"/>
-                                </connections>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="VJ6-Jy-HCa"/>
+                                </constraints>
                             </tableView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Script: Avenue Q" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSL-PZ-MgE">
-                                <rect key="frame" x="96" y="62" width="128" height="20.5"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="9Wg-cO-1jh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="GCC-jx-ipq" appends="YES" id="3co-Tw-F8H"/>
-                                </connections>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmb-EI-66X">
-                                <rect key="frame" x="0.0" y="52.5" width="320" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="ERb-x7-JIh"/>
-                                </constraints>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2O-2R-8nc">
                                 <rect key="frame" x="8" y="442" width="65" height="30"/>
                                 <state key="normal" title="Add Card"/>
@@ -85,14 +58,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lc2-jb-qU2">
-                                <rect key="frame" x="131.5" y="290" width="57" height="30"/>
+                                <rect key="frame" x="131.5" y="269.5" width="57" height="30"/>
                                 <state key="normal" title="Practice"/>
                                 <connections>
                                     <segue destination="uFw-U2-1Xc" kind="show" identifier="MemoryViewController" id="ZFJ-Zd-HTq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-TY-Jgo">
-                                <rect key="frame" x="128" y="328" width="64" height="30"/>
+                                <rect key="frame" x="128" y="307.5" width="64" height="30"/>
                                 <state key="normal" title="Statistics"/>
                                 <connections>
                                     <segue destination="oVZ-ne-Usr" kind="show" identifier="StatisticsViewController" id="q3D-XE-ejK"/>
@@ -104,32 +77,23 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x2O-2R-8nc" secondAttribute="bottom" constant="8" id="0Rw-68-Kna"/>
                             <constraint firstItem="x2O-2R-8nc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="64X-Lj-jvj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AAE-HH-TT4" secondAttribute="bottom" constant="8" id="7SB-IE-Alf"/>
-                            <constraint firstItem="CSL-PZ-MgE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.3" id="Adz-8Y-sZe"/>
                             <constraint firstItem="slI-jI-x1H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AgR-fI-v1O"/>
                             <constraint firstItem="jy8-an-oG6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.2" id="Grz-zG-bnD"/>
-                            <constraint firstItem="Lmb-EI-66X" firstAttribute="top" secondItem="CSL-PZ-MgE" secondAttribute="bottom" constant="-30" id="UwW-sb-bfs"/>
-                            <constraint firstItem="Lmb-EI-66X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bGH-EJ-0D5"/>
+                            <constraint firstItem="4s8-m2-g20" firstAttribute="top" secondItem="jy8-an-oG6" secondAttribute="bottom" constant="8" id="Pc5-my-TYL"/>
                             <constraint firstItem="AAE-HH-TT4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="d5c-D7-kgn"/>
                             <constraint firstItem="4s8-m2-g20" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="dpR-eM-IU8"/>
-                            <constraint firstItem="CSL-PZ-MgE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gge-LZ-1Vh"/>
                             <constraint firstItem="4s8-m2-g20" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k91-CH-iga"/>
                             <constraint firstItem="Lc2-jb-qU2" firstAttribute="top" secondItem="4s8-m2-g20" secondAttribute="bottom" constant="7.5" id="kpB-mO-g63"/>
-                            <constraint firstItem="4s8-m2-g20" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="pfX-zB-tG5"/>
                             <constraint firstItem="jy8-an-oG6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rpb-5E-7f6"/>
                             <constraint firstItem="Lc2-jb-qU2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tND-kB-O3C"/>
-                            <constraint firstItem="Lmb-EI-66X" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ttV-rA-Hst"/>
                             <constraint firstItem="1kC-TY-Jgo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wJf-5a-UF0"/>
-                            <constraint firstItem="4s8-m2-g20" firstAttribute="top" secondItem="Lmb-EI-66X" secondAttribute="bottom" constant="38" id="xhH-NV-cxJ"/>
                             <constraint firstItem="1kC-TY-Jgo" firstAttribute="top" secondItem="Lc2-jb-qU2" secondAttribute="bottom" constant="8" id="ygx-eI-CIt"/>
                             <constraint firstItem="slI-jI-x1H" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.1" id="zac-9W-RG5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="picker" destination="Lmb-EI-66X" id="sQj-c3-s9x"/>
-                        <outlet property="pickerHeight" destination="ERb-x7-JIh" id="iEh-jE-T8z"/>
-                        <outlet property="scriptLabel" destination="CSL-PZ-MgE" id="vdg-fS-Ap7"/>
-                        <outlet property="scriptLabelHeight" destination="9Wg-cO-1jh" id="mQ9-DB-2B0"/>
-                        <outlet property="tableView" destination="4s8-m2-g20" id="uGJ-jy-fbt"/>
+                        <outlet property="selectionTableView" destination="4s8-m2-g20" id="17e-Fh-HZr"/>
+                        <outlet property="selectionTableViewHeight" destination="VJ6-Jy-HCa" id="icf-qo-C1L"/>
                         <outlet property="typeSegmentedControl" destination="jy8-an-oG6" id="WKu-Jv-EJH"/>
                     </connections>
                 </viewController>
@@ -339,10 +303,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="cFW-Nj-GQH"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="oVZ-ne-Usr" id="ZzK-eP-lbZ"/>
-                                    <outlet property="delegate" destination="oVZ-ne-Usr" id="wrc-7n-Oex"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -362,8 +322,8 @@
                     </view>
                     <connections>
                         <outlet property="graphView" destination="lNG-gj-sm7" id="PFz-TW-skk"/>
-                        <outlet property="optionsTableView" destination="XF3-Za-Ltf" id="oET-1K-NGx"/>
-                        <outlet property="optionsTableViewHeight" destination="cFW-Nj-GQH" id="fQ5-UP-2Y5"/>
+                        <outlet property="selectionTableView" destination="XF3-Za-Ltf" id="DuL-Rm-iMj"/>
+                        <outlet property="selectionTableViewHeight" destination="cFW-Nj-GQH" id="8ee-W2-IkW"/>
                         <outlet property="typeSegmentedControl" destination="4bs-Qb-U2l" id="pVm-MK-8bX"/>
                     </connections>
                 </viewController>

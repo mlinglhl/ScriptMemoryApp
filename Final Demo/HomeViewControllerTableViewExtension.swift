@@ -1,15 +1,15 @@
 //
-//  StatisticsViewControllerTableViewExtension.swift
+//  HomeViewControllerTableViewExtension.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-22.
+//  Created by Minhung Ling on 2017-02-23.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
 import UIKit
 
-extension StatisticsViewController: UITableViewDelegate, CollapsibleTableViewHeaderDelegate {
-
+extension HomeViewController: UITableViewDelegate, CollapsibleTableViewHeaderDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableViewDataManager.activeSection[indexPath.section].collapsed! ? 0 : 25.0
     }
@@ -29,9 +29,9 @@ extension StatisticsViewController: UITableViewDelegate, CollapsibleTableViewHea
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44.0
+        return 44
     }
-
+    
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
         let collapsed = !tableViewDataManager.activeSection[section].collapsed
         
@@ -50,7 +50,7 @@ extension StatisticsViewController: UITableViewDelegate, CollapsibleTableViewHea
         }, completion: nil)
         selectionTableView.endUpdates()
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let header = selectionTableView.headerView(forSection: indexPath.section) as! CollapsibleTableViewHeader
         let cell = selectionTableView.cellForRow(at: indexPath)
@@ -58,7 +58,7 @@ extension StatisticsViewController: UITableViewDelegate, CollapsibleTableViewHea
         foldAll()
         if indexPath.section == 0 {
             let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
-            header.titleLabel.text = "All"
+            header.titleLabel.text = tableViewDataManager.activeArray[0]
         }
     }
     
@@ -88,5 +88,5 @@ extension StatisticsViewController: UITableViewDelegate, CollapsibleTableViewHea
             }
         }
     }
-
+    
 }
