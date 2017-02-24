@@ -9,11 +9,13 @@
 import UIKit
 
 class SampleCard: NSObject {
-    var question:String
-    var answer:String
+    let question: String
+    let answer: String
+    let character: SampleCharacter
     
-    init(question: String, answer: String) {
+    init(question: String, answer: String, character: SampleCharacter) {
         self.question = question
         self.answer = answer
+        self.character = character
     }
 }

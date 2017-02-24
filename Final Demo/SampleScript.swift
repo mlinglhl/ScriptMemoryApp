@@ -9,11 +9,11 @@
 import UIKit
 
 class SampleScript: NSObject {
-    let author: String
     let name: String
+    var characters: [SampleCharacter]
     
-    init(_ name: String, author: String) {
+    init(_ name: String) {
         self.name = name
-        self.author = author
+        self.characters = [SampleCharacter]()
     }
 }

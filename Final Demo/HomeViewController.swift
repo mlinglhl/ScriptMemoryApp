@@ -12,18 +12,18 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var selectionTableView: UITableView!
     @IBOutlet weak var selectionTableViewHeight: NSLayoutConstraint!
-
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
 
     let cardManager = CardManager.sharedInstance
-    let tableViewDataManager = TableViewDataManager()
-            
+    var tableViewDataManager: TableViewDataManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshTableViewHeight()
+        CardManager.sharedInstance.setUp()
         selectionTableView.delegate = self
+        tableViewDataManager = TableViewDataManager()
+        refreshTableViewHeight()
         selectionTableView.dataSource = tableViewDataManager
-        cardManager.setUp()
     }
     
     @IBAction func changeSegment(_ sender: UISegmentedControl) {

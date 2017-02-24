@@ -131,7 +131,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2mO-mu-fVF">
-                                <rect key="frame" x="16" y="130" width="288" height="96"/>
+                                <rect key="frame" x="16" y="167" width="288" height="96"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -141,14 +141,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLN-8W-KId">
-                                <rect key="frame" x="16" y="242" width="57" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLN-8W-KId">
+                                <rect key="frame" x="16" y="279" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="abp-IN-fVw">
-                                <rect key="frame" x="16" y="271" width="288" height="96"/>
+                                <rect key="frame" x="16" y="308" width="288" height="96"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -169,33 +169,33 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gn6-E9-8Lj">
-                                <rect key="frame" x="16" y="375" width="48" height="30"/>
+                                <rect key="frame" x="16" y="412" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelNewCard:" destination="XTV-f8-oHA" eventType="touchUpInside" id="shz-G2-4s7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAD-Qa-ifC">
-                                <rect key="frame" x="270" y="375" width="34" height="30"/>
+                                <rect key="frame" x="270" y="412" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveCard:" destination="XTV-f8-oHA" eventType="touchUpInside" id="irw-Oo-LbI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bK-vr-8ZH">
-                                <rect key="frame" x="16" y="101" width="69" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bK-vr-8ZH">
+                                <rect key="frame" x="16" y="138" width="73.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Said by..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0XF-bP-wy9">
-                                <rect key="frame" x="93" y="97" width="211" height="30"/>
+                                <rect key="frame" x="97.5" y="133.5" width="206.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Said by..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TfL-rU-O5L">
-                                <rect key="frame" x="93" y="238" width="211" height="30"/>
+                                <rect key="frame" x="85.5" y="275" width="218.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -209,10 +209,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfi-I3-O1C">
+                                <rect key="frame" x="86.5" y="96.5" width="217.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZM-Gh-bDC">
+                                <rect key="frame" x="16" y="101" width="62.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sfi-I3-O1C" firstAttribute="centerY" secondItem="1ZM-Gh-bDC" secondAttribute="centerY" id="0BU-7l-uAv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TfL-rU-O5L" secondAttribute="trailing" id="3ms-cO-77c"/>
+                            <constraint firstItem="sfi-I3-O1C" firstAttribute="leading" secondItem="1ZM-Gh-bDC" secondAttribute="trailing" constant="8" id="3q5-XY-s0G"/>
                             <constraint firstItem="0XF-bP-wy9" firstAttribute="centerY" secondItem="4bK-vr-8ZH" secondAttribute="centerY" id="4eE-xL-rau"/>
                             <constraint firstItem="2mO-mu-fVF" firstAttribute="top" secondItem="4bK-vr-8ZH" secondAttribute="bottom" constant="8" id="5Jk-UJ-N1j"/>
                             <constraint firstAttribute="leadingMargin" secondItem="abp-IN-fVw" secondAttribute="leading" id="7Mo-k2-uo9"/>
@@ -221,7 +235,9 @@
                             <constraint firstItem="Quk-4z-hcL" firstAttribute="centerY" secondItem="KEP-sZ-FBF" secondAttribute="centerY" id="Lik-CL-LDx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Quk-4z-hcL" secondAttribute="trailing" id="MMp-9C-Jnv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2mO-mu-fVF" secondAttribute="trailing" id="Moh-Bb-Gq4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sfi-I3-O1C" secondAttribute="trailing" id="O4f-zR-TP1"/>
                             <constraint firstItem="KLN-8W-KId" firstAttribute="top" secondItem="2mO-mu-fVF" secondAttribute="bottom" constant="16" id="QMu-t7-Ojb"/>
+                            <constraint firstItem="1ZM-Gh-bDC" firstAttribute="leading" secondItem="sJz-bd-IF2" secondAttribute="leadingMargin" id="Tse-JO-KJu"/>
                             <constraint firstItem="Poc-pE-ClG" firstAttribute="top" secondItem="KEP-sZ-FBF" secondAttribute="bottom" constant="15" id="UYH-nu-Wh5"/>
                             <constraint firstItem="KEP-sZ-FBF" firstAttribute="top" secondItem="3qv-1g-eew" secondAttribute="bottom" constant="17" id="VWi-De-d7R"/>
                             <constraint firstItem="abp-IN-fVw" firstAttribute="height" secondItem="sJz-bd-IF2" secondAttribute="height" multiplier="0.2" id="VoB-pX-ew3"/>
@@ -230,30 +246,32 @@
                             <constraint firstAttribute="leadingMargin" secondItem="KLN-8W-KId" secondAttribute="leading" id="aM2-EU-5JT"/>
                             <constraint firstItem="2mO-mu-fVF" firstAttribute="height" secondItem="sJz-bd-IF2" secondAttribute="height" multiplier="0.2" id="aUP-Un-DdB"/>
                             <constraint firstItem="3qv-1g-eew" firstAttribute="centerX" secondItem="sJz-bd-IF2" secondAttribute="centerX" id="aup-SE-5cs"/>
+                            <constraint firstItem="1ZM-Gh-bDC" firstAttribute="top" secondItem="Poc-pE-ClG" secondAttribute="bottom" id="bcY-b6-QAw"/>
                             <constraint firstItem="KEP-sZ-FBF" firstAttribute="leading" secondItem="sJz-bd-IF2" secondAttribute="leadingMargin" id="eBt-MD-cLF"/>
                             <constraint firstItem="Poc-pE-ClG" firstAttribute="leading" secondItem="sJz-bd-IF2" secondAttribute="leadingMargin" id="eKj-Ul-ExP"/>
                             <constraint firstItem="TfL-rU-O5L" firstAttribute="centerY" secondItem="KLN-8W-KId" secondAttribute="centerY" id="eMs-OI-LSG"/>
-                            <constraint firstItem="4bK-vr-8ZH" firstAttribute="top" secondItem="Poc-pE-ClG" secondAttribute="bottom" id="ebi-m9-ZLA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0XF-bP-wy9" secondAttribute="trailing" id="fB9-LZ-hzk"/>
                             <constraint firstItem="gn6-E9-8Lj" firstAttribute="top" secondItem="abp-IN-fVw" secondAttribute="bottom" constant="8" id="fzz-3o-rJG"/>
+                            <constraint firstItem="4bK-vr-8ZH" firstAttribute="top" secondItem="1ZM-Gh-bDC" secondAttribute="bottom" constant="16" id="kuC-1B-Jcg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="4bK-vr-8ZH" secondAttribute="leading" id="mT0-wo-JPT"/>
-                            <constraint firstItem="TfL-rU-O5L" firstAttribute="width" secondItem="0XF-bP-wy9" secondAttribute="width" id="oYm-k5-sRL"/>
                             <constraint firstItem="3qv-1g-eew" firstAttribute="top" secondItem="TfO-iP-Nxj" secondAttribute="bottom" id="obS-PC-hcd"/>
                             <constraint firstItem="yAD-Qa-ifC" firstAttribute="top" secondItem="abp-IN-fVw" secondAttribute="bottom" constant="8" id="om2-uz-Tcd"/>
                             <constraint firstItem="abp-IN-fVw" firstAttribute="top" secondItem="KLN-8W-KId" secondAttribute="bottom" constant="8" id="vHz-U6-gKh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="2mO-mu-fVF" secondAttribute="leading" id="xhy-xG-qQS"/>
+                            <constraint firstItem="TfL-rU-O5L" firstAttribute="leading" secondItem="KLN-8W-KId" secondAttribute="trailing" constant="8" id="yNv-ix-ZCW"/>
                             <constraint firstItem="yAD-Qa-ifC" firstAttribute="trailing" secondItem="sJz-bd-IF2" secondAttribute="trailingMargin" id="zan-G0-tkf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="answerTextView" destination="abp-IN-fVw" id="ezO-RZ-5eO"/>
+                        <outlet property="categoryLabelLeadingSpaceScript" destination="yNv-ix-ZCW" id="OaF-mv-sMa"/>
                         <outlet property="categoryTextField" destination="TfL-rU-O5L" id="Kex-lm-Q4h"/>
-                        <outlet property="categoryTextFieldScriptYAnchor" destination="eMs-OI-LSG" id="wvZ-dS-krV"/>
+                        <outlet property="categoryTextFieldYAnchorScript" destination="eMs-OI-LSG" id="RGU-HY-1XX"/>
                         <outlet property="questionCharacterTextField" destination="0XF-bP-wy9" id="vOG-mk-L7W"/>
-                        <outlet property="questionCharacterTextFieldScriptYAnchor" destination="4eE-xL-rau" id="SLO-g8-R00"/>
+                        <outlet property="questionCharacterTextFieldYAnchorScript" destination="4eE-xL-rau" id="QSK-qO-sqi"/>
                         <outlet property="questionLabel" destination="4bK-vr-8ZH" id="c7B-VR-c5n"/>
-                        <outlet property="questionLabelTopConstraint" destination="ebi-m9-ZLA" id="KTl-yQ-Ega"/>
                         <outlet property="questionTextView" destination="2mO-mu-fVF" id="oXB-Ah-bem"/>
+                        <outlet property="sectionLabelTopConstraint" destination="bcY-b6-QAw" id="dDB-ms-QfD"/>
                         <outlet property="setLabel" destination="KEP-sZ-FBF" id="jcf-Ur-m8f"/>
                         <outlet property="setTextField" destination="Quk-4z-hcL" id="ahS-tl-6qF"/>
                         <outlet property="songLabel" destination="Poc-pE-ClG" id="Y4g-UU-e3E"/>
@@ -336,10 +354,10 @@
             </objects>
             <point key="canvasLocation" x="823.125" y="831.25"/>
         </scene>
-        <!--Memory View Controller-->
+        <!--Flash Card View Controller-->
         <scene sceneID="GIB-k6-zfI">
             <objects>
-                <viewController id="uFw-U2-1Xc" customClass="MemoryViewController" customModule="Final_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uFw-U2-1Xc" customClass="FlashCardViewController" customModule="Final_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xCd-s1-VeH"/>
                         <viewControllerLayoutGuide type="bottom" id="mgv-HI-cJU"/>
@@ -356,7 +374,7 @@
                                     <segment title="Any"/>
                                 </segments>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBack" translatesAutoresizingMaskIntoConstraints="NO" id="BY7-xi-NVM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBack" translatesAutoresizingMaskIntoConstraints="NO" id="BY7-xi-NVM">
                                 <rect key="frame" x="128" y="381" width="64" height="84"/>
                                 <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
@@ -396,7 +414,7 @@
                                 <rect key="frame" x="16" y="442" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="dismiss:" destination="uFw-U2-1Xc" eventType="touchUpInside" id="e8D-4p-ZE9"/>
+                                    <action selector="dismiss:" destination="uFw-U2-1Xc" eventType="touchUpInside" id="6Cc-Y7-AKh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -422,16 +440,16 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="correctLabel" destination="azE-rL-NtS" id="hDQ-kp-9iD"/>
-                        <outlet property="deckImageView" destination="BY7-xi-NVM" id="edB-jM-mxe"/>
-                        <outlet property="wrongLabel" destination="8ZW-49-jbu" id="GLP-Lp-c8T"/>
+                        <outlet property="correctLabel" destination="azE-rL-NtS" id="eSX-Om-BPk"/>
+                        <outlet property="deckImageView" destination="BY7-xi-NVM" id="eW4-dd-ANd"/>
+                        <outlet property="wrongLabel" destination="8ZW-49-jbu" id="WN3-Rq-VQf"/>
                         <segue destination="e2T-ON-tJq" kind="show" identifier="ResultsViewController" id="kya-eB-Nke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4iN-Tr-4QU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="49O-gM-cZF">
                     <connections>
-                        <action selector="tapDeck:" destination="uFw-U2-1Xc" id="fiV-CN-3MA"/>
+                        <action selector="drawCard:" destination="uFw-U2-1Xc" id="lTC-DC-J5k"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

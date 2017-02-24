@@ -1,14 +1,14 @@
 //
-//  MemoryViewController.swift
+//  FlashCardViewController.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-18.
+//  Created by Minhung Ling on 2017-02-24.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
 import UIKit
 
-class MemoryViewController: UIViewController {
+class FlashCardViewController: UIViewController {
     var anchorArray = [NSLayoutConstraint]()
     var activeAnchorArray = [[NSLayoutConstraint]]()
     let cardManager = CardManager.sharedInstance
@@ -17,14 +17,22 @@ class MemoryViewController: UIViewController {
     @IBOutlet weak var wrongLabel: UILabel!
     @IBOutlet weak var deckImageView: UIImageView!
     
+    var timer: Timer?
+    var timeIndex = 0
     var correctCount = 0
     var wrongCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deckImageView.isHidden = true
+        startUp()
     }
     
-    @IBAction func tapDeck(_ sender: UITapGestureRecognizer) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
         let cardView = setUpCardView()
         let cardBack = setUpCardBack()
         let cardFront = setUpCardFront()
@@ -103,6 +111,40 @@ class MemoryViewController: UIViewController {
     }
     
     //MARK helper methods
+    
+    func startUp() {
+        let rightFrame = CGRect(x: 400, y: deckImageView.frame.origin.y, width: deckImageView.frame.size.width*3, height: deckImageView.frame.size.height*3)
+        let leftFrame = CGRect(x: -400, y: deckImageView.frame.origin.y, width: deckImageView.frame.size.width*3, height: deckImageView.frame.size.height*3)
+        let rightCard = UIImageView(frame: rightFrame)
+        rightCard.image = #imageLiteral(resourceName: "cardBack")
+        rightCard.clipsToBounds = true
+        rightCard.layer.cornerRadius = 8
+        let leftCard = UIImageView(frame: leftFrame)
+        leftCard.image = #imageLiteral(resourceName: "cardBack")
+        leftCard.clipsToBounds = true
+        leftCard.layer.cornerRadius = 8
+        view.addSubview(rightCard)
+        view.addSubview(leftCard)
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            rightCard.frame = self.deckImageView.frame
+            leftCard.frame = self.deckImageView.frame
+        }, completion: { _ in
+            rightCard.removeFromSuperview()
+            leftCard.removeFromSuperview()
+        })
+        timeIndex += 1
+        if timeIndex <= 5 {
+            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(startUp), userInfo: nil, repeats: false)
+        }
+        if timeIndex > 5 && timeIndex < 15 {
+            Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(startUp), userInfo: nil, repeats: false)
+        }
+        if timeIndex == 15 {
+            deckImageView.isHidden = false
+            deckImageView.isUserInteractionEnabled = true
+        }
+    }
     
     func setUpCardView() -> UIView {
         let cardView = UIView()

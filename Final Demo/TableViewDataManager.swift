@@ -24,22 +24,31 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var scriptSection: [Section]
     var artistSection: [Section]
     var activeSection: [Section]
-    let scriptArray: [String]
+    var scriptArray = [String]()
+    var characterArray = [String]()
     let artistArray: [String]
     var activeArray = [String]()
     var dataArray = [[Double]]()
+    var manager = CardManager.sharedInstance
     
     override init() {
-        scriptArray = ["Avenue Q", "Les Miserables", "King Lear", "Lucky Stiff", "Hamlet", "Legally Blonde"]
+        for script in manager.sampleActiveArray {
+            scriptArray.append(script.name)
+        }
+        
+        for character in manager.sampleActiveArray[0].characters {
+            characterArray.append(character.name)
+        }
         artistArray = ["Thriller", "Back in Black", "The Dark Side of the Moon", "The Bodyguard", "Bat Out of Hell"]
         artistSection = [Section(name: artistArray[0], items: artistArray),
-                        Section(name: artistArray[0], items: artistArray)]
-        scriptSection = [Section(name: scriptArray[0], items: scriptArray),
-                         Section(name: scriptArray[0], items: scriptArray)]
+                         Section(name: artistArray[0], items: artistArray)]
+        scriptSection = [
+            Section(name: manager.sampleActiveArray[0].name, items: scriptArray),
+            Section(name: manager.sampleActiveArray[0].characters[0].name, items: characterArray)]
         activeSection = scriptSection
         activeArray = scriptArray
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return activeSection.count
     }
@@ -70,7 +79,7 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         default:
             break
         }
-
+        
     }
     
 }
