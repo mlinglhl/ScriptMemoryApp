@@ -58,10 +58,10 @@ extension HomeViewController: UITableViewDelegate, CollapsibleTableViewHeaderDel
         foldAll()
         if indexPath.section == 0 {
             let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
-            header.titleLabel.text = tableViewDataManager.activeArray[0]
+            header.titleLabel.text = cardManager.sampleActiveArray[0].characters[0].name
         }
     }
-    
+
     func refreshTableViewHeight() {
         var sectionHeight = tableViewDataManager.activeSection.count * 44
         let maxHeight = view.frame.height - 60
@@ -78,7 +78,7 @@ extension HomeViewController: UITableViewDelegate, CollapsibleTableViewHeaderDel
         }
         selectionTableViewHeight.constant = floatHeight
     }
-    
+
     func foldAll() {
         let end = tableViewDataManager.activeSection.count - 1
         for index in 0...end {
