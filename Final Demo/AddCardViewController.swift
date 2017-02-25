@@ -57,10 +57,6 @@ class AddCardViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelNewCard(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func saveCard(_ sender: UIButton) {
         var type = typeSegmentedControl.titleForSegment(at: typeSegmentedControl.selectedSegmentIndex)
         if type == "Song" {

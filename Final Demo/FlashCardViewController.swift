@@ -24,12 +24,14 @@ class FlashCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deckImageView.isHidden = true
-        startUp()
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "greenFelt"))
+        deckImageView.layer.borderColor = UIColor.yellow.cgColor
+        deckImageView.layer.borderWidth = 3.0
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startUp()
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
@@ -113,35 +115,31 @@ class FlashCardViewController: UIViewController {
     //MARK helper methods
     
     func startUp() {
-        let rightFrame = CGRect(x: 400, y: deckImageView.frame.origin.y, width: deckImageView.frame.size.width*3, height: deckImageView.frame.size.height*3)
-        let leftFrame = CGRect(x: -400, y: deckImageView.frame.origin.y, width: deckImageView.frame.size.width*3, height: deckImageView.frame.size.height*3)
-        let rightCard = UIImageView(frame: rightFrame)
-        rightCard.image = #imageLiteral(resourceName: "cardBack")
-        rightCard.clipsToBounds = true
-        rightCard.layer.cornerRadius = 8
-        let leftCard = UIImageView(frame: leftFrame)
-        leftCard.image = #imageLiteral(resourceName: "cardBack")
-        leftCard.clipsToBounds = true
-        leftCard.layer.cornerRadius = 8
-        view.addSubview(rightCard)
-        view.addSubview(leftCard)
+        let frame = CGRect(x: deckImageView.frame.origin.x + 100, y: deckImageView.frame.origin.y + 500, width: deckImageView.frame.size.width*3, height: deckImageView.frame.size.height*3)
+        let card = UIImageView(frame: frame)
+        card.image = #imageLiteral(resourceName: "cardBack")
+        card.clipsToBounds = true
+        card.layer.cornerRadius = 8
+        view.addSubview(card)
         
         UIView.animate(withDuration: 0.2, animations: {
-            rightCard.frame = self.deckImageView.frame
-            leftCard.frame = self.deckImageView.frame
+            card.frame = self.deckImageView.frame
         }, completion: { _ in
-            rightCard.removeFromSuperview()
-            leftCard.removeFromSuperview()
+            if self.deckImageView.image == nil {
+                self.deckImageView.layer.borderWidth = 0
+                self.deckImageView.layer.borderColor = UIColor.clear.cgColor
+                self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
+            }
+            card.removeFromSuperview()
         })
         timeIndex += 1
-        if timeIndex <= 5 {
+        if timeIndex <= 7 {
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(startUp), userInfo: nil, repeats: false)
         }
-        if timeIndex > 5 && timeIndex < 15 {
+        if timeIndex > 7 && timeIndex < 20 {
             Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(startUp), userInfo: nil, repeats: false)
         }
         if timeIndex == 15 {
-            deckImageView.isHidden = false
             deckImageView.isUserInteractionEnabled = true
         }
     }
@@ -180,9 +178,5 @@ class FlashCardViewController: UIViewController {
         cardFront.questionLabel.text = cardManager.setCardQuestion()
         cardFront.answerLabel.text = cardManager.setCardAnswer()
         return cardFront
-    }
-    
-    @IBAction func dismiss(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
 }
