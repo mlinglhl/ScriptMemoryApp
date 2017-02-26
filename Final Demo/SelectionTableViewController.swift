@@ -1,15 +1,37 @@
 //
-//  HomeViewControllerTableViewExtension.swift
+//  SelectionTableViewController.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-23.
+//  Created by Minhung Ling on 2017-02-26.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
 import UIKit
 
-extension HomeViewController: UITableViewDelegate, CollapsibleTableViewHeaderDelegate {
+class SelectionTableViewController: UIViewController, UITableViewDelegate, CollapsibleTableViewHeaderDelegate {
+    @IBOutlet weak var selectionTableView: UITableView!
+    @IBOutlet weak var selectionTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     
+    let cardManager = CardManager.sharedInstance
+    var tableViewDataManager = TableViewDataManager()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableViewDataManager.createSetArray()
+        tableViewDataManager.createCategoryArray()
+        refreshTableViewHeight()
+        selectionTableView.dataSource = tableViewDataManager
+        selectionTableView.delegate = self
+    }
+    
+    @IBAction func changeSegment(_ sender: UISegmentedControl) {
+        cardManager.changeType(typeSegmentedControl.selectedSegmentIndex)
+        tableViewDataManager.changeType()
+        selectionTableView.reloadData()
+        refreshTableViewHeight()
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableViewDataManager.activeSection[indexPath.section].collapsed! ? 0 : 25.0
     }
@@ -52,16 +74,26 @@ extension HomeViewController: UITableViewDelegate, CollapsibleTableViewHeaderDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            cardManager.setIndex = indexPath.row
+            cardManager.categoryIndex = 0
+            let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
+            header.titleLabel.text = cardManager.sampleActiveArray[cardManager.setIndex].categories[cardManager.categoryIndex].name
+            break
+        case 1:
+            cardManager.categoryIndex = indexPath.row
+            break
+        default:
+            break
+        }
         let header = selectionTableView.headerView(forSection: indexPath.section) as! CollapsibleTableViewHeader
         let cell = selectionTableView.cellForRow(at: indexPath)
         header.titleLabel.text = cell!.textLabel!.text
         foldAll()
-        if indexPath.section == 0 {
-            let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
-            header.titleLabel.text = cardManager.sampleActiveArray[0].characters[0].name
-        }
+        tableViewDataManager.createCategoryArray()
     }
-
+    
     func refreshTableViewHeight() {
         var sectionHeight = tableViewDataManager.activeSection.count * 44
         let maxHeight = view.frame.height - 60
@@ -78,7 +110,7 @@ extension HomeViewController: UITableViewDelegate, CollapsibleTableViewHeaderDel
         }
         selectionTableViewHeight.constant = floatHeight
     }
-
+    
     func foldAll() {
         let end = tableViewDataManager.activeSection.count - 1
         for index in 0...end {

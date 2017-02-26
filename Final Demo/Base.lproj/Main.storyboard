@@ -66,7 +66,7 @@
                                 <segment title="Artist"/>
                             </segments>
                             <connections>
-                                <action selector="changeSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="YvM-Ch-9DT"/>
+                                <action selector="changeSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="hrt-PD-MnL"/>
                             </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FuC-Fs-iiz">
@@ -296,14 +296,14 @@
                                             </connections>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="4bs-Qb-U2l">
-                                            <rect key="frame" x="108.5" y="27.5" width="103" height="29"/>
+                                            <rect key="frame" x="109" y="28" width="103" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Script"/>
                                                 <segment title="Artist"/>
                                             </segments>
                                             <connections>
-                                                <action selector="changeSegment:" destination="oVZ-ne-Usr" eventType="valueChanged" id="x6X-UW-nRN"/>
+                                                <action selector="changeSegment:" destination="oVZ-ne-Usr" eventType="valueChanged" id="l88-XC-kK7"/>
                                             </connections>
                                         </segmentedControl>
                                     </navigationItem>
@@ -326,9 +326,9 @@
                     </view>
                     <connections>
                         <outlet property="graphView" destination="lNG-gj-sm7" id="PFz-TW-skk"/>
-                        <outlet property="selectionTableView" destination="XF3-Za-Ltf" id="DuL-Rm-iMj"/>
-                        <outlet property="selectionTableViewHeight" destination="eMa-kC-896" id="Gxx-Ai-LLn"/>
-                        <outlet property="typeSegmentedControl" destination="4bs-Qb-U2l" id="pVm-MK-8bX"/>
+                        <outlet property="selectionTableView" destination="XF3-Za-Ltf" id="vdH-fQ-xuT"/>
+                        <outlet property="selectionTableViewHeight" destination="eMa-kC-896" id="fpA-S8-Zr5"/>
+                        <outlet property="typeSegmentedControl" destination="4bs-Qb-U2l" id="YMa-cK-bSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zC-YN-ciV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,7 +469,7 @@
                     <navigationItem key="navigationItem" id="dix-Qa-OOf">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="oTJ-Ks-A1P">
-                            <rect key="frame" x="8" y="6.5" width="304" height="31"/>
+                            <rect key="frame" x="8" y="7" width="304" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="EjZ-9t-3kz"/>
@@ -489,7 +489,6 @@
         <!--Navigation Controller-->
         <scene sceneID="dEW-B7-hHW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y3J-22-yq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="esz-N1-XDI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QkT-l2-J6l">
@@ -501,6 +500,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="OrQ-5V-cyq"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3J-22-yq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135" y="136.25"/>
         </scene>

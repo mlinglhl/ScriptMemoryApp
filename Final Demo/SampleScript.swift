@@ -10,10 +10,10 @@ import UIKit
 
 class SampleScript: NSObject {
     let name: String
-    var characters: [SampleCharacter]
+    var categories: [SampleCharacter]
     
     init(_ name: String) {
         self.name = name
-        self.characters = [SampleCharacter]()
+        self.categories = [SampleCharacter]()
     }
 }

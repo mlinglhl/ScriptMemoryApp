@@ -24,14 +24,14 @@ class FlashCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "greenFelt"))
-        deckImageView.layer.borderColor = UIColor.yellow.cgColor
-        deckImageView.layer.borderWidth = 3.0
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        startUp()
+//        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "greenFelt"))
+//        deckImageView.layer.borderColor = UIColor.yellow.cgColor
+//        deckImageView.layer.borderWidth = 3.0
+        deckImageView.isUserInteractionEnabled = true
+//        self.deckImageView.layer.borderWidth = 0
+//        self.deckImageView.layer.borderColor = UIColor.clear.cgColor
+        self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
+
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {

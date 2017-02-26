@@ -8,31 +8,32 @@
 import UIKit
 // MARK: - Section Data Structure
 //
-class StatisticsViewController: UIViewController {
+class StatisticsViewController: SelectionTableViewController {
     
-    @IBOutlet weak var selectionTableView: UITableView!
-    
-    @IBOutlet weak var selectionTableViewHeight: NSLayoutConstraint!
-    let tableViewDataManager = TableViewDataManager()
     var scriptSection = [Section]()
     var albumSection = [Section]()
     var activeSection = [Section]()
     
     @IBOutlet weak var graphView: ScrollableGraphView!
     
-    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
-    
     let scriptArray = ["Avenue Q", "Les Miserables", "King Lear", "Lucky Stiff", "Hamlet", "Legally Blonde"]
     let albumArray = ["Thriller", "Back in Black", "The Dark Side of the Moon", "The Bodyguard", "Bat Out of Hell"]
     var activeArray = [String]()
     var dataArray = [[Double]]()
+    var setIndex = 0
+    var categoryIndex = 0
+    var typeIndex = 0
+    var typeChanged = false
+    
     
     override func viewDidLoad() {
+        setIndex = cardManager.setIndex
+        categoryIndex = cardManager.categoryIndex
+        typeIndex = cardManager.typeIndex
+        cardManager.setIndex = 0
+        cardManager.categoryIndex = 0
+        cardManager.changeType(0)
         super.viewDidLoad()
-        
-        refreshTableViewHeight()
-        selectionTableView.dataSource = tableViewDataManager
-        selectionTableView.delegate = self
         
         let data: [Double] = [12/17*100, 23/25*100, 13/16*100, 24/36*100, 13/14*100, 12/100*100]
         let data2: [Double] = [7/17*100, 21/25*100, 14/16*100, 33/36*100, 2/14*100, 88/100*100]
@@ -75,15 +76,20 @@ class StatisticsViewController: UIViewController {
         view.addSubview(graphView)
     }
     
-    @IBAction func changeSegment(_ sender: UISegmentedControl) {
-        let type = typeSegmentedControl.titleForSegment(at: typeSegmentedControl.selectedSegmentIndex)
-        tableViewDataManager.changeType(type!)
-        selectionTableView.reloadData()
-        refreshTableViewHeight()
+    @IBAction override func changeSegment(_ sender: UISegmentedControl) {
+        super.changeSegment(sender)
         graphView.set(data: dataArray[0], withLabels: activeArray)
     }
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cardManager.typeIndex = typeIndex
+        cardManager.changeType(typeIndex)
+        cardManager.setIndex = setIndex
+        cardManager.categoryIndex = categoryIndex
     }
 }
