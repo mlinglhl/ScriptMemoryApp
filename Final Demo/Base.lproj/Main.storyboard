@@ -34,7 +34,7 @@
                                 <rect key="frame" x="128" y="301.5" width="64" height="30"/>
                                 <state key="normal" title="Statistics"/>
                                 <connections>
-                                    <segue destination="oVZ-ne-Usr" kind="presentation" identifier="StatisticsViewController" id="q3D-XE-ejK"/>
+                                    <segue destination="oVZ-ne-Usr" kind="show" identifier="StatisticsViewController" id="q3D-XE-ejK"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4s8-m2-g20">
@@ -272,13 +272,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-Za-Ltf">
-                                <rect key="frame" x="0.0" y="64" width="320" height="72"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="eMa-kC-896"/>
-                                </constraints>
-                            </tableView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-gj-sm7" customClass="ScrollableGraphView" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="320" height="344"/>
                             </scrollView>
@@ -287,32 +280,19 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="ckR-I6-xs7"/>
                                 </constraints>
-                                <items>
-                                    <navigationItem id="LHh-fu-PiW">
-                                        <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Fy2-sL-j4M">
-                                            <connections>
-                                                <action selector="goBack:" destination="oVZ-ne-Usr" id="fGs-Wd-Jhf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="4bs-Qb-U2l">
-                                            <rect key="frame" x="109" y="28" width="103" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Script"/>
-                                                <segment title="Artist"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="changeSegment:" destination="oVZ-ne-Usr" eventType="valueChanged" id="l88-XC-kK7"/>
-                                            </connections>
-                                        </segmentedControl>
-                                    </navigationItem>
-                                </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-Za-Ltf">
+                                <rect key="frame" x="0.0" y="64" width="320" height="72"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="eMa-kC-896"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XF3-Za-Ltf" secondAttribute="trailing" id="3PX-jU-8QL"/>
+                            <constraint firstItem="XF3-Za-Ltf" firstAttribute="top" secondItem="2rH-3I-MX1" secondAttribute="bottom" id="5hl-c5-sBc"/>
                             <constraint firstAttribute="trailing" secondItem="lNG-gj-sm7" secondAttribute="trailing" id="7Qy-qc-Fz3"/>
                             <constraint firstItem="9tx-L6-Uwa" firstAttribute="top" secondItem="XNg-4e-Id1" secondAttribute="top" id="8dR-RD-1B5"/>
                             <constraint firstItem="9tx-L6-Uwa" firstAttribute="leading" secondItem="XNg-4e-Id1" secondAttribute="leading" id="HZr-VL-DPy"/>
@@ -321,9 +301,22 @@
                             <constraint firstItem="XF3-Za-Ltf" firstAttribute="leading" secondItem="XNg-4e-Id1" secondAttribute="leading" id="fKV-yG-tEA"/>
                             <constraint firstItem="lNG-gj-sm7" firstAttribute="leading" secondItem="XNg-4e-Id1" secondAttribute="leading" id="jdd-Rn-nU4"/>
                             <constraint firstItem="IIe-ec-SP0" firstAttribute="top" secondItem="lNG-gj-sm7" secondAttribute="bottom" id="nCL-aR-Mbf"/>
-                            <constraint firstItem="XF3-Za-Ltf" firstAttribute="top" secondItem="9tx-L6-Uwa" secondAttribute="bottom" id="nm5-Th-JJ8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="LHh-fu-PiW">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="4bs-Qb-U2l">
+                            <rect key="frame" x="109" y="8" width="103" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Script"/>
+                                <segment title="Artist"/>
+                            </segments>
+                            <connections>
+                                <action selector="changeSegment:" destination="oVZ-ne-Usr" eventType="valueChanged" id="l88-XC-kK7"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="graphView" destination="lNG-gj-sm7" id="PFz-TW-skk"/>
                         <outlet property="selectionTableView" destination="XF3-Za-Ltf" id="vdH-fQ-xuT"/>
