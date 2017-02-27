@@ -118,14 +118,14 @@ class CardManager: NSObject {
         return "Default answer"
     }
     
-    func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: String) {
+    func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: Int) {
         let cardSet = getSetWithName(set)
         let cardCategory = getCategoryWithName(category, set: cardSet)
         let newCard = DataManager.sharedInstance.generateCard()
         newCard.categoryObject = cardCategory
         newCard.question = "\(questionSpeaker): \(question)"
         newCard.answer = "\(answer)"
-        if type == "Artist" {
+        if type == 1 {
             newCard.answer = "\(category): \(answer)"
         }
         DataManager.sharedInstance.saveContext()

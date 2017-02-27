@@ -3,6 +3,7 @@
     <entity name="CardObject" representedClassName="CardObject" syncable="YES" codeGenerationType="class">
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="audioQueue" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="multiPerson" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="part" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,7 +22,7 @@
         <relationship name="categoryObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CategoryObject" inverseName="setObject" inverseEntity="CategoryObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CardObject" positionX="333" positionY="-126" width="128" height="165"/>
+        <element name="CardObject" positionX="333" positionY="-126" width="128" height="180"/>
         <element name="CategoryObject" positionX="153" positionY="-180" width="128" height="90"/>
         <element name="SetObject" positionX="-20" positionY="-198" width="128" height="90"/>
     </elements>

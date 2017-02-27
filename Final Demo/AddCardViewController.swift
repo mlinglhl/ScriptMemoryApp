@@ -45,11 +45,11 @@ class AddCardViewController: UIViewController {
     }
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
-        switch sender.titleForSegment(at: sender.selectedSegmentIndex)! {
-        case "Script":
+        switch sender.selectedSegmentIndex {
+        case 0:
             self.setUIForScript()
             break
-        case "Song":
+        case 1:
             self.setUIForSong()
             break
         default:
@@ -58,11 +58,8 @@ class AddCardViewController: UIViewController {
     }
     
     @IBAction func saveCard(_ sender: UIButton) {
-        var type = typeSegmentedControl.titleForSegment(at: typeSegmentedControl.selectedSegmentIndex)
-        if type == "Song" {
-            type = "Artist"
-        }
-        CardManager.sharedInstance.createCardWith(set: setLabel.text!, category: categoryTextField.text!, question: questionLabel.text!, questionSpeaker: questionCharacterTextField.text!, answer: answerTextView.text!, type: type!)
+        let type = typeSegmentedControl.selectedSegmentIndex
+        CardManager.sharedInstance.createCardWith(set: setLabel.text!, category: categoryTextField.text!, question: questionLabel.text!, questionSpeaker: questionCharacterTextField.text!, answer: answerTextView.text!, type: type)
         dismiss(animated: true, completion: nil)
     }
     

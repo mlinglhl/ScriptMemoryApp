@@ -228,11 +228,11 @@
                     <navigationItem key="navigationItem" id="71j-Ne-pQ7">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="3qv-1g-eew">
-                            <rect key="frame" x="109" y="8" width="103" height="29"/>
+                            <rect key="frame" x="109" y="7" width="103" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Script"/>
-                                <segment title="Song"/>
+                                <segment title="Artist"/>
                             </segments>
                             <connections>
                                 <action selector="changeType:" destination="XTV-f8-oHA" eventType="valueChanged" id="pwP-rG-f6c"/>
