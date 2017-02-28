@@ -9,8 +9,13 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-
+    var index = 0
+    let manager = CardManager.sharedInstance
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        scoreLabel.text = manager.getScore()
     }
 }

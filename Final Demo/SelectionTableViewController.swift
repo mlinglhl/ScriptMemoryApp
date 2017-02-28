@@ -15,7 +15,7 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
     
     let cardManager = CardManager.sharedInstance
     var tableViewDataManager = TableViewDataManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewDataManager.createSetArray()
@@ -31,7 +31,7 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         selectionTableView.reloadData()
         refreshTableViewHeight()
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableViewDataManager.activeSection[indexPath.section].collapsed! ? 0 : 25.0
     }
@@ -74,6 +74,9 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let header = selectionTableView.headerView(forSection: indexPath.section) as! CollapsibleTableViewHeader
+        let cell = selectionTableView.cellForRow(at: indexPath)
+        header.titleLabel.text = cell!.textLabel!.text
         switch indexPath.section {
         case 0:
             cardManager.setIndex = indexPath.row
@@ -87,9 +90,6 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         default:
             break
         }
-        let header = selectionTableView.headerView(forSection: indexPath.section) as! CollapsibleTableViewHeader
-        let cell = selectionTableView.cellForRow(at: indexPath)
-        header.titleLabel.text = cell!.textLabel!.text
         foldAll()
         tableViewDataManager.createCategoryArray()
     }

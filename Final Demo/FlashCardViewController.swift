@@ -13,25 +13,18 @@ class FlashCardViewController: UIViewController {
     var activeAnchorArray = [[NSLayoutConstraint]]()
     let cardManager = CardManager.sharedInstance
     
-    @IBOutlet weak var correctLabel: UILabel!
-    @IBOutlet weak var wrongLabel: UILabel!
     @IBOutlet weak var deckImageView: UIImageView!
     
+    var deckEmpty = false
     var timer: Timer?
     var timeIndex = 0
-    var correctCount = 0
-    var wrongCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "greenFelt"))
-//        deckImageView.layer.borderColor = UIColor.yellow.cgColor
-//        deckImageView.layer.borderWidth = 3.0
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "wood"))
         deckImageView.isUserInteractionEnabled = true
-//        self.deckImageView.layer.borderWidth = 0
-//        self.deckImageView.layer.borderColor = UIColor.clear.cgColor
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
-
+        cardManager.startSession()
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
@@ -87,8 +80,7 @@ class FlashCardViewController: UIViewController {
     func markWrong(_ sender: UISwipeGestureRecognizer) {
         let card = sender.view as! CardView
         if card.answerLabel.alpha == 1 {
-            wrongCount += 1
-            self.wrongLabel.text = "\(wrongCount)"
+            cardManager.markCard(sender.view!.tag, isCorrect: false)
             let newFrame = CGRect(x: -400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
@@ -101,8 +93,7 @@ class FlashCardViewController: UIViewController {
     func markRight(_ sender: UISwipeGestureRecognizer) {
         let card = sender.view as! CardView
         if card.answerLabel.alpha == 1 {
-            correctCount += 1
-            self.correctLabel.text = "\(correctCount)"
+            cardManager.markCard(sender.view!.tag, isCorrect: true)
             let newFrame = CGRect(x: 400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
@@ -114,7 +105,8 @@ class FlashCardViewController: UIViewController {
     
     //MARK helper methods
     
-    func startUp() {
+    func reshuffleDeck() {
+        deckImageView.isUserInteractionEnabled = false
         let frame = CGRect(x: deckImageView.frame.origin.x + 100, y: deckImageView.frame.origin.y + 500, width: deckImageView.frame.size.width*3, height: deckImageView.frame.size.height*3)
         let card = UIImageView(frame: frame)
         card.image = #imageLiteral(resourceName: "cardBack")
@@ -134,10 +126,10 @@ class FlashCardViewController: UIViewController {
         })
         timeIndex += 1
         if timeIndex <= 7 {
-            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(startUp), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
         if timeIndex > 7 && timeIndex < 20 {
-            Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(startUp), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
         if timeIndex == 15 {
             deckImageView.isUserInteractionEnabled = true
@@ -161,7 +153,7 @@ class FlashCardViewController: UIViewController {
     
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
-        cardFront.tag = cardManager.cardIndex
+        cardFront.tag = cardManager.session.cardIndex
         let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
         leftSGR.direction = UISwipeGestureRecognizerDirection.left
         cardFront.addGestureRecognizer(leftSGR)

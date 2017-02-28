@@ -12,6 +12,9 @@ class SampleCard: NSObject {
     let question: String
     let answer: String
     let character: SampleCharacter
+    var wrongCount = 0
+    var rightCount = 0
+    let number = arc4random_uniform(100)
     
     init(question: String, answer: String, character: SampleCharacter) {
         self.question = question

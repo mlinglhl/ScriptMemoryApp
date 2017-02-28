@@ -19,8 +19,8 @@ class CardManager: NSObject {
     var sampleCharacter: SampleCharacter?
     var setIndex = 0
     var categoryIndex = 0
-    var cardIndex = 0
     var typeIndex = 0
+    var session = CardSession(setName: "Default", categoryName: "Default")
     
     static let sharedInstance = CardManager()
     private override init() {}
@@ -36,14 +36,14 @@ class CardManager: NSObject {
         amaranthe.categories.append(SampleCharacter("Amaranthine", script: amaranthe))
         amaranthe.categories.append(SampleCharacter("Hunger", script: amaranthe))
         amaranthe.categories.append(SampleCharacter("Burn With Me", script: amaranthe))
+        let luckyStiff = SampleScript("Lucky Stiff")
+        sampleScriptArray.append(luckyStiff)
         let legallyBlonde = SampleScript("Legally Blonde")
         sampleScriptArray.append(legallyBlonde)
         sampleActiveArray = sampleScriptArray
         legallyBlonde.categories.append(SampleCharacter("Elle Woods", script: legallyBlonde))
         legallyBlonde.categories.append(SampleCharacter("Emmet Forest", script: legallyBlonde))
         legallyBlonde.categories.append(SampleCharacter("Kyle", script: legallyBlonde))
-        let luckyStiff = SampleScript("Lucky Stiff")
-        sampleScriptArray.append(luckyStiff)
         sampleActiveArray = sampleScriptArray
         let harry = SampleCharacter("Harry Witherspoon", script: luckyStiff)
         luckyStiff.categories.append(harry)
@@ -103,21 +103,6 @@ class CardManager: NSObject {
         }
     }
     
-    func setCardQuestion() -> String {
-        if let sampleCharacter = sampleCharacter {
-            return sampleCharacter.cards[cardIndex].question
-        }
-        return "Default question"
-    }
-    
-    func setCardAnswer() -> String {
-        if let sampleCharacter = sampleCharacter {
-            let answer = sampleCharacter.cards[cardIndex].answer
-            return answer
-        }
-        return "Default answer"
-    }
-    
     func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: Int) {
         let cardSet = getSetWithName(set)
         let cardCategory = getCategoryWithName(category, set: cardSet)
@@ -155,6 +140,10 @@ class CardManager: NSObject {
         categoryObject.name = name
         set.addToCategoryObjects(categoryObject)
         return categoryObject
-        
     }
+    
+    func randomNumber(_ ceiling: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(ceiling)))
+    }
+    
 }

@@ -11,6 +11,8 @@
 		89A07C9E1E60B3E300A80BB4 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */; };
 		89A07CA01E60C35800A80BB4 /* SampleCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */; };
 		89AD6CEC1E629BDF00E6B3CB /* SelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6CEB1E629BDF00E6B3CB /* SelectionTableViewController.swift */; };
+		89AD6CEE1E64B63C00E6B3CB /* CardManagerSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6CED1E64B63C00E6B3CB /* CardManagerSessionExtension.swift */; };
+		89AD6CF21E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6CF11E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift */; };
 		89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D2799F1E57B9B600CF4082 /* AppDelegate.swift */; };
 		89D279A51E57B9B600CF4082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D279A31E57B9B600CF4082 /* Main.storyboard */; };
 		89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */; };
@@ -43,6 +45,8 @@
 		89AD6CE31E6286FB00E6B3CB /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		89AD6CE41E6286FB00E6B3CB /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89AD6CEB1E629BDF00E6B3CB /* SelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTableViewController.swift; sourceTree = "<group>"; };
+		89AD6CED1E64B63C00E6B3CB /* CardManagerSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManagerSessionExtension.swift; sourceTree = "<group>"; };
+		89AD6CF11E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManagerGraphDataExtension.swift; sourceTree = "<group>"; };
 		89D2799C1E57B9B600CF4082 /* Final Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D2799F1E57B9B600CF4082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89D279A41E57B9B600CF4082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,30 +106,32 @@
 		89D2799E1E57B9B600CF4082 /* Final Demo */ = {
 			isa = PBXGroup;
 			children = (
-				89D2799F1E57B9B600CF4082 /* AppDelegate.swift */,
-				89AD6CEB1E629BDF00E6B3CB /* SelectionTableViewController.swift */,
+				89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */,
 				89D279E21E5CBBD700CF4082 /* HomeViewController.swift */,
 				89D279E41E5CDF5600CF4082 /* StatisticsViewController.swift */,
 				89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */,
-				89D27A121E5E26C700CF4082 /* CollapsibleTableViewHeader.swift */,
-				89D27A141E5E271C00CF4082 /* Extensions.swift */,
-				89D279E81E5D35FB00CF4082 /* ResultsViewController.swift */,
 				89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */,
-				89D279E61E5CE44F00CF4082 /* ScrollableGraphView.swift */,
-				89D279D81E5BB0D000CF4082 /* DataManager.swift */,
+				89D279E81E5D35FB00CF4082 /* ResultsViewController.swift */,
 				89D279DA1E5BB2A800CF4082 /* CardManager.swift */,
-				89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */,
-				89D279C61E58C38A00CF4082 /* CardView.swift */,
-				89D279C81E58C4A200CF4082 /* CardView.xib */,
-				89D279BA1E58B52000CF4082 /* TableViewCell.swift */,
+				89AD6CED1E64B63C00E6B3CB /* CardManagerSessionExtension.swift */,
+				89AD6CF11E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift */,
 				89D279A31E57B9B600CF4082 /* Main.storyboard */,
 				89D279A91E57B9B600CF4082 /* Assets.xcassets */,
 				89D279AB1E57B9B600CF4082 /* LaunchScreen.storyboard */,
 				89D279AE1E57B9B600CF4082 /* Info.plist */,
 				89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */,
+				89D2799F1E57B9B600CF4082 /* AppDelegate.swift */,
+				89D279C61E58C38A00CF4082 /* CardView.swift */,
+				89D279C81E58C4A200CF4082 /* CardView.xib */,
+				89D27A121E5E26C700CF4082 /* CollapsibleTableViewHeader.swift */,
+				89D279D81E5BB0D000CF4082 /* DataManager.swift */,
+				89D27A141E5E271C00CF4082 /* Extensions.swift */,
+				89D279E61E5CE44F00CF4082 /* ScrollableGraphView.swift */,
 				89D279B81E58B07000CF4082 /* SampleScript.swift */,
 				89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */,
 				89D279CA1E58CC0600CF4082 /* SampleCard.swift */,
+				89AD6CEB1E629BDF00E6B3CB /* SelectionTableViewController.swift */,
+				89D279BA1E58B52000CF4082 /* TableViewCell.swift */,
 			);
 			path = "Final Demo";
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 			files = (
 				89D279BB1E58B52000CF4082 /* TableViewCell.swift in Sources */,
 				89D27A151E5E271C00CF4082 /* Extensions.swift in Sources */,
+				89AD6CEE1E64B63C00E6B3CB /* CardManagerSessionExtension.swift in Sources */,
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
 				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,
 				89D279B91E58B07000CF4082 /* SampleScript.swift in Sources */,
@@ -218,6 +225,7 @@
 				89D279E71E5CE44F00CF4082 /* ScrollableGraphView.swift in Sources */,
 				89D279E31E5CBBD700CF4082 /* HomeViewController.swift in Sources */,
 				89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */,
+				89AD6CF21E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift in Sources */,
 				89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */,
 				89D279E51E5CDF5600CF4082 /* StatisticsViewController.swift in Sources */,
 				89A07C9E1E60B3E300A80BB4 /* FlashCardViewController.swift in Sources */,

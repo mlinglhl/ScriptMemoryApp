@@ -24,7 +24,6 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var activeSection = [Section]()
     var setArray = [String]()
     var categoryArray = [String]()
-    var activeArray = [String]()
     var dataArray = [[Double]]()
     var manager = CardManager.sharedInstance
     
@@ -68,5 +67,4 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
                          Section(name: categoryArray[0], items: categoryArray)]
 
     }
-    
 }
