@@ -9,214 +9,180 @@
 import UIKit
 import CoreData
 
-
-
-class ViewController: UIViewController {
+class DownloadManager: NSObject {
+    struct HelperObject {
+        var line: String
+        var section: String
+        var category: String
+        
+        init(line: String, section: String, category: String) {
+            self.line = line
+            self.section = section
+            self.category = category
+        }
+    }
     
     @IBOutlet weak var textview: UITextView!
     
-    
-    
+    let dataManager = DataManager.sharedInstance
     var tempCategoryArray = [String]()
     var categoryArray = [String]()
     var tempSetArray = [String]()
     var setArray = [String]()
     var tempTypeArray = [String]()
     var typeArray = [String]()
-    var tempPartArray = [String]()
-    var partArray = [String]()
+    var tempSectionArray = [String]()
+    var sectionArray = [String]()
     var helperObjectArray = [HelperObject]()
     
     
     //var lineTestArray = [String]()
-    var initialOrderValue:Int16 = 1
+    var orderIndex = 0
     var usedArray = [String]()
-    var permanentSetArray = [Sett]()
+    var permanentSetArray = [SetObject]()
     
     
-    override func viewDidLoad() {
+    //sheetsu.com
+    //spreadsheet url in makeapi
+    //makes it and gives you a url
+    
+    func makeCardsWithUrl(_ urlString: String) {
         
-        super.viewDidLoad()
-    }
-    
-    
-    
-    
-    
-    
-    @IBAction func api(_ sender: Any) {
-        
-        let url = URL(string: "https://sheetsu.com/apis/v1.0/5dc5dd109630")
-        URLSession.shared.dataTask(with: url!, completionHandler: {
-            (data, response, error) in
-            if(error != nil){
-                print("error")
-            }else{
-                do{
-                    let json = JSON(data: data!)
-                    
-                    for (_,subJson):(String, JSON) in json {
-                        
-                        
-                        let category = subJson["Category"].string!
-                        let orderString = subJson["Order"].string!
-                        let line = subJson["Lines"].string!
-                        let part = subJson["Part"].string!
-                        let name = subJson["Name"].string!
-                        let type = subJson["Type"].string!
-                        
-                        let order:Int16 = Int16(orderString)!
-                        let helperObject: HelperObject = HelperObject()
-                        helperObject.line = line
-                        helperObject.part = part
-                        helperObject.order = order
-                        helperObject.category = category
-                        
-                        self.tempCategoryArray.append(category)
-                        self.tempSetArray.append(name)
-                        self.tempTypeArray.append(type)
-                        self.tempPartArray.append(part)
-                        self.helperObjectArray.append(helperObject)
-                        self.partArray.append(part)
-                        // self.lineTestArray.append(line)
-                        
-                        self.categoryArray = Array(Set<String>(self.tempCategoryArray))
-                        self.setArray = Array(Set<String>(self.tempSetArray))
-                        self.typeArray = Array(Set<String>(self.tempTypeArray))
-                        self.partArray = Array(Set<String>(self.tempPartArray))
-                        
-                        
-                        
-                    }
-                    
-                }
+        let url = URL(string: urlString)
+        guard let inputURL = url else {
+            return
+        }
+        let task = URLSession.shared.dataTask(with: inputURL) { (data, response, error) in
+            guard let data = data else {
+                print ("No data returned from server \(error?.localizedDescription)")
+                return
             }
-        }).resume()
-        
-        
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as! Array<Dictionary<String, String>> else {
+                print("data returned is not json, or not valid")
+                return
+            }
+            for dict in json {
+                let category = dict["Category"] ?? ""
+                let line = dict["Line"] ?? ""
+                let section = dict["Section"] ?? ""
+                let name = dict["Name"] ?? ""
+                let type = dict["Type"] ?? ""
+                
+                let helperObject = HelperObject.init(line: line, section: section, category: category)
+                
+                self.tempCategoryArray.append(category)
+                self.tempSetArray.append(name)
+                self.tempTypeArray.append(type)
+                self.tempSectionArray.append(section)
+                self.helperObjectArray.append(helperObject)
+                self.sectionArray.append(section)
+                
+                self.categoryArray = Array(Set<String>(self.tempCategoryArray))
+                self.setArray = Array(Set<String>(self.tempSetArray))
+                self.typeArray = Array(Set<String>(self.tempTypeArray))
+                self.sectionArray = Array(Set<String>(self.tempSectionArray))
+            }
+            self.makeCard()
+            print("DONE")
+        }
+        task.resume()
     }
     
     
-    @IBAction func makeCards(_ sender: UIButton) {
-        
-        
-        
-        let set = Sett(context: DatabaseController.persistentContainer.viewContext)
-        
-        
+    func makeCard() {
+        let set = dataManager.generateSetObject()
         
         set.name = self.setArray[0]
         set.type = self.typeArray[0]
         
         permanentSetArray.append(set)
-        
-        if set.type == "Script" {
+        guard let type = set.type else {
+            return
+        }
+        switch type {
+        case "Script":
             for categoryObject in self.categoryArray {
-                let category = Category(context: DatabaseController.persistentContainer.viewContext)
+                let category = dataManager.generateCategoryObject()
                 category.name = categoryObject
-                set.addToCategory(category)
+                set.addToCategoryObjects(category)
                 
-                for sectionObject in self.partArray {
-                    let section = Section(context: DatabaseController.persistentContainer.viewContext)
+                for sectionObject in self.sectionArray {
+                    let section = dataManager.generateSectionObject()
                     section.name = sectionObject
-                    category.addToSection(section)
-                    self.initialOrderValue = 1
+                    category.addToSectionObjects(section)
+                    self.orderIndex = 1
                     
                     for helperObject in self.helperObjectArray {
                         self.usedArray.append(helperObject.line)
                         
-                        if helperObject.order == self.initialOrderValue {
-                            let card = Card(context: DatabaseController.persistentContainer.viewContext)
+                            let card = dataManager.generateCardObject()
                             card.answer = helperObject.line
-                            card.order = helperObject.order
+                            card.order = Int16(self.orderIndex)
                             
-                            
-                            self.initialOrderValue += 1
+                            self.orderIndex += 1
                             if self.usedArray.count >= 2 {
                                 card.question = self.usedArray[self.usedArray.count - 2]
-                                
                             } else {
                                 card.question = "You have the first line!"
                             }
-                            
                             
                             if self.usedArray.count >= 3 {
                                 let uneditedCommonPrefix = helperObject.line.commonPrefix(with: self.usedArray[self.usedArray.count - 3])
                                 let commonPrefix = uneditedCommonPrefix.components(separatedBy: ":").first
                                 
                                 if self.categoryArray.contains(commonPrefix!) {
-                                    card.isDuet = true
+                                    card.multiPerson = true
                                 }
-                                
                             }
                             if self.usedArray.count >= 2 {
-                                
                                 // something so the 2nd card is marked as isDuet aswell
                             }
                             
-                            
-                            
-                            
-                            if helperObject.line.hasPrefix(category.name!), helperObject.part == section.name! {
-                                section.addToCard(card)
-                                //print(card)
+                            if helperObject.line.hasPrefix(category.name!), helperObject.section == section.name! {
+                                section.addToCardObjects(card)
                             }
-                            
-                            
-                        }
-                        
                     }
                     // print(section.card?.count ?? "default")
                 }
                 //print(category.section?.count ?? "default")
             }
-            
-        } else {
-            
-            
+            break
+        case "Artist":
             for categoryObject in self.categoryArray{
-                let category = Category(context: DatabaseController.persistentContainer.viewContext)
+                let category = dataManager.generateCategoryObject()
                 category.name = categoryObject
-                set.addToCategory(category)
+                set.addToCategoryObjects(category)
                 
-                for sectionObject in self.partArray {
-                    let section = Section(context: DatabaseController.persistentContainer.viewContext)
+                for sectionObject in self.sectionArray {
+                    let section = dataManager.generateSectionObject()
                     section.name = sectionObject
-                    
                     
                     for helperObject in self.helperObjectArray {
                         self.usedArray.append(helperObject.line)
                         
-                        
-                        let card = Card(context: DatabaseController.persistentContainer.viewContext)
+                        let card = dataManager.generateCardObject()
                         card.answer = helperObject.line
-                        card.order = self.initialOrderValue
+                        card.order = Int16(self.orderIndex)
                         if self.usedArray.count >= 2 {
                             card.question = self.usedArray[self.usedArray.count - 2]
                         } else {
                             card.question = "You have the first line!"
                         }
                         
-                        
-                        if category.name == helperObject.category, section.name == helperObject.part {
-                            section.addToCard(card)
-                            self.initialOrderValue += 1
-                            // print(card)
+                        if category.name == helperObject.category, section.name == helperObject.section {
+                            section.addToCardObjects(card)
+                            self.orderIndex += 1
                         }
-                        
-                        
                     }
                     // print(section.card?.count ?? "empty")
                 }
                 
             }
+            
+            break
+        default:
+            break
         }
-        
-        
-        DatabaseController.saveContext()
-        
-        //print(set)
-        //self.textview.text = self.lineTestArray[0]
-        
+        dataManager.saveContext()    
     }
 }

@@ -15,6 +15,7 @@
 		89AD6CF21E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6CF11E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift */; };
 		89AD6D061E661CE200E6B3CB /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6D051E661CE200E6B3CB /* ResultsTableViewCell.swift */; };
 		89AD6D081E662BA700E6B3CB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6D071E662BA700E6B3CB /* CardViewController.swift */; };
+		89AD6D1A1E67554700E6B3CB /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD6D191E67554700E6B3CB /* DownloadViewController.swift */; };
 		89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D2799F1E57B9B600CF4082 /* AppDelegate.swift */; };
 		89D279A51E57B9B600CF4082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D279A31E57B9B600CF4082 /* Main.storyboard */; };
 		89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */; };
@@ -44,16 +45,17 @@
 		89AD6CEB1E629BDF00E6B3CB /* SelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTableViewController.swift; sourceTree = "<group>"; };
 		89AD6CED1E64B63C00E6B3CB /* CardManagerSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManagerSessionExtension.swift; sourceTree = "<group>"; };
 		89AD6CF11E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManagerGraphDataExtension.swift; sourceTree = "<group>"; };
-		89AD6CF51E65FD7500E6B3CB /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89AD6CF61E65FD7500E6B3CB /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89AD6CF71E65FD7500E6B3CB /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89AD6CF81E65FD7500E6B3CB /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89AD6CF91E65FD7500E6B3CB /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89AD6CFA1E65FD7500E6B3CB /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89AD6CFB1E65FD7500E6B3CB /* CardObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89AD6CFC1E65FD7500E6B3CB /* CardObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89AD6D051E661CE200E6B3CB /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
 		89AD6D071E662BA700E6B3CB /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		89AD6D191E67554700E6B3CB /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		89AD6D1B1E67644800E6B3CB /* CardObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89AD6D1C1E67644800E6B3CB /* CardObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89AD6D1D1E67644800E6B3CB /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89AD6D1E1E67644800E6B3CB /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89AD6D1F1E67644800E6B3CB /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89AD6D201E67644800E6B3CB /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89AD6D211E67644800E6B3CB /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89AD6D221E67644800E6B3CB /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89D2799C1E57B9B600CF4082 /* Final Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D2799F1E57B9B600CF4082 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89D279A41E57B9B600CF4082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,14 +94,14 @@
 		89D279931E57B9B600CF4082 = {
 			isa = PBXGroup;
 			children = (
-				89AD6CF51E65FD7500E6B3CB /* CategoryObject+CoreDataClass.swift */,
-				89AD6CF61E65FD7500E6B3CB /* CategoryObject+CoreDataProperties.swift */,
-				89AD6CF71E65FD7500E6B3CB /* SectionObject+CoreDataClass.swift */,
-				89AD6CF81E65FD7500E6B3CB /* SectionObject+CoreDataProperties.swift */,
-				89AD6CF91E65FD7500E6B3CB /* SetObject+CoreDataClass.swift */,
-				89AD6CFA1E65FD7500E6B3CB /* SetObject+CoreDataProperties.swift */,
-				89AD6CFB1E65FD7500E6B3CB /* CardObject+CoreDataClass.swift */,
-				89AD6CFC1E65FD7500E6B3CB /* CardObject+CoreDataProperties.swift */,
+				89AD6D1B1E67644800E6B3CB /* CardObject+CoreDataClass.swift */,
+				89AD6D1C1E67644800E6B3CB /* CardObject+CoreDataProperties.swift */,
+				89AD6D1D1E67644800E6B3CB /* CategoryObject+CoreDataClass.swift */,
+				89AD6D1E1E67644800E6B3CB /* CategoryObject+CoreDataProperties.swift */,
+				89AD6D1F1E67644800E6B3CB /* SectionObject+CoreDataClass.swift */,
+				89AD6D201E67644800E6B3CB /* SectionObject+CoreDataProperties.swift */,
+				89AD6D211E67644800E6B3CB /* SetObject+CoreDataClass.swift */,
+				89AD6D221E67644800E6B3CB /* SetObject+CoreDataProperties.swift */,
 				89D2799E1E57B9B600CF4082 /* Final Demo */,
 				89D2799D1E57B9B600CF4082 /* Products */,
 			);
@@ -121,8 +123,9 @@
 				89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */,
 				89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */,
 				89D279E81E5D35FB00CF4082 /* ResultsViewController.swift */,
-				89D279DA1E5BB2A800CF4082 /* CardManager.swift */,
 				A13C092E1E672B5900039BE1 /* DownloadManager.swift */,
+				89AD6D191E67554700E6B3CB /* DownloadViewController.swift */,
+				89D279DA1E5BB2A800CF4082 /* CardManager.swift */,
 				89AD6CED1E64B63C00E6B3CB /* CardManagerSessionExtension.swift */,
 				89AD6CF11E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift */,
 				89AD6D071E662BA700E6B3CB /* CardViewController.swift */,
@@ -225,6 +228,7 @@
 				89D279BB1E58B52000CF4082 /* TableViewCell.swift in Sources */,
 				89D27A151E5E271C00CF4082 /* Extensions.swift in Sources */,
 				89AD6CEE1E64B63C00E6B3CB /* CardManagerSessionExtension.swift in Sources */,
+				89AD6D1A1E67554700E6B3CB /* DownloadViewController.swift in Sources */,
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
 				89AD6D061E661CE200E6B3CB /* ResultsTableViewCell.swift in Sources */,
 				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,

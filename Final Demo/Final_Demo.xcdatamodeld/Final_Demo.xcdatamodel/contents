@@ -13,12 +13,12 @@
     </entity>
     <entity name="CategoryObject" representedClassName="CategoryObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="sectionObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SectionObject" inverseName="categoryObject" inverseEntity="SectionObject" syncable="YES"/>
+        <relationship name="sectionObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SectionObject" inverseName="categoryObject" inverseEntity="SectionObject" syncable="YES"/>
         <relationship name="setObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SetObject" inverseName="categoryObjects" inverseEntity="SetObject" syncable="YES"/>
     </entity>
     <entity name="SectionObject" representedClassName="SectionObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cardObjects" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CardObject" inverseName="sectionObject" inverseEntity="CardObject" syncable="YES"/>
+        <relationship name="cardObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CardObject" inverseName="sectionObject" inverseEntity="CardObject" syncable="YES"/>
         <relationship name="categoryObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryObject" inverseName="sectionObjects" inverseEntity="CategoryObject" syncable="YES"/>
     </entity>
     <entity name="SetObject" representedClassName="SetObject" syncable="YES" codeGenerationType="class">
@@ -29,7 +29,7 @@
     <elements>
         <element name="CardObject" positionX="333" positionY="-126" width="128" height="180"/>
         <element name="CategoryObject" positionX="153" positionY="-180" width="128" height="90"/>
-        <element name="SetObject" positionX="-20" positionY="-198" width="128" height="90"/>
         <element name="SectionObject" positionX="142" positionY="-45" width="128" height="90"/>
+        <element name="SetObject" positionX="-20" positionY="-198" width="128" height="90"/>
     </elements>
 </model>

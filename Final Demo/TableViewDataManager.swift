@@ -35,22 +35,38 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     
     func createSetArray() {
         setArray = [String]()
-        for set in manager.sampleActiveArray {
-            setArray.append(set.name)
+        for set in manager.activeArray {
+            setArray.append(set.name!)
         }
     }
     
     func createCategoryArray() {
         categoryArray = [String]()
-        for category in manager.sampleActiveArray[manager.setIndex].categories {
-            categoryArray.append(category.name)
+        if manager.activeArray.count < 1 {
+            return
+        }
+        guard let categoryObjects = manager.activeArray[manager.setIndex].categoryObjects else {
+            print("Pineapple")
+            return
+        }
+        for category in categoryObjects {
+            categoryArray.append((category as! CategoryObject).name!)
         }
         resetSections()
     }
     
     func resetSections() {
-        activeSection = [Section(name: setArray[0], items: setArray),
-                         Section(name: categoryArray[0], items: categoryArray)]
+        var name = ""
+        if setArray.count > 0 {
+            name = setArray[0]
+        }
+        
+        var category = ""
+        if categoryArray.count > 0 {
+            category = categoryArray[0]
+        }
+        activeSection = [Section(name: name, items: setArray),
+                         Section(name: category, items: categoryArray)]
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

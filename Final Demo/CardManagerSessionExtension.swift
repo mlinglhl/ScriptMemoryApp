@@ -24,7 +24,10 @@ extension CardManager {
     }
     
     func startSession() {
-        session = CardSession(setName: sampleActiveArray[setIndex].name, categoryName: sampleActiveArray[categoryIndex].name)
+        let setName = activeArray[setIndex].name!
+        let category = activeArray[setIndex].categoryObjects?.object(at: categoryIndex) as! CategoryObject
+        
+        session = CardSession(setName: setName, categoryName: category.name!)
     }
     
     func markCard(_ index: Int, isCorrect: Bool) {
@@ -45,14 +48,22 @@ extension CardManager {
         return
     }
     
+    func getCurrentCard() -> CardObject {
+        let set = activeArray[setIndex]
+        let category = set.categoryObjects?.object(at: categoryIndex) as! CategoryObject
+        let section = category.sectionObjects?.object(at: 0) as! SectionObject
+        let card = section.cardObjects?.object(at: session.cardIndex) as! CardObject
+        return card
+    }
+    
     func setCardQuestion() -> String {
-        let question = sampleActiveArray[setIndex].categories[categoryIndex].cards[session.cardIndex].question
-        return question
+        let card = getCurrentCard()
+        return card.question!
     }
     
     func setCardAnswer() -> String {
-        let answer = sampleActiveArray[setIndex].categories[categoryIndex].cards[session.cardIndex].answer
-        return answer
+        let card = getCurrentCard()
+        return card.answer!
     }
     
     func getScore() -> String {

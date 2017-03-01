@@ -82,7 +82,9 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
             cardManager.setIndex = indexPath.row
             cardManager.categoryIndex = 0
             let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
-            header.titleLabel.text = cardManager.sampleActiveArray[cardManager.setIndex].categories[cardManager.categoryIndex].name
+            let set = cardManager.activeArray[cardManager.setIndex].categoryObjects
+            let categoryObject = set?.object(at: cardManager.categoryIndex) as! CategoryObject
+            header.titleLabel.text = categoryObject.name
             break
         case 1:
             cardManager.categoryIndex = indexPath.row

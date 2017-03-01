@@ -22,60 +22,59 @@ class CardManager: NSObject {
     var sectionIndex = 0
     var typeIndex = 0
     var session = CardSession(setName: "Default", categoryName: "Default")
+    let dataManager = DataManager.sharedInstance
     
     static let sharedInstance = CardManager()
     private override init() {}
     
     func setUp() {
-        let taylorSwift = SampleScript("Taylor Swift")
-        sampleArtistArray.append(taylorSwift)
-        taylorSwift.categories.append(SampleCharacter("All Songs", script: taylorSwift))
-        taylorSwift.categories.append(SampleCharacter("Speak Now", script: taylorSwift))
-        taylorSwift.categories.append(SampleCharacter("Mine", script: taylorSwift))
-        taylorSwift.categories.append(SampleCharacter("22", script: taylorSwift))
-        let amaranthe = SampleScript("Amaranthe")
-        sampleArtistArray.append(amaranthe)
-        amaranthe.categories.append(SampleCharacter("All Songs", script: amaranthe))
-        amaranthe.categories.append(SampleCharacter("Amaranthine", script: amaranthe))
-        amaranthe.categories.append(SampleCharacter("Hunger", script: amaranthe))
-        amaranthe.categories.append(SampleCharacter("Burn With Me", script: amaranthe))
-        let luckyStiff = SampleScript("Lucky Stiff")
-        sampleScriptArray.append(luckyStiff)
-        let legallyBlonde = SampleScript("Legally Blonde")
-        sampleScriptArray.append(legallyBlonde)
-        sampleActiveArray = sampleScriptArray
-        legallyBlonde.categories.append(SampleCharacter("All Characters", script: legallyBlonde))
-        legallyBlonde.categories.append(SampleCharacter("Elle Woods", script: legallyBlonde))
-        legallyBlonde.categories.append(SampleCharacter("Emmet Forest", script: legallyBlonde))
-        legallyBlonde.categories.append(SampleCharacter("Kyle", script: legallyBlonde))
-        sampleActiveArray = sampleScriptArray
-        luckyStiff.categories.append(SampleCharacter("All Characters", script: luckyStiff))
-        let harry = SampleCharacter("Harry Witherspoon", script: luckyStiff)
-        luckyStiff.categories.append(harry)
-        luckyStiff.categories.append(SampleCharacter("Annabel Glick", script: luckyStiff))
-        luckyStiff.categories.append(SampleCharacter("Anthony Hendon", script: luckyStiff))
-        
-        let card1 = SampleCard.init(question: "Annabel: I have come all this way for the money Mr. Witherspoon. All six million dollars of it.", answer: "Harry: But I accepted the terms of my Uncle's will, and I'm here, you see, carrying out his wishes. So you people have lost.", character: harry)
-        let card2 = SampleCard(question: "Annabel: Not yet we haven't. Not by a longshot. You see, there's a loophole.", answer: "Harry: Loophole? What loophole? Where?", character: harry)
-        let card3 = SampleCard(question: "Annabel: Well, when we received our copy of the will and tape, I noticed how detailed it was. All those social activities. All the things he wants to do and buy and wear... specific times you have to be specific places...", answer: "Harry: I'm doing the best I can!", character: harry)
-        let card4 = SampleCard(question: "Annabel: Yes, but make just one little slip--arrive somewhere one minute early or one minute late, put a pink flower in his buttonhole instead of red... you mess up one little detail, and accoridng to our lawyers, you'll be in default of the will!", answer: "Harry: What?!", character: harry)
-        let card5 = SampleCard(question: "Annabel: One little slip, and I take your Uncle, finish up the rest of his vacation, and that money goes to the dogs! So you might as well give up!", answer: "Harry: Give up? Give up! You're joking!", character: harry)
-        harry.cards.append(card1)
-        harry.cards.append(card2)
-        harry.cards.append(card3)
-        harry.cards.append(card4)
-        harry.cards.append(card5)
-        guard let folders = DataManager.sharedInstance.getSetObjects() else {
-            return
-        }
-        setArray = folders
-        scriptArray = setUpFolderArray(type: "Script")
-        artistArray = setUpFolderArray(type: "Artist")
+        //        let taylorSwift = SampleScript("Taylor Swift")
+        //        sampleArtistArray.append(taylorSwift)
+        //        taylorSwift.categories.append(SampleCharacter("All Songs", script: taylorSwift))
+        //        taylorSwift.categories.append(SampleCharacter("Speak Now", script: taylorSwift))
+        //        taylorSwift.categories.append(SampleCharacter("Mine", script: taylorSwift))
+        //        taylorSwift.categories.append(SampleCharacter("22", script: taylorSwift))
+        //        let amaranthe = SampleScript("Amaranthe")
+        //        sampleArtistArray.append(amaranthe)
+        //        amaranthe.categories.append(SampleCharacter("All Songs", script: amaranthe))
+        //        amaranthe.categories.append(SampleCharacter("Amaranthine", script: amaranthe))
+        //        amaranthe.categories.append(SampleCharacter("Hunger", script: amaranthe))
+        //        amaranthe.categories.append(SampleCharacter("Burn With Me", script: amaranthe))
+        //        let luckyStiff = SampleScript("Lucky Stiff")
+        //        sampleScriptArray.append(luckyStiff)
+        //        let legallyBlonde = SampleScript("Legally Blonde")
+        //        sampleScriptArray.append(legallyBlonde)
+        //        sampleActiveArray = sampleScriptArray
+        //        legallyBlonde.categories.append(SampleCharacter("All Characters", script: legallyBlonde))
+        //        legallyBlonde.categories.append(SampleCharacter("Elle Woods", script: legallyBlonde))
+        //        legallyBlonde.categories.append(SampleCharacter("Emmet Forest", script: legallyBlonde))
+        //        legallyBlonde.categories.append(SampleCharacter("Kyle", script: legallyBlonde))
+        //        sampleActiveArray = sampleScriptArray
+        //        luckyStiff.categories.append(SampleCharacter("All Characters", script: luckyStiff))
+        //        let harry = SampleCharacter("Harry Witherspoon", script: luckyStiff)
+        //        luckyStiff.categories.append(harry)
+        //        luckyStiff.categories.append(SampleCharacter("Annabel Glick", script: luckyStiff))
+        //        luckyStiff.categories.append(SampleCharacter("Anthony Hendon", script: luckyStiff))
+        //
+        //        let card1 = SampleCard.init(question: "Annabel: I have come all this way for the money Mr. Witherspoon. All six million dollars of it.", answer: "Harry: But I accepted the terms of my Uncle's will, and I'm here, you see, carrying out his wishes. So you people have lost.", character: harry)
+        //        let card2 = SampleCard(question: "Annabel: Not yet we haven't. Not by a longshot. You see, there's a loophole.", answer: "Harry: Loophole? What loophole? Where?", character: harry)
+        //        let card3 = SampleCard(question: "Annabel: Well, when we received our copy of the will and tape, I noticed how detailed it was. All those social activities. All the things he wants to do and buy and wear... specific times you have to be specific places...", answer: "Harry: I'm doing the best I can!", character: harry)
+        //        let card4 = SampleCard(question: "Annabel: Yes, but make just one little slip--arrive somewhere one minute early or one minute late, put a pink flower in his buttonhole instead of red... you mess up one little detail, and accoridng to our lawyers, you'll be in default of the will!", answer: "Harry: What?!", character: harry)
+        //        let card5 = SampleCard(question: "Annabel: One little slip, and I take your Uncle, finish up the rest of his vacation, and that money goes to the dogs! So you might as well give up!", answer: "Harry: Give up? Give up! You're joking!", character: harry)
+        //        harry.cards.append(card1)
+        //        harry.cards.append(card2)
+        //        harry.cards.append(card3)
+        //        harry.cards.append(card4)
+        //        harry.cards.append(card5)
+        //
+        setArray = dataManager.getSetObjects()
+        scriptArray = setUpSetArray(type: "Script")
+        artistArray = setUpSetArray(type: "Artist")
         activeArray = scriptArray
-        sampleCharacter = sampleScriptArray[0].categories[0]
+        //        sampleCharacter = sampleScriptArray[0].categories[0]
     }
     
-    func setUpFolderArray(type: String) -> [SetObject] {
+    func setUpSetArray(type: String) -> [SetObject] {
         var tempArray = [SetObject]()
         for set in setArray {
             if set.type == type {
@@ -88,16 +87,16 @@ class CardManager: NSObject {
     func changeType(_ index: Int) {
         switch index {
         case 0:
-            if sampleActiveArray.description != sampleScriptArray.description {
-                sampleActiveArray = sampleScriptArray
+            if activeArray.description != scriptArray.description {
+                activeArray = scriptArray
                 typeIndex = 0
                 setIndex = 0
                 categoryIndex = 0
             }
             break
         case 1:
-            if sampleActiveArray.description != sampleArtistArray.description {
-                sampleActiveArray = sampleArtistArray
+            if activeArray.description != artistArray.description {
+                activeArray = artistArray
                 typeIndex = 1
                 setIndex = 0
                 categoryIndex = 0
@@ -109,17 +108,17 @@ class CardManager: NSObject {
     }
     
     func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: Int) {
-//        let cardSet = getSetWithName(set)
-//        let cardCategory = getCategoryWithName(category, set: cardSet)
-//        let cardSection = getSectionWithName(
-//        let newCard = DataManager.sharedInstance.generateCard()
-//        newCard.sectionObject = cardCategory
-//        newCard.question = "\(questionSpeaker): \(question)"
-//        newCard.answer = "\(answer)"
-//        if type == 1 {
-//            newCard.answer = "\(category): \(answer)"
-//        }
-//        DataManager.sharedInstance.saveContext()
+        //        let cardSet = getSetWithName(set)
+        //        let cardCategory = getCategoryWithName(category, set: cardSet)
+        //        let cardSection = getSectionWithName(
+        //        let newCard = DataManager.sharedInstance.generateCard()
+        //        newCard.sectionObject = cardCategory
+        //        newCard.question = "\(questionSpeaker): \(question)"
+        //        newCard.answer = "\(answer)"
+        //        if type == 1 {
+        //            newCard.answer = "\(category): \(answer)"
+        //        }
+        //        DataManager.sharedInstance.saveContext()
     }
     
     func getSetWithName(_ name: String) -> SetObject{

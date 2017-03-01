@@ -23,15 +23,17 @@ class DataManager: NSObject {
         return container
     }()
 
-    func getSetObjects() -> [SetObject]? {
+    func getSetObjects() -> [SetObject] {
         let context = getContext()
-        let request: NSFetchRequest<NSFetchRequestResult> = SetObject.fetchRequest()
+        let request = NSFetchRequest<SetObject>(entityName: "SetObject")
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        request.sortDescriptors = [sort]
         do {
-            let folderArray = try context.fetch(request) as! [SetObject]
+            let folderArray = try context.fetch(request)
             return folderArray
         } catch {
             print("Failed to get results")
-            return nil
+            return [SetObject]()
         }
     }
     
@@ -44,7 +46,7 @@ class DataManager: NSObject {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Error \(nserror.localizedDescription)")
             }
         }
     }
@@ -59,7 +61,12 @@ class DataManager: NSObject {
         return categoryObject
     }
 
-    func generateCard() -> CardObject{
+    func generateSectionObject() -> SectionObject {
+        let sectionObject = NSEntityDescription.insertNewObject(forEntityName: "SectionObject", into: self.getContext()) as! SectionObject
+        return sectionObject
+    }
+    
+    func generateCardObject() -> CardObject{
         let cardObject = NSEntityDescription.insertNewObject(forEntityName: "CardObject", into: self.getContext()) as! CardObject
         return cardObject
     }

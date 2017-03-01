@@ -11,6 +11,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Download View Controller-->
+        <scene sceneID="Qse-5P-qJh">
+            <objects>
+                <viewController id="EiD-TE-cNZ" customClass="DownloadViewController" customModule="Final_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8hF-JH-FFG"/>
+                        <viewControllerLayoutGuide type="bottom" id="g4w-Ed-jqT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qI9-gA-zuL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rpw-Uo-NzX">
+                        <barButtonItem key="rightBarButtonItem" title="Upload" id="upq-oc-RPn">
+                            <connections>
+                                <action selector="createCards:" destination="EiD-TE-cNZ" id="Z4E-F0-DZI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="320-Dn-wKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1131" y="-573"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -58,7 +83,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="M8q-pL-6GU">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="FRb-A7-4sn"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="FRb-A7-4sn">
+                            <connections>
+                                <segue destination="EiD-TE-cNZ" kind="show" id="gi8-Ob-Wn2"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="jy8-an-oG6">
                             <rect key="frame" x="136" y="8" width="103" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
