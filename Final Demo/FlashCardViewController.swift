@@ -21,6 +21,19 @@ class FlashCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for set in cardManager.activeArray {
+            print ("\(set.name)")
+            }
+        for category in cardManager.activeArray[cardManager.setIndex].categoryObjectsArray() {
+            print ("\(category.name)")
+        }
+        for section in cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()[cardManager.categoryIndex].sectionObjectsArray() {
+            print ("\(section.name)")
+        }
+        for card in cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()[cardManager.categoryIndex].sectionObjectsArray()[cardManager.sectionIndex].cardObjectsArray() {
+            print ("\(card.question)")
+            print ("\(card.answer)")
+        }
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "wood"))
         deckImageView.isUserInteractionEnabled = true
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")

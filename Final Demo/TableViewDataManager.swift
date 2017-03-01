@@ -24,12 +24,14 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var activeSection = [Section]()
     var setArray = [String]()
     var categoryArray = [String]()
+    var sectionArray = [String]()
     var dataArray = [[Double]]()
     var cardManager = CardManager.sharedInstance
 
     func changeType() {
         createSetArray()
         createCategoryArray()
+        createSectionArray()
         resetSections()
     }
     
@@ -45,11 +47,20 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         if cardManager.activeArray.count < 1 {
             return
         }
-        let tempArray = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()
-        for category in tempArray {
+        let categories = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()
+        for category in categories {
             categoryArray.append(category.name!)
         }
         resetSections()
+    }
+    
+    func createSectionArray() {
+        sectionArray = [String]()
+        let categories = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()
+        let sections = categories[cardManager.categoryIndex].sectionObjectsArray()
+        for section in sections {
+            sectionArray.append(section.name!)
+        }
     }
     
     func resetSections() {
@@ -62,8 +73,14 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         if categoryArray.count > 0 {
             category = categoryArray[0]
         }
+        
+        var section = ""
+        if sectionArray.count > 0 {
+            section = sectionArray[0]
+        }
         activeSection = [Section(name: name, items: setArray),
-                         Section(name: category, items: categoryArray)]
+                         Section(name: category, items: categoryArray),
+                         Section(name: section, items: sectionArray)]
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

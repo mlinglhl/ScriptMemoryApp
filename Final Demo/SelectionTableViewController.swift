@@ -118,9 +118,11 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
     func foldAll() {
         let end = tableViewDataManager.activeSection.count - 1
         for index in 0...end {
-            let header = selectionTableView.headerView(forSection: index) as! CollapsibleTableViewHeader
-            if tableViewDataManager.activeSection[index].collapsed == false {
-                toggleSection(header, section: index)
+            let header = selectionTableView.headerView(forSection: index) as? CollapsibleTableViewHeader
+            if let header = header {
+                if tableViewDataManager.activeSection[index].collapsed == false {
+                    toggleSection(header, section: index)
+                }
             }
         }
     }

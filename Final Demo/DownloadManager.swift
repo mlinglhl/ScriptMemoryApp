@@ -122,6 +122,7 @@ class DownloadManager: NSObject {
                             self.orderIndex += 1
                             if self.usedArray.count >= 2 {
                                 card.question = self.usedArray[self.usedArray.count - 2]
+                                print("\(self.orderIndex)")
                             } else {
                                 card.question = "You have the first line!"
                             }
