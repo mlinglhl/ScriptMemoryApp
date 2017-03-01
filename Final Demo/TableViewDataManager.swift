@@ -25,7 +25,7 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var setArray = [String]()
     var categoryArray = [String]()
     var dataArray = [[Double]]()
-    var manager = CardManager.sharedInstance
+    var cardManager = CardManager.sharedInstance
 
     func changeType() {
         createSetArray()
@@ -35,22 +35,19 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     
     func createSetArray() {
         setArray = [String]()
-        for set in manager.activeArray {
+        for set in cardManager.activeArray {
             setArray.append(set.name!)
         }
     }
     
     func createCategoryArray() {
         categoryArray = [String]()
-        if manager.activeArray.count < 1 {
+        if cardManager.activeArray.count < 1 {
             return
         }
-        guard let categoryObjects = manager.activeArray[manager.setIndex].categoryObjects else {
-            print("Pineapple")
-            return
-        }
-        for category in categoryObjects {
-            categoryArray.append((category as! CategoryObject).name!)
+        let tempArray = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()
+        for category in tempArray {
+            categoryArray.append(category.name!)
         }
         resetSections()
     }

@@ -48,22 +48,43 @@ extension CardManager {
         return
     }
     
-    func getCurrentCard() -> CardObject {
-        let set = activeArray[setIndex]
-        let category = set.categoryObjects?.object(at: categoryIndex) as! CategoryObject
-        let section = category.sectionObjects?.object(at: 0) as! SectionObject
-        let card = section.cardObjects?.object(at: session.cardIndex) as! CardObject
-        return card
+    func getCurrentCard() -> CardObject? {
+        if activeArray.count < setIndex + 1 {
+            print ("No sets found")
+        return nil
+        }
+        let categories = activeArray[setIndex].categoryObjectsArray()
+        if categories.count < categoryIndex + 1 {
+            print ("No categories found")
+            return nil
+        }
+        let sections = categories[categoryIndex].sectionObjectsArray()
+        if sections.count < sectionIndex + 1 {
+            print ("No sections found")
+            return nil
+        }
+        let cards = sections[sectionIndex].cardObjectsArray()
+        if cards.count < session.cardIndex + 1 {
+            print ("No cards found")
+            return nil
+        }
+        return cards[session.cardIndex]
     }
     
     func setCardQuestion() -> String {
         let card = getCurrentCard()
-        return card.question!
+        if let card = card {
+            return card.question ?? "No text"
+        }
+        return "No text"
     }
     
     func setCardAnswer() -> String {
         let card = getCurrentCard()
-        return card.answer!
+        if let card = card {
+            return card.answer ?? "No text"
+        }
+        return "No text"
     }
     
     func getScore() -> String {
@@ -91,7 +112,22 @@ extension CardManager {
     
     func checkLast() -> Bool {
         session.cardIndex += 1
-        if session.cardIndex == sampleActiveArray[setIndex].categories[categoryIndex].cards.count {
+        if activeArray.count < setIndex + 1 {
+            print ("No sets found")
+            return true
+        }
+        let categories = activeArray[setIndex].categoryObjectsArray()
+        if categories.count < categoryIndex + 1 {
+            print ("No categories found")
+            return true
+        }
+        let sections = categories[categoryIndex].sectionObjectsArray()
+        if sections.count < sectionIndex + 1 {
+            print ("No sections found")
+            return true
+        }
+        let cards = sections[sectionIndex].cardObjectsArray()
+        if session.cardIndex == cards.count {
             return true
         }
         return false

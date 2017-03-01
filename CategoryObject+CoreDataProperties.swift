@@ -18,7 +18,7 @@ extension CategoryObject {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var sectionObjects: NSOrderedSet?
+    @NSManaged public var sectionObjects: NSOrderedSet<SectionObject>?
     @NSManaged public var setObject: SetObject?
 
 }

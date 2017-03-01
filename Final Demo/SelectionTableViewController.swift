@@ -20,9 +20,9 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         super.viewDidLoad()
         tableViewDataManager.createSetArray()
         tableViewDataManager.createCategoryArray()
-        refreshTableViewHeight()
         selectionTableView.dataSource = tableViewDataManager
         selectionTableView.delegate = self
+        refreshTableViewHeight()
     }
     
     @IBAction func changeSegment(_ sender: UISegmentedControl) {

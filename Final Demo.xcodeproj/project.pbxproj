@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89356A8D1E677C00003989C6 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */; };
 		89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */; };
 		89A07C9E1E60B3E300A80BB4 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */; };
 		89A07CA01E60C35800A80BB4 /* SampleCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
 		89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCharacter.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				89AD6D201E67644800E6B3CB /* SectionObject+CoreDataProperties.swift */,
 				89AD6D211E67644800E6B3CB /* SetObject+CoreDataClass.swift */,
 				89AD6D221E67644800E6B3CB /* SetObject+CoreDataProperties.swift */,
+				89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */,
 				89D2799E1E57B9B600CF4082 /* Final Demo */,
 				89D2799D1E57B9B600CF4082 /* Products */,
 			);
@@ -245,6 +248,7 @@
 				89D279A01E57B9B600CF4082 /* AppDelegate.swift in Sources */,
 				89AD6D081E662BA700E6B3CB /* CardViewController.swift in Sources */,
 				89AD6CF21E64EA0500E6B3CB /* CardManagerGraphDataExtension.swift in Sources */,
+				89356A8D1E677C00003989C6 /* CoreDataExtensions.swift in Sources */,
 				A13C092F1E672B5900039BE1 /* DownloadManager.swift in Sources */,
 				89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */,
 				89D279E51E5CDF5600CF4082 /* StatisticsViewController.swift in Sources */,
