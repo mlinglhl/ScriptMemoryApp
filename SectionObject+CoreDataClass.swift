@@ -1,5 +1,5 @@
 //
-//  CardObject+CoreDataClass.swift
+//  SectionObject+CoreDataClass.swift
 //  Final Demo
 //
 //  Created by Minhung Ling on 2017-02-28.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(CardObject)
-public class CardObject: NSManagedObject {
+@objc(SectionObject)
+public class SectionObject: NSManagedObject {
 
 }

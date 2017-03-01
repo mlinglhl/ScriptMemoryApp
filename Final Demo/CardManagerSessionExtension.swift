@@ -14,7 +14,8 @@ extension CardManager {
         var numberCorrect = 0
         var numberWrong = 0
         var isDone = false
-        var cardRecord = [Int: Bool]()
+        var cardRecord = [Int: (Int, Int)]()
+        var sessionIndex = 0
         
         init(setName: String, categoryName: String) {
             self.setName = setName
@@ -23,16 +24,24 @@ extension CardManager {
     }
     
     func startSession() {
-        session = CardSession(setName: sampleScriptArray[setIndex].name, categoryName: sampleScriptArray[categoryIndex].name)
+        session = CardSession(setName: sampleActiveArray[setIndex].name, categoryName: sampleActiveArray[categoryIndex].name)
     }
     
     func markCard(_ index: Int, isCorrect: Bool) {
-        session.cardRecord.updateValue(isCorrect, forKey: index)
+        if !session.cardRecord.keys.contains(index) {
+            session.cardRecord.updateValue((0, 0), forKey: index)
+        }
+        var correctAmount = session.cardRecord[index]!.0
+        var wrongAmount = session.cardRecord[index]!.1
         if isCorrect {
+            correctAmount += 1
+            session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
             //mark cardObject +1 correct
-        return
+            return
         }
         //mark cardObject +1 wrong
+        wrongAmount += 1
+        session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
         return
     }
     
@@ -43,19 +52,15 @@ extension CardManager {
     
     func setCardAnswer() -> String {
         let answer = sampleActiveArray[setIndex].categories[categoryIndex].cards[session.cardIndex].answer
-        session.cardIndex += 1
         return answer
     }
     
     func getScore() -> String {
         var correct = 0
         var wrong = 0
-        for (_, isCorrect) in session.cardRecord {
-            if isCorrect {
-                correct += 1
-                continue
-            }
-            wrong += 1
+        for index in session.cardRecord {
+            correct += index.value.0
+            wrong += index.value.1
         }
         if correct + wrong > 0 {
             let score = correct * 100 / (correct + wrong)
@@ -63,4 +68,22 @@ extension CardManager {
         }
         return "Score: No cards marked"
     }
+    
+    func resetDeck() {
+        session.cardIndex = 0
+        session.sessionIndex += 1
+    }
+    
+    func getSessionResults() -> [Int] {
+        return (session.cardRecord.keys).sorted()
+    }
+    
+    func checkLast() -> Bool {
+        session.cardIndex += 1
+        if session.cardIndex == sampleActiveArray[setIndex].categories[categoryIndex].cards.count {
+            return true
+        }
+        return false
+    }
+    
 }

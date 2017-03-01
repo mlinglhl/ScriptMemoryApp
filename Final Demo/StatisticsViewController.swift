@@ -55,20 +55,17 @@ class StatisticsViewController: SelectionTableViewController {
         graphView.shouldRangeAlwaysStartAtZero = true
         graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
         view.addSubview(graphView)
-        markCategoryHeaderAsAll()
     }
-    
+
     @IBAction override func changeSegment(_ sender: UISegmentedControl) {
         super.changeSegment(sender)
         graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
-        markCategoryHeaderAsAll()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
         if indexPath.section == 0 {
             graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
-            markCategoryHeaderAsAll()
             return
         }
         graphView.set(data: cardManager.getCardDataAtIndex(indexPath.row), withLabels: cardManager.getCardLabels())
@@ -82,8 +79,8 @@ class StatisticsViewController: SelectionTableViewController {
         cardManager.categoryIndex = categoryIndex
     }
     
-    func markCategoryHeaderAsAll() {
-        let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
-        header.titleLabel.text = "All"
+    @IBAction func goHome(_ sender: UIBarButtonItem) {
+        _ = navigationController?.popToRootViewController(animated: true)
     }
+    
 }

@@ -28,6 +28,13 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
+        if deckImageView.image == nil {
+            self.deckImageView.isUserInteractionEnabled = false
+            self.cardManager.resetDeck()
+            self.timeIndex = 0
+            reshuffleDeck()
+            return
+        }
         let cardView = setUpCardView()
         let cardBack = setUpCardBack()
         let cardFront = setUpCardFront()
@@ -75,6 +82,11 @@ class FlashCardViewController: UIViewController {
         }, completion: { _ in
             UIView.transition(from: cardBack, to: cardFront, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
         })
+        if cardManager.checkLast() {
+            self.deckImageView.image = nil
+            self.deckImageView.layer.borderColor = UIColor.yellow.cgColor
+            self.deckImageView.layer.borderWidth = 3
+        }
     }
     
     func markWrong(_ sender: UISwipeGestureRecognizer) {
@@ -128,7 +140,7 @@ class FlashCardViewController: UIViewController {
         if timeIndex <= 7 {
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
-        if timeIndex > 7 && timeIndex < 20 {
+        if timeIndex > 7 && timeIndex < 15 {
             Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
         if timeIndex == 15 {

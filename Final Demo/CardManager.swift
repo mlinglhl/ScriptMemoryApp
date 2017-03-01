@@ -19,6 +19,7 @@ class CardManager: NSObject {
     var sampleCharacter: SampleCharacter?
     var setIndex = 0
     var categoryIndex = 0
+    var sectionIndex = 0
     var typeIndex = 0
     var session = CardSession(setName: "Default", categoryName: "Default")
     
@@ -28,11 +29,13 @@ class CardManager: NSObject {
     func setUp() {
         let taylorSwift = SampleScript("Taylor Swift")
         sampleArtistArray.append(taylorSwift)
+        taylorSwift.categories.append(SampleCharacter("All Songs", script: taylorSwift))
         taylorSwift.categories.append(SampleCharacter("Speak Now", script: taylorSwift))
         taylorSwift.categories.append(SampleCharacter("Mine", script: taylorSwift))
         taylorSwift.categories.append(SampleCharacter("22", script: taylorSwift))
         let amaranthe = SampleScript("Amaranthe")
         sampleArtistArray.append(amaranthe)
+        amaranthe.categories.append(SampleCharacter("All Songs", script: amaranthe))
         amaranthe.categories.append(SampleCharacter("Amaranthine", script: amaranthe))
         amaranthe.categories.append(SampleCharacter("Hunger", script: amaranthe))
         amaranthe.categories.append(SampleCharacter("Burn With Me", script: amaranthe))
@@ -41,10 +44,12 @@ class CardManager: NSObject {
         let legallyBlonde = SampleScript("Legally Blonde")
         sampleScriptArray.append(legallyBlonde)
         sampleActiveArray = sampleScriptArray
+        legallyBlonde.categories.append(SampleCharacter("All Characters", script: legallyBlonde))
         legallyBlonde.categories.append(SampleCharacter("Elle Woods", script: legallyBlonde))
         legallyBlonde.categories.append(SampleCharacter("Emmet Forest", script: legallyBlonde))
         legallyBlonde.categories.append(SampleCharacter("Kyle", script: legallyBlonde))
         sampleActiveArray = sampleScriptArray
+        luckyStiff.categories.append(SampleCharacter("All Characters", script: luckyStiff))
         let harry = SampleCharacter("Harry Witherspoon", script: luckyStiff)
         luckyStiff.categories.append(harry)
         luckyStiff.categories.append(SampleCharacter("Annabel Glick", script: luckyStiff))
@@ -104,16 +109,17 @@ class CardManager: NSObject {
     }
     
     func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: Int) {
-        let cardSet = getSetWithName(set)
-        let cardCategory = getCategoryWithName(category, set: cardSet)
-        let newCard = DataManager.sharedInstance.generateCard()
-        newCard.categoryObject = cardCategory
-        newCard.question = "\(questionSpeaker): \(question)"
-        newCard.answer = "\(answer)"
-        if type == 1 {
-            newCard.answer = "\(category): \(answer)"
-        }
-        DataManager.sharedInstance.saveContext()
+//        let cardSet = getSetWithName(set)
+//        let cardCategory = getCategoryWithName(category, set: cardSet)
+//        let cardSection = getSectionWithName(
+//        let newCard = DataManager.sharedInstance.generateCard()
+//        newCard.sectionObject = cardCategory
+//        newCard.question = "\(questionSpeaker): \(question)"
+//        newCard.answer = "\(answer)"
+//        if type == 1 {
+//            newCard.answer = "\(category): \(answer)"
+//        }
+//        DataManager.sharedInstance.saveContext()
     }
     
     func getSetWithName(_ name: String) -> SetObject{

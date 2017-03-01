@@ -2,7 +2,7 @@
 //  CategoryObject+CoreDataProperties.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-25.
+//  Created by Minhung Ling on 2017-02-28.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -18,42 +18,24 @@ extension CategoryObject {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var cardObjects: NSOrderedSet?
     @NSManaged public var setObject: SetObject?
+    @NSManaged public var sectionObjects: NSSet?
 
 }
 
-// MARK: Generated accessors for cardObjects
+// MARK: Generated accessors for sectionObjects
 extension CategoryObject {
 
-    @objc(insertObject:inCardObjectsAtIndex:)
-    @NSManaged public func insertIntoCardObjects(_ value: CardObject, at idx: Int)
+    @objc(addSectionObjectsObject:)
+    @NSManaged public func addToSectionObjects(_ value: SectionObject)
 
-    @objc(removeObjectFromCardObjectsAtIndex:)
-    @NSManaged public func removeFromCardObjects(at idx: Int)
+    @objc(removeSectionObjectsObject:)
+    @NSManaged public func removeFromSectionObjects(_ value: SectionObject)
 
-    @objc(insertCardObjects:atIndexes:)
-    @NSManaged public func insertIntoCardObjects(_ values: [CardObject], at indexes: NSIndexSet)
+    @objc(addSectionObjects:)
+    @NSManaged public func addToSectionObjects(_ values: NSSet)
 
-    @objc(removeCardObjectsAtIndexes:)
-    @NSManaged public func removeFromCardObjects(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInCardObjectsAtIndex:withObject:)
-    @NSManaged public func replaceCardObjects(at idx: Int, with value: CardObject)
-
-    @objc(replaceCardObjectsAtIndexes:withCardObjects:)
-    @NSManaged public func replaceCardObjects(at indexes: NSIndexSet, with values: [CardObject])
-
-    @objc(addCardObjectsObject:)
-    @NSManaged public func addToCardObjects(_ value: CardObject)
-
-    @objc(removeCardObjectsObject:)
-    @NSManaged public func removeFromCardObjects(_ value: CardObject)
-
-    @objc(addCardObjects:)
-    @NSManaged public func addToCardObjects(_ values: NSOrderedSet)
-
-    @objc(removeCardObjects:)
-    @NSManaged public func removeFromCardObjects(_ values: NSOrderedSet)
+    @objc(removeSectionObjects:)
+    @NSManaged public func removeFromSectionObjects(_ values: NSSet)
 
 }

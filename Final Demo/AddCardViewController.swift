@@ -131,4 +131,8 @@ class AddCardViewController: UIViewController {
             questionCharacterTextField.centerYAnchor.constraint(equalTo: songLabel.centerYAnchor)
         ]
     }
+    
+    @IBAction func goHome(_ sender: UIBarButtonItem) {
+        _ = navigationController?.popToRootViewController(animated: true)
+    }
 }

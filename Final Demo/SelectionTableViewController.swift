@@ -66,7 +66,7 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         for i in 0 ..< tableViewDataManager.activeSection[section].items.count {
             selectionTableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
         }
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
             self.refreshTableViewHeight()
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -87,6 +87,8 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         case 1:
             cardManager.categoryIndex = indexPath.row
             break
+        case 2:
+            cardManager.sectionIndex = indexPath.row
         default:
             break
         }

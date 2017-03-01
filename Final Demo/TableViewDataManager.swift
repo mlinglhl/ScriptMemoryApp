@@ -26,7 +26,33 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var categoryArray = [String]()
     var dataArray = [[Double]]()
     var manager = CardManager.sharedInstance
+
+    func changeType() {
+        createSetArray()
+        createCategoryArray()
+        resetSections()
+    }
     
+    func createSetArray() {
+        setArray = [String]()
+        for set in manager.sampleActiveArray {
+            setArray.append(set.name)
+        }
+    }
+    
+    func createCategoryArray() {
+        categoryArray = [String]()
+        for category in manager.sampleActiveArray[manager.setIndex].categories {
+            categoryArray.append(category.name)
+        }
+        resetSections()
+    }
+    
+    func resetSections() {
+        activeSection = [Section(name: setArray[0], items: setArray),
+                         Section(name: categoryArray[0], items: categoryArray)]
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return activeSection.count
     }
@@ -44,27 +70,4 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         return cell
     }
     
-    func changeType() {
-        createSetArray()
-        createCategoryArray()
-        activeSection = [Section(name: setArray[0], items: setArray),
-                         Section(name: categoryArray[0], items: categoryArray)]
-    }
-    
-    func createSetArray() {
-        setArray = [String]()
-        for set in manager.sampleActiveArray {
-            setArray.append(set.name)
-        }
-    }
-    
-    func createCategoryArray() {
-        categoryArray = [String]()
-        for category in manager.sampleActiveArray[manager.setIndex].categories {
-            categoryArray.append(category.name)
-        }
-        activeSection = [Section(name: setArray[0], items: setArray),
-                         Section(name: categoryArray[0], items: categoryArray)]
-
-    }
 }
