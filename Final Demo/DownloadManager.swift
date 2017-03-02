@@ -25,9 +25,9 @@ class DownloadManager: NSObject {
         }
     }
     
-    struct Category {
+    struct CardCategory {
         var name: String
-        var sections = [Section]()
+        var sections = [CardSection]()
         var currentSection = ""
         var sectionIndex = 0
         
@@ -36,7 +36,7 @@ class DownloadManager: NSObject {
         }
     }
     
-    struct Section {
+    struct CardSection {
         var name: String
         var cards = [Card]()
         
@@ -65,7 +65,7 @@ class DownloadManager: NSObject {
     var setName = ""
     var setType = ""
     var categories = NSMutableOrderedSet()
-    var categoryArray = [Category]()
+    var categoryArray = [CardCategory]()
     var tempCategoryArray = [String]()
     var tempSetArray = [String]()
     var setArray = [String]()
@@ -111,7 +111,7 @@ class DownloadManager: NSObject {
                 let category = dict["Category"] ?? ""
                 if !self.categories.contains(category){
                     self.categories.add(category)
-                    self.categoryArray.append(Category(name: category))
+                    self.categoryArray.append(CardCategory(name: category))
                 }
                 let categoryIndex = self.categories.index(of: category)
                 var answer = dict["Line"] ?? ""
@@ -148,13 +148,12 @@ class DownloadManager: NSObject {
         for card in cardArray {
             var category = categoryArray[card.categoryIndex]
             if (category.currentSection != card.section) {
-                category.sections.append(Section(name: card.section))
+                category.sections.append(CardSection(name: card.section))
                 category.currentSection = card.section
-                if category.sectionIndex > 0 {
-                    category.sectionIndex += 1
-                }
+                category.sectionIndex = category.sections.count - 1
             }
             category.sections[category.sectionIndex].cards.append(card)
+            categoryArray[card.categoryIndex] = category
         }
         
         for category in categoryArray {

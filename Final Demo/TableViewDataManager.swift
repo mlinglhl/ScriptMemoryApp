@@ -29,6 +29,11 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var cardManager = CardManager.sharedInstance
 
     func changeType() {
+        updateData()
+        resetSections()
+    }
+    
+    func updateData() {
         createSetArray()
         createCategoryArray()
         createSectionArray()
@@ -51,7 +56,6 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         for category in categories {
             categoryArray.append(category.name!)
         }
-        resetSections()
     }
     
     func createSectionArray() {
@@ -67,6 +71,7 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         for section in sections {
             sectionArray.append(section.name!)
         }
+        resetSections()
     }
     
     func resetSections() {

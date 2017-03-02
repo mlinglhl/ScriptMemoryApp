@@ -18,9 +18,7 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewDataManager.createSetArray()
-        tableViewDataManager.createCategoryArray()
-        tableViewDataManager.createSectionArray()
+        tableViewDataManager.updateData()
         selectionTableView.dataSource = tableViewDataManager
         selectionTableView.delegate = self
         refreshTableViewHeight()
@@ -82,13 +80,18 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         case 0:
             cardManager.setIndex = indexPath.row
             cardManager.categoryIndex = 0
+            cardManager.sectionIndex = 0
             let header = selectionTableView.headerView(forSection: 1) as! CollapsibleTableViewHeader
-            let set = cardManager.activeArray[cardManager.setIndex].categoryObjects
-            let categoryObject = set?.object(at: cardManager.categoryIndex) as! CategoryObject
+            let categoryObject = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()[cardManager.categoryIndex]
             header.titleLabel.text = categoryObject.name
             break
         case 1:
             cardManager.categoryIndex = indexPath.row
+            cardManager.sectionIndex = 0
+            let header = selectionTableView.headerView(forSection: 2) as! CollapsibleTableViewHeader
+            let categoryObjects = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()
+            let sectionObject = categoryObjects[cardManager.categoryIndex].sectionObjectsArray()[cardManager.sectionIndex]
+            header.titleLabel.text = sectionObject.name
             break
         case 2:
             cardManager.sectionIndex = indexPath.row
@@ -96,12 +99,11 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
             break
         }
         foldAll()
-        tableViewDataManager.createCategoryArray()
+        tableViewDataManager.updateData()
     }
     
     func refreshTableViewHeight() {
         var sectionHeight = tableViewDataManager.activeSection.count * 44
-        let maxHeight = view.frame.height - 60
         for section in tableViewDataManager.activeSection {
             if let collapsed = section.collapsed {
                 if (!collapsed) {
@@ -109,11 +111,7 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
                 }
             }
         }
-        var floatHeight = CGFloat(sectionHeight)
-        if floatHeight > maxHeight {
-            floatHeight = maxHeight
-        }
-        selectionTableViewHeight.constant = floatHeight
+        selectionTableViewHeight.constant = CGFloat(sectionHeight)
     }
     
     func foldAll() {
