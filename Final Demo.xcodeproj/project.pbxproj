@@ -37,6 +37,10 @@
 		89D27A131E5E26C700CF4082 /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D27A121E5E26C700CF4082 /* CollapsibleTableViewHeader.swift */; };
 		89D27A151E5E271C00CF4082 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D27A141E5E271C00CF4082 /* Extensions.swift */; };
 		A13C092F1E672B5900039BE1 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C092E1E672B5900039BE1 /* DownloadManager.swift */; };
+		A13C09471E68A7C200039BE1 /* ButtonStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09461E68A7C200039BE1 /* ButtonStyleManager.swift */; };
+		A13C09491E68A7F300039BE1 /* TableViewStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09481E68A7F300039BE1 /* TableViewStyleManager.swift */; };
+		A13C094B1E68A80700039BE1 /* SaveButtonStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */; };
+		A13C094D1E68A82700039BE1 /* SegmentedControllerStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +84,10 @@
 		89D27A121E5E26C700CF4082 /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		89D27A141E5E271C00CF4082 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A13C092E1E672B5900039BE1 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		A13C09461E68A7C200039BE1 /* ButtonStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyleManager.swift; sourceTree = "<group>"; };
+		A13C09481E68A7F300039BE1 /* TableViewStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewStyleManager.swift; sourceTree = "<group>"; };
+		A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveButtonStyleManager.swift; sourceTree = "<group>"; };
+		A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControllerStyleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +159,10 @@
 				89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */,
 				89D279BA1E58B52000CF4082 /* TableViewCell.swift */,
 				89AD6D051E661CE200E6B3CB /* ResultsTableViewCell.swift */,
+				A13C09461E68A7C200039BE1 /* ButtonStyleManager.swift */,
+				A13C09481E68A7F300039BE1 /* TableViewStyleManager.swift */,
+				A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */,
+				A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */,
 			);
 			path = "Final Demo";
 			sourceTree = "<group>";
@@ -230,6 +242,7 @@
 			files = (
 				89D279BB1E58B52000CF4082 /* TableViewCell.swift in Sources */,
 				89D27A151E5E271C00CF4082 /* Extensions.swift in Sources */,
+				A13C094D1E68A82700039BE1 /* SegmentedControllerStyleManager.swift in Sources */,
 				89AD6CEE1E64B63C00E6B3CB /* CardManagerSessionExtension.swift in Sources */,
 				89AD6D1A1E67554700E6B3CB /* DownloadViewController.swift in Sources */,
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
@@ -237,10 +250,13 @@
 				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,
 				89D279B91E58B07000CF4082 /* SampleScript.swift in Sources */,
 				89A07CA01E60C35800A80BB4 /* SampleCharacter.swift in Sources */,
+				A13C09491E68A7F300039BE1 /* TableViewStyleManager.swift in Sources */,
 				89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */,
 				89D279DD1E5BB41E00CF4082 /* AddCardViewController.swift in Sources */,
 				89D27A131E5E26C700CF4082 /* CollapsibleTableViewHeader.swift in Sources */,
 				89D279E91E5D35FB00CF4082 /* ResultsViewController.swift in Sources */,
+				A13C094B1E68A80700039BE1 /* SaveButtonStyleManager.swift in Sources */,
+				A13C09471E68A7C200039BE1 /* ButtonStyleManager.swift in Sources */,
 				89D279DB1E5BB2A800CF4082 /* CardManager.swift in Sources */,
 				89D279C71E58C38A00CF4082 /* CardView.swift in Sources */,
 				89D279E71E5CE44F00CF4082 /* ScrollableGraphView.swift in Sources */,

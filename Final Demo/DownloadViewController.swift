@@ -9,12 +9,22 @@
 import UIKit
 
 class DownloadViewController: UIViewController {
+    @IBOutlet weak var progressView: UIProgressView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        let newLayer = CAGradientLayer()
+        newLayer.colors = [/*UIColor(hex: 0x2E3944).cgColor,*/ UIColor(red:0.76, green:0.00, blue:0.00, alpha:1.0).cgColor,UIColor(red:0.67, green:0.03, blue:0.04, alpha:1.0).cgColor, UIColor(red:0.57, green:0.06, blue:0.08, alpha:1.0).cgColor,UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor]
+        
+        newLayer.frame = view.frame
+        
+        view.layer.addSublayer(newLayer)
+        
+        view.layer.insertSublayer(newLayer, at: 0)
+        
+        self.progressView.progress = 0
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -25,6 +35,7 @@ class DownloadViewController: UIViewController {
     @IBAction func createCards(_ sender: UIBarButtonItem) {
         let downloadManager = DownloadManager()
         downloadManager.makeCardsWithUrl("https://sheetsu.com/apis/v1.0/be01e80a78d1")
+        self.progressView.progress = 1
     }
     /*
     // MARK: - Navigation

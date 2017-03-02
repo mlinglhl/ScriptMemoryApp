@@ -14,6 +14,10 @@ class FlashCardViewController: UIViewController {
     let cardManager = CardManager.sharedInstance
     
     @IBOutlet weak var deckImageView: UIImageView!
+    @IBOutlet weak var leftArrowImageView: UIImageView!
+    @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var wrongLabel: UILabel!
     
     var deckEmpty = false
     var timer: Timer?
@@ -38,6 +42,10 @@ class FlashCardViewController: UIViewController {
         deckImageView.isUserInteractionEnabled = true
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
         cardManager.startSession()
+        self.rightLabel.isHidden = true
+        self.wrongLabel.isHidden = true
+        self.rightArrowImageView.isHidden = true
+        self.leftArrowImageView.isHidden = true
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
@@ -100,6 +108,10 @@ class FlashCardViewController: UIViewController {
             self.deckImageView.layer.borderColor = UIColor.yellow.cgColor
             self.deckImageView.layer.borderWidth = 3
         }
+        self.rightLabel.isHidden = false
+        self.wrongLabel.isHidden = false
+        self.rightArrowImageView.isHidden = false
+        self.leftArrowImageView.isHidden = false
     }
     
     func markWrong(_ sender: UISwipeGestureRecognizer) {

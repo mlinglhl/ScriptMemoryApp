@@ -54,6 +54,7 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         titleLabel.textColor = UIColor.white
         arrowLabel.textColor = UIColor.white
         
+        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)        
         //
         // Autolayout the lables
         //
