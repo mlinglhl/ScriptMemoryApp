@@ -30,7 +30,6 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
 
     func changeType() {
         updateData()
-        resetSections()
     }
     
     func updateData() {
@@ -71,7 +70,6 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
         for section in sections {
             sectionArray.append(section.name!)
         }
-        resetSections()
     }
     
     func resetSections() {
