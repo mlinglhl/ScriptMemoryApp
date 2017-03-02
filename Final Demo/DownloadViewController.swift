@@ -38,6 +38,15 @@ class DownloadViewController: UIViewController {
             let _ = self.navigationController?.popViewController(animated: true)
         })
     }
+//    self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
+
+    
+    //    [self.progressTimer invalidate];
+
+//    - (void) advanceProgressBar {
+//    self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
+//    }
+
     /*
      // MARK: - Navigation
      
