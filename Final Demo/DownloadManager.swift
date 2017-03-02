@@ -61,30 +61,12 @@ class DownloadManager: NSObject {
     
     let dataManager = DataManager.sharedInstance
     var cardArray = [Card]()
+    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0)
     var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
     var setName = ""
     var setType = ""
     var categories = NSMutableOrderedSet()
     var categoryArray = [CardCategory]()
-    var tempCategoryArray = [String]()
-    var tempSetArray = [String]()
-    var setArray = [String]()
-    var tempTypeArray = [String]()
-    var typeArray = [String]()
-    var tempSectionArray = [String]()
-    var sectionArray = [String]()
-    var helperObjectArray = [HelperObject]()
-    
-    
-    //var lineTestArray = [String]()
-    var orderIndex = 0
-    var usedArray = [String]()
-    var permanentSetArray = [SetObject]()
-    
-    
-    //sheetsu.com
-    //spreadsheet url in makeapi
-    //makes it and gives you a url
     
     func makeCardsWithUrl(_ urlString: String) {
         
@@ -108,30 +90,35 @@ class DownloadManager: NSObject {
                 if self.setType == "" {
                     self.setType = dict["Type"] ?? ""
                 }
-                let category = dict["Category"] ?? ""
-                if !self.categories.contains(category){
-                    self.categories.add(category)
-                    self.categoryArray.append(CardCategory(name: category))
+                let dictCategory = dict["Category"] ?? ""
+                let whiteSpaceReducedDictCategory = dictCategory.replacingOccurrences(of: ", ", with: ",")
+                let tempCategoryArray = whiteSpaceReducedDictCategory.components(separatedBy: ",")
+                for category in tempCategoryArray {
+                    if !self.categories.contains(category){
+                        self.categories.add(category)
+                        self.categoryArray.append(CardCategory(name: category))
+                    }
+                    let categoryIndex = self.categories.index(of: category)
+                    var answer = dict["Line"] ?? ""
+                    let section = dict["Section"] ?? ""
+                    if section != self.previousCard.section {
+                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
+                    }
+                    
+                    switch self.setType {
+                    case "Script":
+                        answer = "\(dictCategory): \(answer)"
+                        break
+                    case "Artist":
+                        break
+                    default:
+                        break
+                    }
+                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex)
+                    self.cardArray.append(card)
+                    self.cardHolder = card
                 }
-                let categoryIndex = self.categories.index(of: category)
-                var answer = dict["Line"] ?? ""
-                let section = dict["Section"] ?? ""
-                if section != self.previousCard.section {
-                    self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
-                }
-                
-                switch self.setType {
-                case "Script":
-                    answer = "\(category): \(answer)"
-                    break
-                case "Artist":
-                    break
-                default:
-                    break
-                }
-                let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex)
-                self.cardArray.append(card)
-                self.previousCard = card
+                self.previousCard = self.cardHolder
             }
             self.makeCards()
             print("Done")
