@@ -39,6 +39,7 @@ class CardView: UIView {
     @IBAction func showAnswer(_ sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.5, animations: {
             self.answerLabel.alpha = 1
+            
         })
     }
 }
