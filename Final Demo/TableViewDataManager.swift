@@ -75,17 +75,17 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     func resetSections() {
         var name = ""
         if setArray.count > 0 {
-            name = setArray[0]
+            name = setArray[cardManager.setIndex]
         }
         
         var category = ""
         if categoryArray.count > 0 {
-            category = categoryArray[0]
+            category = categoryArray[cardManager.categoryIndex]
         }
         
         var section = ""
         if sectionArray.count > 0 {
-            section = sectionArray[0]
+            section = sectionArray[cardManager.sectionIndex]
         }
         activeSection = [Section(name: name, items: setArray),
                          Section(name: category, items: categoryArray),
