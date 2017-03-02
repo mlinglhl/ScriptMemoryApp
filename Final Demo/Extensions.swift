@@ -18,7 +18,6 @@ extension UIColor {
             alpha: alpha
         )
     }
-    
 }
 
 extension UIView {
