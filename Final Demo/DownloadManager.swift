@@ -2,7 +2,7 @@
 //  DownloadManager.swift
 //  Final Demo
 //
-//  Created by Tristan Wolf on 2017-03-01.
+//  Created by Minhung Ling on 2017-03-01.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
@@ -10,6 +10,41 @@ import UIKit
 import CoreData
 
 class DownloadManager: NSObject {
+    
+    struct Card {
+        var question: String
+        var answer: String
+        var section: String
+        var categoryIndex: Int
+        
+        init(question: String, answer: String, section: String, categoryIndex: Int) {
+            self.question = question
+            self.answer = answer
+            self.section = section
+            self.categoryIndex = categoryIndex
+        }
+    }
+    
+    struct Category {
+        var name: String
+        var sections = [Section]()
+        var currentSection = ""
+        var sectionIndex = 0
+        
+        init(name: String) {
+            self.name = name
+        }
+    }
+    
+    struct Section {
+        var name: String
+        var cards = [Card]()
+        
+        init(name: String) {
+            self.name = name
+        }
+    }
+    
     struct HelperObject {
         var line: String
         var section: String
@@ -25,8 +60,13 @@ class DownloadManager: NSObject {
     @IBOutlet weak var textview: UITextView!
     
     let dataManager = DataManager.sharedInstance
+    var cardArray = [Card]()
+    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
+    var setName = ""
+    var setType = ""
+    var categories = NSMutableOrderedSet()
+    var categoryArray = [Category]()
     var tempCategoryArray = [String]()
-    var categoryArray = [String]()
     var tempSetArray = [String]()
     var setArray = [String]()
     var tempTypeArray = [String]()
@@ -62,128 +102,77 @@ class DownloadManager: NSObject {
                 return
             }
             for dict in json {
+                if self.setName == "" {
+                    self.setName = dict["Name"] ?? ""
+                }
+                if self.setType == "" {
+                    self.setType = dict["Type"] ?? ""
+                }
                 let category = dict["Category"] ?? ""
-                let line = dict["Line"] ?? ""
+                if !self.categories.contains(category){
+                    self.categories.add(category)
+                    self.categoryArray.append(Category(name: category))
+                }
+                let categoryIndex = self.categories.index(of: category)
+                var answer = dict["Line"] ?? ""
                 let section = dict["Section"] ?? ""
-                let name = dict["Name"] ?? ""
-                let type = dict["Type"] ?? ""
+                if section != self.previousCard.section {
+                    self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
+                }
                 
-                let helperObject = HelperObject.init(line: line, section: section, category: category)
-                
-                self.tempCategoryArray.append(category)
-                self.tempSetArray.append(name)
-                self.tempTypeArray.append(type)
-                self.tempSectionArray.append(section)
-                self.helperObjectArray.append(helperObject)
-                self.sectionArray.append(section)
-                
-                self.categoryArray = Array(Set<String>(self.tempCategoryArray))
-                self.setArray = Array(Set<String>(self.tempSetArray))
-                self.typeArray = Array(Set<String>(self.tempTypeArray))
-                self.sectionArray = Array(Set<String>(self.tempSectionArray))
+                switch self.setType {
+                case "Script":
+                    answer = "\(category): \(answer)"
+                    break
+                case "Artist":
+                    break
+                default:
+                    break
+                }
+                let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex)
+                self.cardArray.append(card)
+                self.previousCard = card
             }
-            self.makeCard()
-            print("DONE")
+            self.makeCards()
+            print("Done")
         }
         task.resume()
     }
     
-    
-    func makeCard() {
+    func makeCards() {
         let set = dataManager.generateSetObject()
         
-        set.name = self.setArray[0]
-        set.type = self.typeArray[0]
+        set.name = self.setName
+        set.type = self.setType
         
-        permanentSetArray.append(set)
-        guard let type = set.type else {
-            return
-        }
-        switch type {
-        case "Script":
-            for categoryObject in self.categoryArray {
-                let category = dataManager.generateCategoryObject()
-                category.name = categoryObject
-                set.addToCategoryObjects(category)
-                
-                for sectionObject in self.sectionArray {
-                    let section = dataManager.generateSectionObject()
-                    section.name = sectionObject
-                    category.addToSectionObjects(section)
-                    self.orderIndex = 1
-                    
-                    for helperObject in self.helperObjectArray {
-                        self.usedArray.append(helperObject.line)
-                        
-                            let card = dataManager.generateCardObject()
-                            card.answer = helperObject.line
-                            card.order = Int16(self.orderIndex)
-                            
-                            self.orderIndex += 1
-                            if self.usedArray.count >= 2 {
-                                card.question = self.usedArray[self.usedArray.count - 2]
-                                print("\(self.orderIndex)")
-                            } else {
-                                card.question = "You have the first line!"
-                            }
-                            
-                            if self.usedArray.count >= 3 {
-                                let uneditedCommonPrefix = helperObject.line.commonPrefix(with: self.usedArray[self.usedArray.count - 3])
-                                let commonPrefix = uneditedCommonPrefix.components(separatedBy: ":").first
-                                
-                                if self.categoryArray.contains(commonPrefix!) {
-                                    card.multiPerson = true
-                                }
-                            }
-                            if self.usedArray.count >= 2 {
-                                // something so the 2nd card is marked as isDuet aswell
-                            }
-                            
-                            if helperObject.line.hasPrefix(category.name!), helperObject.section == section.name! {
-                                section.addToCardObjects(card)
-                            }
-                    }
-                    // print(section.card?.count ?? "default")
+        for card in cardArray {
+            var category = categoryArray[card.categoryIndex]
+            if (category.currentSection != card.section) {
+                category.sections.append(Section(name: card.section))
+                category.currentSection = card.section
+                if category.sectionIndex > 0 {
+                    category.sectionIndex += 1
                 }
-                //print(category.section?.count ?? "default")
             }
-            break
-        case "Artist":
-            for categoryObject in self.categoryArray{
-                let category = dataManager.generateCategoryObject()
-                category.name = categoryObject
-                set.addToCategoryObjects(category)
-                
-                for sectionObject in self.sectionArray {
-                    let section = dataManager.generateSectionObject()
-                    section.name = sectionObject
-                    
-                    for helperObject in self.helperObjectArray {
-                        self.usedArray.append(helperObject.line)
-                        
-                        let card = dataManager.generateCardObject()
-                        card.answer = helperObject.line
-                        card.order = Int16(self.orderIndex)
-                        if self.usedArray.count >= 2 {
-                            card.question = self.usedArray[self.usedArray.count - 2]
-                        } else {
-                            card.question = "You have the first line!"
-                        }
-                        
-                        if category.name == helperObject.category, section.name == helperObject.section {
-                            section.addToCardObjects(card)
-                            self.orderIndex += 1
-                        }
-                    }
-                    // print(section.card?.count ?? "empty")
-                }
-                
-            }
-            
-            break
-        default:
-            break
+            category.sections[category.sectionIndex].cards.append(card)
         }
-        dataManager.saveContext()    
+        
+        for category in categoryArray {
+            let categoryObject = dataManager.generateCategoryObject()
+            set.addToCategoryObjects(categoryObject)
+            categoryObject.name = category.name
+            for section in category.sections {
+                let sectionObject = dataManager.generateSectionObject()
+                categoryObject.addToSectionObjects(sectionObject)
+                sectionObject.name = section.name
+                for card in section.cards {
+                    let cardObject = dataManager.generateCardObject()
+                    sectionObject.addToCardObjects(cardObject)
+                    cardObject.question = card.question
+                    cardObject.answer = card.answer
+                }
+            }
+        }
+        dataManager.saveContext()
     }
 }
