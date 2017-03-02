@@ -20,6 +20,7 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         super.viewDidLoad()
         tableViewDataManager.createSetArray()
         tableViewDataManager.createCategoryArray()
+        tableViewDataManager.createSectionArray()
         selectionTableView.dataSource = tableViewDataManager
         selectionTableView.delegate = self
         refreshTableViewHeight()

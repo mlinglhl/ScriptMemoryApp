@@ -56,6 +56,12 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     
     func createSectionArray() {
         sectionArray = [String]()
+        if cardManager.activeArray.count < 1 {
+            return
+        }
+        if cardManager.activeArray[cardManager.setIndex].categoryObjectsArray().count < 1 {
+            return
+        }
         let categories = cardManager.activeArray[cardManager.setIndex].categoryObjectsArray()
         let sections = categories[cardManager.categoryIndex].sectionObjectsArray()
         for section in sections {

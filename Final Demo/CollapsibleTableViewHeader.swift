@@ -27,8 +27,8 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         //
         // Constraint the size of arrow label for auto layout
         //
-//        arrowLabel.widthAnchor.constraint(equalToConstant: 12).isActive = true
-//        arrowLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        arrowLabel.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        arrowLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         arrowLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,31 +57,38 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         //
         // Autolayout the lables
         //
-        let views = [
-            "titleLabel" : titleLabel,
-            "arrowLabel" : arrowLabel,
-            ]
+//        let views = [
+//            "titleLabel" : titleLabel,
+//            "arrowLabel" : arrowLabel,
+//            ]
         
-        contentView.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-20-[titleLabel]-[arrowLabel]-20-|",
-            options: [],
-            metrics: nil,
-            views: views
-        ))
+        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor).isActive = true
+        arrowLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        arrowLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
-        contentView.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-[titleLabel]-|",
-            options: [],
-            metrics: nil,
-            views: views
-        ))
+//        contentView.addConstraints(NSLayoutConstraint.constraints(
+//            withVisualFormat: "H:|-20-[titleLabel]-[arrowLabel]-20-|",
+//            options: [],
+//            metrics: nil,
+//            views: views
+//        ))
         
-        contentView.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-[arrowLabel]-|",
-            options: [],
-            metrics: nil,
-            views: views
-        ))
+//        contentView.addConstraints(NSLayoutConstraint.constraints(
+//            withVisualFormat: "V:|-[titleLabel]-|",
+//            options: [],
+//            metrics: nil,
+//            views: views
+//        ))
+        
+//        contentView.addConstraints(NSLayoutConstraint.constraints(
+//            withVisualFormat: "V:|-[arrowLabel]-|",
+//            options: [],
+//            metrics: nil,
+//            views: views
+//        ))
     }
     
     //
