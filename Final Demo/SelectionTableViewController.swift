@@ -62,9 +62,9 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         
         // Adjust the height of the rows inside the section
         selectionTableView.beginUpdates()
-        for i in 0 ..< tableViewDataManager.activeSection[section].items.count {
-            selectionTableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
-        }
+        //        for i in 0 ..< tableViewDataManager.activeSection[section].items.count {
+        //            selectionTableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
+        //        }
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
             self.refreshTableViewHeight()
             self.view.layoutIfNeeded()
@@ -100,6 +100,11 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         }
         foldAll()
         tableViewDataManager.updateData()
+        selectionTableView.beginUpdates()
+        for i in indexPath.section + 1 ..< tableViewDataManager.activeSection.count {
+            selectionTableView.reloadSections(IndexSet(integer: i), with: UITableViewRowAnimation.none)
+        }
+        selectionTableView.endUpdates()
     }
     
     func refreshTableViewHeight() {
@@ -125,5 +130,4 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
             }
         }
     }
-    
 }

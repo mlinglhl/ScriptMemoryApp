@@ -34,7 +34,7 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         arrowLabel.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(titleLabel)
-        contentView.addSubview(arrowLabel)
+//        contentView.addSubview(arrowLabel)
         
         //
         // Call tapHeader when tapping on this header
@@ -64,9 +64,9 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
 //            ]
         
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor).isActive = true
-        arrowLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-        arrowLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//        titleLabel.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor).isActive = true
+//        arrowLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+//        arrowLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
@@ -106,6 +106,6 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         //
         // Animate the arrow rotation (see Extensions.swf)
         //
-        arrowLabel.rotate(collapsed ? 0.0 : CGFloat(M_PI_2))
+//        arrowLabel.rotate(collapsed ? 0.0 : CGFloat(M_PI_2))
     }
 }
