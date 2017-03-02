@@ -68,7 +68,7 @@ class DownloadManager: NSObject {
     var categories = NSMutableOrderedSet()
     var categoryArray = [CardCategory]()
     
-    func makeCardsWithUrl(_ urlString: String) {
+    func makeCardsWithUrl(_ urlString: String, completion: @escaping () -> Void) {
         
         let url = URL(string: urlString)
         guard let inputURL = url else {
@@ -121,7 +121,9 @@ class DownloadManager: NSObject {
                 self.previousCard = self.cardHolder
             }
             self.makeCards()
-            print("Done")
+            DispatchQueue.main.async {
+                completion()
+            }
         }
         task.resume()
     }
