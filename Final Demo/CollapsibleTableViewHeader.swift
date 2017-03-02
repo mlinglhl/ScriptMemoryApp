@@ -49,7 +49,7 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.backgroundColor = UIColor(hex: 0x2E3944)
+        contentView.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.50, alpha:1.0)
         
         titleLabel.textColor = UIColor.white
         arrowLabel.textColor = UIColor.white
