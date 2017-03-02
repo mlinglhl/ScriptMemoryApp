@@ -21,7 +21,6 @@ extension UIColor {
 }
 
 extension UIView {
-    
     func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2) {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         
@@ -32,5 +31,4 @@ extension UIView {
         
         self.layer.add(animation, forKey: nil)
     }
-    
 }
