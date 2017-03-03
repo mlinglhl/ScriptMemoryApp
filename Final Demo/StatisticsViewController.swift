@@ -53,22 +53,18 @@ class StatisticsViewController: SelectionTableViewController {
         graphView.animationDuration = 1.5
         graphView.rangeMax = 100
         graphView.shouldRangeAlwaysStartAtZero = true
-        graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
+        graphView.set(data: cardManager.getDataForSelectedTableViewSection(0), withLabels: cardManager.getLabelsForSelectedTableViewSection(0))
         view.addSubview(graphView)
     }
 
     @IBAction override func changeSegment(_ sender: UISegmentedControl) {
         super.changeSegment(sender)
-        graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
+        graphView.set(data: cardManager.getDataForSelectedTableViewSection(0), withLabels: cardManager.getLabelsForSelectedTableViewSection(0))
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
-        if indexPath.section == 0 {
-            graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
-            return
-        }
-        graphView.set(data: cardManager.getSectionDataAtIndex(indexPath.row), withLabels: cardManager.getCardLabels())
+            graphView.set(data: cardManager.getDataForSelectedTableViewSection(indexPath.section), withLabels: cardManager.getLabelsForSelectedTableViewSection(indexPath.section))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
