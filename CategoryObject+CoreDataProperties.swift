@@ -2,7 +2,7 @@
 //  CategoryObject+CoreDataProperties.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-03-01.
+//  Created by Minhung Ling on 2017-03-02.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -18,7 +18,7 @@ extension CategoryObject {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var sectionObjects: NSOrderedSet<SectionObject>?
+    @NSManaged public var sectionObjects: NSOrderedSet?
     @NSManaged public var setObject: SetObject?
 
 }

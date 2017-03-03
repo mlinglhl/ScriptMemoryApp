@@ -36,41 +36,25 @@ extension CardManager {
         }
         var correctAmount = session.cardRecord[index]!.0
         var wrongAmount = session.cardRecord[index]!.1
+        let cards = getCardArray()
         if isCorrect {
             correctAmount += 1
             session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
-            //mark cardObject +1 correct
-            return
+            if let cards = cards {
+                cards[index].correct += 1
+                return
+            }
         }
-        //mark cardObject +1 wrong
         wrongAmount += 1
         session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
+        if let cards = cards {
+            cards[index].wrong += 1
+            return
+        }
+        print("Could not reach card")
         return
     }
-    
-    func getCurrentCard() -> CardObject? {
-        if activeArray.count < setIndex + 1 {
-            print ("No sets found")
-        return nil
-        }
-        let categories = activeArray[setIndex].categoryObjectsArray()
-        if categories.count < categoryIndex + 1 {
-            print ("No categories found")
-            return nil
-        }
-        let sections = categories[categoryIndex].sectionObjectsArray()
-        if sections.count < sectionIndex + 1 {
-            print ("No sections found")
-            return nil
-        }
-        let cards = sections[sectionIndex].cardObjectsArray()
-        if cards.count < session.cardIndex + 1 {
-            print ("No cards found")
-            return nil
-        }
-        return cards[session.cardIndex]
-    }
-    
+   
     func setCardQuestion() -> String {
         let card = getCurrentCard()
         if let card = card {
@@ -87,6 +71,11 @@ extension CardManager {
         return "No text"
     }
     
+    func getCurrentCard() -> CardObject? {
+        let cards = getCardArray()
+        return cards?[session.cardIndex]
+    }
+
     func getScore() -> String {
         var correct = 0
         var wrong = 0
@@ -99,6 +88,29 @@ extension CardManager {
             return "Score: \(score)%"
         }
         return "Score: No cards marked"
+    }
+    
+    func getCardArray() -> [CardObject]? {
+        if activeArray.count < setIndex + 1 {
+            print ("No sets found")
+            return nil
+        }
+        let categories = activeArray[setIndex].categoryObjectsArray()
+        if categories.count < categoryIndex + 1 {
+            print ("No categories found")
+            return nil
+        }
+        let sections = categories[categoryIndex].sectionObjectsArray()
+        if sections.count < sectionIndex + 1 {
+            print ("No sections found")
+            return nil
+        }
+        let cards = sections[sectionIndex].cardObjectsArray()
+        if cards.count < session.cardIndex + 1 {
+            print ("No cards found")
+            return nil
+        }
+        return cards
     }
     
     func resetDeck() {

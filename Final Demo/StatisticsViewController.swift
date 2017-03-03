@@ -68,7 +68,7 @@ class StatisticsViewController: SelectionTableViewController {
             graphView.set(data: cardManager.getCategoryDataAtIndex(0), withLabels: tableViewDataManager.categoryArray)
             return
         }
-        graphView.set(data: cardManager.getCardDataAtIndex(indexPath.row), withLabels: cardManager.getCardLabels())
+        graphView.set(data: cardManager.getSectionDataAtIndex(indexPath.row), withLabels: cardManager.getCardLabels())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
