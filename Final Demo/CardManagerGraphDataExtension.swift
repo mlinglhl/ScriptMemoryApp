@@ -20,7 +20,7 @@ extension CardManager {
         return dataArray[Int(selector)]
     }
     
-    func getCardDataAtIndex(_ index: Int) -> [Double] {
+    func getSectionDataAtIndex(_ index: Int) -> [Double] {
         //generate data from setArray.categories[categoryIndex].cards[index]
         let data: [Double] = [12/17*100, 23/25*100, 13/16*100, 24/36*100, 13/14*100, 12/100*100]
         let data2: [Double] = [7/17*100, 21/25*100, 14/16*100, 33/36*100, 2/14*100, 88/100*100]

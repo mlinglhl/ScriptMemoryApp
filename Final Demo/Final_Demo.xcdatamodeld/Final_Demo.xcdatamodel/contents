@@ -3,11 +3,11 @@
     <entity name="CardObject" representedClassName="CardObject" syncable="YES" codeGenerationType="class">
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="audioQueue" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="correct" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="multiPerson" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="part" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="right" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="wrong" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="sectionObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SectionObject" inverseName="cardObjects" inverseEntity="SectionObject" syncable="YES"/>
     </entity>
@@ -27,7 +27,7 @@
         <relationship name="categoryObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CategoryObject" inverseName="setObject" inverseEntity="CategoryObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CardObject" positionX="333" positionY="-126" width="128" height="180"/>
+        <element name="CardObject" positionX="333" positionY="-126" width="128" height="178"/>
         <element name="CategoryObject" positionX="153" positionY="-180" width="128" height="90"/>
         <element name="SectionObject" positionX="142" positionY="-45" width="128" height="90"/>
         <element name="SetObject" positionX="-20" positionY="-198" width="128" height="90"/>
