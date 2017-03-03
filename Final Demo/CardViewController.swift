@@ -73,7 +73,6 @@ class CardViewController: UIViewController {
         return cardFront
     }
 
-    
     @IBAction func dismissViewController(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
