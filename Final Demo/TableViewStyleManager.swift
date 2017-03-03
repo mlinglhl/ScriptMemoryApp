@@ -20,7 +20,7 @@ public class TableViewStyleManager: UITableView {
         super.init(coder: aDecoder)
         
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 10.0
+        //self.layer.cornerRadius = 10.0
         self.layer.borderWidth = 2
         
     }

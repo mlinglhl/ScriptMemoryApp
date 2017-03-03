@@ -9,7 +9,11 @@
 import UIKit
 
 class DownloadViewController: UIViewController {
+   
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var urlTextField: UITextField!
+    
+    var progressTimer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +26,12 @@ class DownloadViewController: UIViewController {
         view.layer.addSublayer(newLayer)
         
         view.layer.insertSublayer(newLayer, at: 0)
+      
+        
         
         self.progressView.progress = 0
-            }
+        self.urlTextField.isHidden = false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,19 +40,23 @@ class DownloadViewController: UIViewController {
     
     
     @IBAction func createCards(_ sender: UIBarButtonItem) {
-        let downloadManager = DownloadManager()
-        downloadManager.makeCardsWithUrl("https://sheetsu.com/apis/v1.0/be01e80a78d1", completion: {
+        self.urlTextField.isHidden = true
+        self.progressTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(self.advanceProgressBar), userInfo: nil, repeats: true)
+        
+       let downloadManager = DownloadManager()
+       downloadManager.makeCardsWithUrl(self.urlTextField.text ?? "", completion: {
             let _ = self.navigationController?.popViewController(animated: true)
+            self.progressTimer.invalidate()
+        
         })
     }
-//    self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
+    
 
     
-    //    [self.progressTimer invalidate];
 
-//    - (void) advanceProgressBar {
-//    self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
-//    }
+    func advanceProgressBar() {
+           self.progressView.progress += 0.2 * (1 - self.progressView.progress);
+    }
 
     /*
      // MARK: - Navigation

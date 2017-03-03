@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esz-N1-XDI">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esz-N1-XDI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,12 +25,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-YZ-UO1">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-YZ-UO1">
                                 <rect key="frame" x="16" y="222" width="343" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://sheetsu.com/apis/v1.0/be01e80a78d1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z8f-5T-lrx">
+                                <rect key="frame" x="16" y="120" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6gh-YZ-UO1" firstAttribute="leading" secondItem="qI9-gA-zuL" secondAttribute="leadingMargin" id="9M3-2D-qs3"/>
+                            <constraint firstItem="6gh-YZ-UO1" firstAttribute="trailing" secondItem="qI9-gA-zuL" secondAttribute="trailingMargin" id="Gu3-ej-NUI"/>
+                            <constraint firstItem="Z8f-5T-lrx" firstAttribute="top" secondItem="8hF-JH-FFG" secondAttribute="bottom" constant="56" id="JFg-WZ-uyc"/>
+                            <constraint firstItem="Z8f-5T-lrx" firstAttribute="trailing" secondItem="qI9-gA-zuL" secondAttribute="trailingMargin" id="LHC-fl-BmO"/>
+                            <constraint firstItem="Z8f-5T-lrx" firstAttribute="leading" secondItem="qI9-gA-zuL" secondAttribute="leadingMargin" id="OP7-5r-Qut"/>
+                            <constraint firstItem="6gh-YZ-UO1" firstAttribute="top" secondItem="Z8f-5T-lrx" secondAttribute="bottom" constant="72" id="xNE-Ik-du2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Rpw-Uo-NzX">
                         <barButtonItem key="rightBarButtonItem" title="Upload" id="upq-oc-RPn">
@@ -41,6 +54,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="progressView" destination="6gh-YZ-UO1" id="43K-fm-Jhg"/>
+                        <outlet property="urlTextField" destination="Z8f-5T-lrx" id="n57-iV-UZ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="320-Dn-wKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -61,7 +75,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lc2-jb-qU2" customClass="ButtonStyleManager" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="214" y="318" width="125" height="125"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="613-gf-6yy"/>
                                     <constraint firstAttribute="width" constant="125" id="KZs-aa-0cr"/>
@@ -73,7 +87,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-TY-Jgo" customClass="ButtonStyleManager" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="36" y="318" width="125" height="125"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="b2f-qy-rPe"/>
                                     <constraint firstAttribute="height" constant="125" id="bTZ-h9-frx"/>
@@ -549,12 +563,6 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 80%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09t-b7-xxa">
-                                <rect key="frame" x="142" y="108" width="91.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hmV-1P-W7j" customClass="TableViewStyleManager" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="137" width="375" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -604,6 +612,12 @@
                                     <outlet property="delegate" destination="e2T-ON-tJq" id="qnC-zN-xBB"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 80%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09t-b7-xxa">
+                                <rect key="frame" x="142" y="108" width="91.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
