@@ -51,29 +51,59 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mw-3S-UgU">
-                    <rect key="frame" x="350" y="155" width="25" height="25"/>
+                    <rect key="frame" x="350" y="97.5" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="PER-0V-eOr"/>
                         <constraint firstAttribute="height" constant="25" id="mG2-ze-VyC"/>
                     </constraints>
-                    <state key="normal" image="patience"/>
+                    <state key="normal" image="speaker"/>
                     <connections>
                         <action selector="playSound:" destination="iN0-l3-epB" eventType="touchUpInside" id="hUc-L9-KV5"/>
                     </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL4-qX-kKY">
+                    <rect key="frame" x="350" y="207.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="6bn-v8-c6G"/>
+                        <constraint firstAttribute="height" constant="25" id="UVQ-AE-ZUs"/>
+                    </constraints>
+                    <state key="normal" image="mic"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSB-jj-j83">
+                    <rect key="frame" x="350" y="431" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="3HQ-rC-cwY"/>
+                        <constraint firstAttribute="width" constant="25" id="gy4-xp-cdY"/>
+                    </constraints>
+                    <state key="normal" image="speaker"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew9-d7-pDb">
+                    <rect key="frame" x="350" y="541" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="gDg-pl-mBB"/>
+                        <constraint firstAttribute="width" constant="25" id="oPl-5E-9GF"/>
+                    </constraints>
+                    <state key="normal" image="mic"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="9Mw-3S-UgU" firstAttribute="centerY" secondItem="HyV-CB-gqp" secondAttribute="centerY" id="02d-l1-402"/>
                 <constraint firstItem="PNq-Ms-Cue" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="0FZ-tI-A9b"/>
+                <constraint firstItem="OL4-qX-kKY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.66" id="0Pd-GJ-laM"/>
                 <constraint firstAttribute="trailing" secondItem="HyV-CB-gqp" secondAttribute="trailing" constant="25" id="3Xh-Ah-kNS"/>
                 <constraint firstItem="PNq-Ms-Cue" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="3jY-Ih-Ecm"/>
+                <constraint firstAttribute="trailing" secondItem="ew9-d7-pDb" secondAttribute="trailing" id="566-YQ-He4"/>
                 <constraint firstItem="HyV-CB-gqp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7hg-9E-tMK"/>
                 <constraint firstAttribute="bottom" secondItem="PNq-Ms-Cue" secondAttribute="bottom" id="FQi-Mh-OyZ"/>
                 <constraint firstItem="HyV-CB-gqp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="KOG-Ju-rFn"/>
                 <constraint firstItem="HyV-CB-gqp" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="Knh-AZ-yAt"/>
+                <constraint firstItem="ew9-d7-pDb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.66" id="NkI-GQ-b33"/>
+                <constraint firstAttribute="trailing" secondItem="OL4-qX-kKY" secondAttribute="trailing" id="Xgj-w9-L1n"/>
+                <constraint firstItem="GSB-jj-j83" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.33" id="hMw-wL-YpK"/>
                 <constraint firstAttribute="trailing" secondItem="PNq-Ms-Cue" secondAttribute="trailing" constant="25" id="otY-qC-KGd"/>
+                <constraint firstAttribute="trailing" secondItem="GSB-jj-j83" secondAttribute="trailing" id="qYv-Rg-MDb"/>
+                <constraint firstItem="9Mw-3S-UgU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.33" id="rZi-yH-qRC"/>
                 <constraint firstAttribute="trailing" secondItem="9Mw-3S-UgU" secondAttribute="trailing" id="zpf-Mx-Xhq"/>
             </constraints>
             <connections>
@@ -92,6 +122,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="patience" width="517" height="562"/>
+        <image name="mic" width="256" height="256"/>
+        <image name="speaker" width="300" height="240"/>
     </resources>
 </document>
