@@ -106,11 +106,6 @@ class CardManager: NSObject {
         set.addToCategoryObjects(categoryObject)
         return categoryObject
     }
-    
-    func randomNumber(_ ceiling: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(ceiling)))
-    }
-    
 }
 
 //MARK: Session extension
@@ -198,22 +193,49 @@ extension CardManager {
         return "Score: No cards marked"
     }
     
-    func getCardArray() -> [CardObject]? {
+    func getSetArray() -> [SetObject]? {
         if activeArray.count < setIndex + 1 {
             print ("No sets found")
             return nil
         }
-        let categories = activeArray[setIndex].categoryObjectsArray()
+        return activeArray
+    }
+    
+    func getCategoryArray() -> [CategoryObject]? {
+        let sets = getSetArray()
+        guard let currentSets = sets else {
+            print("No sets found")
+            return nil
+        }
+        let categories = currentSets[setIndex].categoryObjectsArray()
         if categories.count < categoryIndex + 1 {
             print ("No categories found")
             return nil
         }
-        let sections = categories[categoryIndex].sectionObjectsArray()
+        return categories
+    }
+    
+    func getSectionArray() -> [SectionObject]? {
+        let categories = getCategoryArray()
+        guard let currentCategories = categories else {
+            print("No categories found")
+            return nil
+        }
+        let sections = currentCategories[categoryIndex].sectionObjectsArray()
         if sections.count < sectionIndex + 1 {
             print ("No sections found")
             return nil
         }
-        let cards = sections[sectionIndex].cardObjectsArray()
+        return sections
+    }
+    
+    func getCardArray() -> [CardObject]? {
+        let sections = getSectionArray()
+        guard let currentSections = sections else {
+            print ("No sections found")
+            return nil
+        }
+        let cards = currentSections[sectionIndex].cardObjectsArray()
         if cards.count < session.cardIndex + 1 {
             print ("No cards found")
             return nil
@@ -258,36 +280,130 @@ extension CardManager {
 //MARK: Statistics Extension
 
 extension CardManager {
-    func getCategoryDataAtIndex(_ index: Int) -> [Double] {
-        //generate data from setArray.categories[index]
-        let data: [Double] = [12/17*100, 23/25*100, 13/16*100, 24/36*100, 13/14*100, 12/100*100]
-        let data2: [Double] = [7/17*100, 21/25*100, 14/16*100, 33/36*100, 2/14*100, 88/100*100]
-        let data3: [Double] = [15/17*100, 17/25*100, 8/16*100, 12/36*100, 10/14*100, 85/100*100]
-        let data4: [Double] = [14/17*100, 20/25*100, 16/16*100, 35/36*100, 12/14*100, 95/100*100]
-        let data5: [Double] = [10/17*100, 12/25*100, 11/16*100, 21/36*100, 5/14*100, 65/100*100]
-        let data6: [Double] = [17/17*100, 22/25*100, 12/16*100, 11/36*100, 14/14*100, 95/100*100]
-        let dataArray = [data, data2, data3, data4, data5, data6]
-        let selector = randomNumber(6)
-        return dataArray[Int(selector)]
+    
+    func getDataForSelectedTableViewSection(_ index: Int) -> [Double] {
+        switch index {
+        case 0:
+            return getDataForSelectedSet()
+        case 1:
+            return getDataForSelectedCategory()
+        case 2:
+            return getDataForSelectedSection()
+        default:
+            return [Double]()
+        }
     }
     
-    func getSectionDataAtIndex(_ index: Int) -> [Double] {
-        //generate data from setArray.categories[categoryIndex].cards[index]
-        let data: [Double] = [12/17*100, 23/25*100, 13/16*100, 24/36*100, 13/14*100, 12/100*100]
-        let data2: [Double] = [7/17*100, 21/25*100, 14/16*100, 33/36*100, 2/14*100, 88/100*100]
-        let data3: [Double] = [15/17*100, 17/25*100, 8/16*100, 12/36*100, 10/14*100, 85/100*100]
-        let data4: [Double] = [14/17*100, 20/25*100, 16/16*100, 35/36*100, 12/14*100, 95/100*100]
-        let data5: [Double] = [10/17*100, 12/25*100, 11/16*100, 21/36*100, 5/14*100, 65/100*100]
-        let data6: [Double] = [17/17*100, 22/25*100, 12/16*100, 11/36*100, 14/14*100, 95/100*100]
-        let dataArray = [data, data2, data3, data4, data5, data6]
-        let selector = randomNumber(6)
-        return dataArray[Int(selector)]
+    func getLabelsForSelectedTableViewSection(_ index: Int) -> [String] {
+        switch index {
+        case 0:
+            return getLabelsForSelectedSet()
+        case 1:
+            return getLabelsForSelectedCategory()
+        case 2:
+            return getLabelsForSelectedSection()
+        default:
+            return [String]()
+        }
     }
     
-    func getCardLabels() -> [String] {
+    func getDataForSelectedSection() -> [Double] {
+        var statsArray = [Double]()
+        let cards = getCardArray()
+        guard let currentCards = cards else {
+            return [Double]()
+        }
+        for card in currentCards {
+            if card.correct + card.wrong < 1 {
+                statsArray.append(Double(0))
+                continue
+            }
+            statsArray.append(Double(card.correct/(card.correct + card.wrong)*100))
+        }
+        return statsArray
+    }
+    
+    func getLabelsForSelectedSection() -> [String] {
         var nameArray = [String]()
-        for card in sampleActiveArray[setIndex].categories[categoryIndex].cards {
-            nameArray.append("\(card.number)")
+        let cards = getCardArray()
+        guard let currentCards = cards else {
+            return [String]()
+        }
+        for index in 0..<currentCards.count {
+            nameArray.append("\(index)")
+        }
+        return nameArray
+    }
+    
+    func getDataForSelectedCategory() -> [Double] {
+        var statsArray = [Double]()
+        let sections = getSectionArray()
+        guard let currentSections = sections else {
+            return [Double]()
+        }
+        for section in currentSections {
+            var correct = 0
+            var wrong = 0
+            let cards = section.cardObjectsArray()
+            for card in cards {
+                correct += Int(card.correct)
+                wrong += Int(card.wrong)
+            }
+            if correct + wrong < 1 {
+                statsArray.append(Double(0))
+                continue
+            }
+            statsArray.append(Double(correct/(correct + wrong)*100))
+        }
+        return statsArray
+    }
+    
+    func getLabelsForSelectedCategory() -> [String] {
+        var nameArray = [String]()
+        let sections = getSectionArray()
+        guard let currentSections = sections else {
+            return [String]()
+        }
+        for section in currentSections {
+            nameArray.append("\(section.name)")
+        }
+        return nameArray
+    }
+    
+    func getDataForSelectedSet() -> [Double] {
+        var statsArray = [Double]()
+        let categories = getCategoryArray()
+        guard let currentCategories = categories else {
+            return [Double]()
+        }
+        for category in currentCategories {
+            var correct = 0
+            var wrong = 0
+            let sections = category.sectionObjectsArray()
+            for section in sections {
+                let cards = section.cardObjectsArray()
+                for card in cards {
+                    correct += Int(card.correct)
+                    wrong += Int(card.wrong)
+                }
+            }
+            if correct + wrong < 1 {
+                statsArray.append(Double(0))
+                continue
+            }
+            statsArray.append(Double(correct/(correct + wrong)*100))
+        }
+        return statsArray
+    }
+    
+    func getLabelsForSelectedSet() -> [String] {
+        var nameArray = [String]()
+        let categories = getCategoryArray()
+        guard let currentCategories = categories else {
+            return [String]()
+        }
+        for category in currentCategories {
+            nameArray.append(category.name ?? "")
         }
         return nameArray
     }
