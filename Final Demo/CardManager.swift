@@ -145,6 +145,7 @@ extension CardManager {
             session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
             if let cards = cards {
                 cards[index].correct += 1
+                dataManager.saveContext()
                 return
             }
         }
@@ -152,6 +153,7 @@ extension CardManager {
         session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
         if let cards = cards {
             cards[index].wrong += 1
+            dataManager.saveContext()
             return
         }
         print("Could not reach card")
@@ -318,7 +320,9 @@ extension CardManager {
                 statsArray.append(Double(0))
                 continue
             }
-            statsArray.append(Double(card.correct/(card.correct + card.wrong)*100))
+            let cardCorrect = Double(card.correct)
+            let cardWrong = Double(card.wrong)
+            statsArray.append(cardCorrect/(cardCorrect + cardWrong)*100)
         }
         return statsArray
     }
@@ -353,7 +357,10 @@ extension CardManager {
                 statsArray.append(Double(0))
                 continue
             }
-            statsArray.append(Double(correct/(correct + wrong)*100))
+            let cardCorrect = Double(correct)
+            let cardWrong = Double(wrong)
+
+            statsArray.append(Double(cardCorrect/(cardCorrect + cardWrong)*100))
         }
         return statsArray
     }
@@ -391,7 +398,10 @@ extension CardManager {
                 statsArray.append(Double(0))
                 continue
             }
-            statsArray.append(Double(correct/(correct + wrong)*100))
+            let cardCorrect = Double(correct)
+            let cardWrong = Double(wrong)
+            
+            statsArray.append(Double(cardCorrect/(cardCorrect + cardWrong)*100))
         }
         return statsArray
     }
