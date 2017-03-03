@@ -134,6 +134,20 @@ class FlashCardViewController: UIViewController {
             })
         }
     }
+   
+    
+    func panCard(_ sender: UIPanGestureRecognizer) {
+        let card = sender.view as! CardView
+        let point = sender.location(in: view)
+        print(point)
+        if card.answerLabel.alpha == 1 {
+            card.center = point
+        
+        if card.center.x <= 25 || card.center.x >= 275 {
+            sender.isEnabled = false
+        }
+        }
+    }
     
     //MARK helper methods
     
@@ -186,6 +200,9 @@ class FlashCardViewController: UIViewController {
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
         cardFront.tag = cardManager.session.cardIndex
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panCard(_:)))
+        
+        cardFront.addGestureRecognizer(pan)
         let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
         leftSGR.direction = UISwipeGestureRecognizerDirection.left
         cardFront.addGestureRecognizer(leftSGR)
