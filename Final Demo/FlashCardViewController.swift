@@ -108,10 +108,7 @@ class FlashCardViewController: UIViewController {
             self.deckImageView.layer.borderColor = UIColor.yellow.cgColor
             self.deckImageView.layer.borderWidth = 3
         }
-        self.rightLabel.isHidden = false
-        self.wrongLabel.isHidden = false
-        self.rightArrowImageView.isHidden = false
-        self.leftArrowImageView.isHidden = false
+     
     }
     
     func markWrong(_ sender: UISwipeGestureRecognizer) {
@@ -121,8 +118,12 @@ class FlashCardViewController: UIViewController {
             let newFrame = CGRect(x: -400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
+                self.wrongLabel.isHidden = false
+                self.leftArrowImageView.isHidden = false
             }, completion: { _ in
                 card.superview?.removeFromSuperview()
+                self.wrongLabel.isHidden = true
+                self.leftArrowImageView.isHidden = true
             })
         }
     }
@@ -134,8 +135,14 @@ class FlashCardViewController: UIViewController {
             let newFrame = CGRect(x: 400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
+                self.rightLabel.isHidden = false
+                self.rightArrowImageView.isHidden = false
+
+                
             }, completion: { _ in
                 card.superview?.removeFromSuperview()
+                self.rightLabel.isHidden = true
+                self.rightArrowImageView.isHidden = true
             })
         }
     }

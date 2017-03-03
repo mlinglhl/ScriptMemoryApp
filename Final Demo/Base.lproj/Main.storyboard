@@ -92,7 +92,7 @@
                                     <constraint firstAttribute="width" constant="125" id="b2f-qy-rPe"/>
                                     <constraint firstAttribute="height" constant="125" id="bTZ-h9-frx"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="stat icon"/>
+                                <state key="normal" backgroundImage="chart"/>
                                 <connections>
                                     <segue destination="oVZ-ne-Usr" kind="show" identifier="StatisticsViewController" id="q3D-XE-ejK"/>
                                 </connections>
@@ -715,6 +715,6 @@
         <image name="Long Arrow Left-50" width="50" height="50"/>
         <image name="Long Arrow Right-50" width="50" height="50"/>
         <image name="cards icon" width="512" height="512"/>
-        <image name="stat icon" width="512" height="512"/>
+        <image name="chart" width="256" height="256"/>
     </resources>
 </document>
