@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCardViewController: UIViewController {
+class AddCardViewController: SelectionTableViewController {
     
     var constraintArrayScript: [NSLayoutConstraint]!
     var constraintArraySong: [NSLayoutConstraint]!
@@ -17,7 +17,9 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var setTextField: UITextField!
     
     @IBOutlet weak var questionLabel: UILabel!
+  
     
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var sectionLabelTopConstraint: NSLayoutConstraint!
     
     @IBOutlet var categoryLabelLeadingSpaceScript: NSLayoutConstraint!
@@ -29,7 +31,7 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var songLabelHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
+    //@IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     
     @IBOutlet var questionCharacterTextFieldYAnchorScript: NSLayoutConstraint!
     
@@ -112,7 +114,7 @@ class AddCardViewController: UIViewController {
         self.questionCharacterTextField.placeholder = ""
         self.questionCharacterTextField.isHidden = true
         self.categoryTextField.placeholder = ""
-        self.sectionLabelTopConstraint.constant = 16
+        self.sectionLabelTopConstraint.constant = 16 //was 16
         view.layoutIfNeeded()
         self.setLabel.text = "Artist:"
         self.songLabelHeight.constant = 21
