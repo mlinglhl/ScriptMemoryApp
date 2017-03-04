@@ -40,6 +40,7 @@
 		A13C094B1E68A80700039BE1 /* SaveButtonStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */; };
 		A13C094D1E68A82700039BE1 /* SegmentedControllerStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */; };
 		A13C09511E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */; };
+		A13C09531E6B6E3900039BE1 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveButtonStyleManager.swift; sourceTree = "<group>"; };
 		A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControllerStyleManager.swift; sourceTree = "<group>"; };
 		A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionPanGestureRecognizer.swift; sourceTree = "<group>"; };
+		A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */,
 				A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */,
 				A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */,
+				A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */,
 			);
 			path = "Final Demo";
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				A13C094D1E68A82700039BE1 /* SegmentedControllerStyleManager.swift in Sources */,
 				89AD6D1A1E67554700E6B3CB /* DownloadViewController.swift in Sources */,
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
+				A13C09531E6B6E3900039BE1 /* SwiftSpinner.swift in Sources */,
 				89AD6D061E661CE200E6B3CB /* ResultsTableViewCell.swift in Sources */,
 				A13C09511E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift in Sources */,
 				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,
