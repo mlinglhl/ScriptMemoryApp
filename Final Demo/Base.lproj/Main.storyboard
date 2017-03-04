@@ -75,19 +75,19 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lc2-jb-qU2" customClass="ButtonStyleManager" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="214" y="318" width="125" height="125"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="613-gf-6yy"/>
                                     <constraint firstAttribute="width" constant="125" id="KZs-aa-0cr"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="cards icon"/>
+                                <state key="normal" backgroundImage="cardscolor"/>
                                 <connections>
                                     <segue destination="uFw-U2-1Xc" kind="show" identifier="MemoryViewController" id="ZFJ-Zd-HTq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-TY-Jgo" customClass="ButtonStyleManager" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="36" y="318" width="125" height="125"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="b2f-qy-rPe"/>
                                     <constraint firstAttribute="height" constant="125" id="bTZ-h9-frx"/>
@@ -111,7 +111,7 @@
                                     <constraint firstAttribute="height" constant="21" id="xFF-Vg-wsG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Practice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rl-7Q-2Ow">
@@ -121,7 +121,7 @@
                                     <constraint firstAttribute="height" constant="21" id="hoM-rv-udw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -152,10 +152,12 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="jy8-an-oG6" customClass="SegControllerStyleManager" customModule="Final_Demo" customModuleProvider="target">
                             <rect key="frame" x="136" y="8" width="103" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
                                 <segment title="Script"/>
                                 <segment title="Artist"/>
                             </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="changeSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="hrt-PD-MnL"/>
                             </connections>
@@ -714,7 +716,7 @@
     <resources>
         <image name="Long Arrow Left-50" width="50" height="50"/>
         <image name="Long Arrow Right-50" width="50" height="50"/>
-        <image name="cards icon" width="512" height="512"/>
+        <image name="cardscolor" width="300" height="300"/>
         <image name="chart" width="256" height="256"/>
     </resources>
 </document>

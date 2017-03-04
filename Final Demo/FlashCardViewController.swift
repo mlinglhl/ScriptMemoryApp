@@ -18,9 +18,6 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var rightArrowImageView: UIImageView!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var wrongLabel: UILabel!
-   // let panFrame:CGRect = CGRect(x: 0, y: 200, width: 375, height: 300)
-    let panView:UIView = UIView(frame: CGRect(x: 0, y: 200, width: 375, height: 300) )
-    
     var deckEmpty = false
     var timer: Timer?
     var timeIndex = 0
@@ -34,12 +31,11 @@ class FlashCardViewController: UIViewController {
         cardManager.startSession()
         
        
-        self.panView.backgroundColor = UIColor.cyan
-        self.view.insertSubview(self.panView, at: 0)
-        //self.rightLabel.isHidden = true
-        //self.wrongLabel.isHidden = true
-        //self.rightArrowImageView.isHidden = true
-        //self.leftArrowImageView.isHidden = true
+        
+        self.rightLabel.isHidden = true
+        self.wrongLabel.isHidden = true
+        self.rightArrowImageView.isHidden = true
+        self.leftArrowImageView.isHidden = true
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
@@ -103,7 +99,7 @@ class FlashCardViewController: UIViewController {
             self.deckImageView.layer.borderWidth = 3
         }
     }
-    /*
+    
     func markWrong(_ sender: UISwipeGestureRecognizer) {
         let card = sender.view as! CardView
         if card.answerLabel.alpha == 1 {
@@ -128,36 +124,9 @@ class FlashCardViewController: UIViewController {
             let newFrame = CGRect(x: 400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
-                //self.rightLabel.isHidden = false
-                //self.rightArrowImageView.isHidden = false
-
-                
-            }, completion: { _ in
-                card.superview?.removeFromSuperview()
-               // self.rightLabel.isHidden = true
-               // self.rightArrowImageView.isHidden = true
-            })
-        }
-    }*/
-   
-    
-    
-    func panCard(_ sender: UIPanGestureRecognizer) {
-        let card = sender.view as! CardView
-        let point = sender.location(in: view)
-        print(point)
-        if card.answerLabel.alpha == 1 {
-            card.center = point
-            
-            
-        if card.center.x <= 50 || card.center.x >= 250 {
-           // let newFrame = CGRect(x: 400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
-            UIView.animate(withDuration: 0.2, animations: {
-                
-                
                 self.rightLabel.isHidden = false
                 self.rightArrowImageView.isHidden = false
-                
+
                 
             }, completion: { _ in
                 card.superview?.removeFromSuperview()
@@ -165,8 +134,11 @@ class FlashCardViewController: UIViewController {
                 self.rightArrowImageView.isHidden = true
             })
         }
-        }
     }
+   
+    
+    
+   
     
     //MARK helper methods
     
@@ -220,14 +192,12 @@ class FlashCardViewController: UIViewController {
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
         cardFront.tag = cardManager.session.cardIndex
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panCard(_:)))
-        cardFront.addGestureRecognizer(pan)
-        //let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
-       // leftSGR.direction = UISwipeGestureRecognizerDirection.left
-       // cardFront.addGestureRecognizer(leftSGR)
-        //let rightSGR = UISwipeGestureRecognizer(target: self, action: #selector(markRight(_:)))
-        //rightSGR.direction = UISwipeGestureRecognizerDirection.right
-        //cardFront.addGestureRecognizer(rightSGR)
+        let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
+        leftSGR.direction = UISwipeGestureRecognizerDirection.left
+        cardFront.addGestureRecognizer(leftSGR)
+        let rightSGR = UISwipeGestureRecognizer(target: self, action: #selector(markRight(_:)))
+        rightSGR.direction = UISwipeGestureRecognizerDirection.right
+        cardFront.addGestureRecognizer(rightSGR)
         cardFront.answerLabel.alpha = 0
         cardFront.layer.cornerRadius = 8
         cardFront.layer.borderColor = UIColor.black.cgColor
@@ -237,9 +207,7 @@ class FlashCardViewController: UIViewController {
         
         cardFront.questionLabel.text = cardManager.setCardQuestion()
         cardFront.answerLabel.text = cardManager.setCardAnswer()
-        
-        self.panView.insertSubview(cardFront, at: 0)
-        panView.layoutSubviews()
+     
         return cardFront
     }
 }
