@@ -88,7 +88,7 @@
                         <action selector="recordQuestion:" destination="iN0-l3-epB" eventType="touchUpInside" id="QWg-Pc-QTq"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSB-jj-j83">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSB-jj-j83">
                     <rect key="frame" x="350" y="431" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="3HQ-rC-cwY"/>
@@ -99,7 +99,7 @@
                         <action selector="playAnswer:" destination="iN0-l3-epB" eventType="touchUpInside" id="C1e-Va-JFt"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew9-d7-pDb">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew9-d7-pDb">
                     <rect key="frame" x="350" y="541" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="gDg-pl-mBB"/>

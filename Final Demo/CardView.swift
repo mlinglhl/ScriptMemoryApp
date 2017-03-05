@@ -20,8 +20,9 @@ class CardView: UIView, AVAudioRecorderDelegate {
     @IBOutlet weak var questionSpeakerLabel: UILabel!
     var recordingSession = AVAudioSession.sharedInstance()
     var audioRecorder: AVAudioRecorder!
-    var audioPlayer: AVAudioPlayer!
+    var audioPlayer: AVAudioPlayer?
     var recordingURL = ""
+    let cardManager = CardManager.sharedInstance
     
     class func initFromNib() -> CardView {
         let nib = UINib(nibName: "CardView", bundle: nil)
@@ -30,19 +31,31 @@ class CardView: UIView, AVAudioRecorderDelegate {
     }
     
     @IBAction func playQuestion(_ sender: UIButton) {
-        playTapped()
+        guard let senderSuperview = sender.superview else {
+            return
+        }
+        playTapped(sender.tag, index: senderSuperview.tag)
     }
     
     @IBAction func recordQuestion(_ sender: UIButton) {
-        recordTapped()
+        guard let senderSuperview = sender.superview else {
+            return
+        }
+        recordTapped(sender.tag, index: senderSuperview.tag)
     }
     
     @IBAction func playAnswer(_ sender: UIButton) {
-        playTapped()
+        guard let senderSuperview = sender.superview else {
+            return
+        }
+        playTapped(sender.tag, index: senderSuperview.tag)
     }
     
     @IBAction func recordAnswer(_ sender: UIButton) {
-        recordTapped()
+        guard let senderSuperview = sender.superview else {
+            return
+        }
+        recordTapped(sender.tag, index: senderSuperview.tag)
     }
     
     
@@ -81,40 +94,78 @@ class CardView: UIView, AVAudioRecorderDelegate {
     }
     
     
-    func finishRecording(success: Bool) {
+    func finishRecording(success: Bool, type: Int, index: Int) {
         audioRecorder.stop()
         audioRecorder = nil
         
+        if !success {
+            return
+        }
         if success {
             do {
-                audioPlayer = try AVAudioPlayer.init(contentsOf: getFileURL())
+                let data = try Data.init(contentsOf: getFileURL())
+                let cards = cardManager.getCardArray()
+                let card = cards?[index]
+                switch type {
+                case 0:
+                    card?.questionAudio = data as NSData?
+                    break
+                case 1:
+                    card?.answerAudio = data as NSData?
+                    break
+                default:
+                    break
+                }
+                DataManager.sharedInstance.saveContext()
             } catch {
                 return
             }
-        } else {
         }
     }
     
-    func recordTapped() {
+    func recordTapped(_ type: Int, index: Int) {
         if audioRecorder == nil {
             startRecording()
             print("RStart")
         }
         else {
-            finishRecording(success: true)
+            finishRecording(success: true, type: type, index: index)
             print("RStop")
         }
     }
     
-    func playTapped () {
-        if audioPlayer != nil {
-        audioPlayer.play()
+    func playTapped (_ type: Int, index: Int) {
+        if let player = audioPlayer {
+            if player.isPlaying {
+                player.stop()
+            }
+        }
+        do {
+            let cards = cardManager.getCardArray()
+            let card = cards?[index]
+            switch type {
+            case 0:
+                if card?.questionAudio != nil {
+                    audioPlayer = try AVAudioPlayer.init(data: card?.questionAudio as! Data)
+                }
+                break
+            case 1:
+                if card?.answerAudio != nil {
+                    audioPlayer = try AVAudioPlayer.init(data: card?.answerAudio as! Data)
+                }
+                break
+            default:
+                break
+            }
+            audioPlayer?.play()
+        } catch {
+            return
         }
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
-            finishRecording(success: false)
+            finishRecording(success: false, type: 0, index: 0)
         }
     }
 }
