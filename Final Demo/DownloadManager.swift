@@ -12,16 +12,24 @@ import CoreData
 class DownloadManager: NSObject {
     
     struct Card {
-        var question: String
-        var answer: String
-        var section: String
-        var categoryIndex: Int
+        let question: String
+        let answer: String
+        let section: String
+        let categoryIndex: Int
+        let questionSpeaker: String
+        let answerSpeaker: String
+        let multiPerson: Bool
+        let index: Int
         
-        init(question: String, answer: String, section: String, categoryIndex: Int) {
+        init(question: String, answer: String, section: String, categoryIndex: Int, questionSpeaker: String, answerSpeaker: String, multiPerson: Bool, index: Int) {
             self.question = question
             self.answer = answer
             self.section = section
             self.categoryIndex = categoryIndex
+            self.questionSpeaker = questionSpeaker
+            self.answerSpeaker = answerSpeaker
+            self.multiPerson = multiPerson
+            self.index = index
         }
     }
     
@@ -61,12 +69,13 @@ class DownloadManager: NSObject {
     
     let dataManager = DataManager.sharedInstance
     var cardArray = [Card]()
-    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0)
-    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
+    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
+    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
     var setName = ""
     var setType = ""
     var categories = NSMutableOrderedSet()
     var categoryArray = [CardCategory]()
+    var cardIndex = 0
     
     func makeCardsWithUrl(_ urlString: String, completion: @escaping () -> Void) {
         
@@ -90,7 +99,10 @@ class DownloadManager: NSObject {
                 if self.setType == "" {
                     self.setType = dict["Type"] ?? ""
                 }
-                let dictCategory = dict["Category"] ?? ""
+                var dictCategory = dict["Category"] ?? ""
+                if dictCategory == "" {
+                    dictCategory = self.previousCard.answerSpeaker
+                }
                 let whiteSpaceReducedDictCategory = dictCategory.replacingOccurrences(of: ", ", with: ",")
                 let tempCategoryArray = whiteSpaceReducedDictCategory.components(separatedBy: ",")
                 for category in tempCategoryArray {
@@ -99,22 +111,19 @@ class DownloadManager: NSObject {
                         self.categoryArray.append(CardCategory(name: category))
                     }
                     let categoryIndex = self.categories.index(of: category)
-                    var answer = dict["Line"] ?? ""
-                    let section = dict["Section"] ?? ""
+                    let answer = dict["Line"] ?? ""
+                    var section = dict["Section"] ?? ""
+                    if section == "" {
+                        section = self.previousCard.section
+                    }
                     if section != self.previousCard.section {
-                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0)
+                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
                     }
-                    
-                    switch self.setType {
-                    case "Script":
-                        answer = "\(dictCategory): \(answer)"
-                        break
-                    case "Artist":
-                        break
-                    default:
-                        break
+                    var multiPerson = false
+                    if self.previousCard.answerSpeaker != dictCategory {
+                        multiPerson = true
                     }
-                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex)
+                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, multiPerson: multiPerson, index: self.cardIndex)
                     self.cardArray.append(card)
                     self.cardHolder = card
                 }
@@ -158,6 +167,10 @@ class DownloadManager: NSObject {
                     sectionObject.addToCardObjects(cardObject)
                     cardObject.question = card.question
                     cardObject.answer = card.answer
+                    cardObject.questionSpeaker = card.questionSpeaker
+                    cardObject.answerSpeaker = card.answerSpeaker
+                    cardObject.multiPerson = card.multiPerson
+                    cardObject.index = Int16(card.index)
                 }
             }
         }

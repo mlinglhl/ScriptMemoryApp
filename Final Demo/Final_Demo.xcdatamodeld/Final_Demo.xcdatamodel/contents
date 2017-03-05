@@ -2,32 +2,35 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CardObject" representedClassName="CardObject" syncable="YES" codeGenerationType="class">
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="audioQueue" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="answerAudio" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="answerSpeaker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="correct" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="multiPerson" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="part" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionAudio" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="questionSpeaker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wrong" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="sectionObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SectionObject" inverseName="cardObjects" inverseEntity="SectionObject" syncable="YES"/>
+        <relationship name="sectionObject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SectionObject" inverseName="cardObjects" inverseEntity="SectionObject" syncable="YES"/>
     </entity>
     <entity name="CategoryObject" representedClassName="CategoryObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="sectionObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SectionObject" inverseName="categoryObject" inverseEntity="SectionObject" syncable="YES"/>
+        <relationship name="sectionObjects" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SectionObject" inverseName="categoryObject" inverseEntity="SectionObject" syncable="YES"/>
         <relationship name="setObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SetObject" inverseName="categoryObjects" inverseEntity="SetObject" syncable="YES"/>
     </entity>
     <entity name="SectionObject" representedClassName="SectionObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cardObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CardObject" inverseName="sectionObject" inverseEntity="CardObject" syncable="YES"/>
+        <relationship name="cardObjects" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CardObject" inverseName="sectionObject" inverseEntity="CardObject" syncable="YES"/>
         <relationship name="categoryObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryObject" inverseName="sectionObjects" inverseEntity="CategoryObject" syncable="YES"/>
     </entity>
     <entity name="SetObject" representedClassName="SetObject" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="categoryObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CategoryObject" inverseName="setObject" inverseEntity="CategoryObject" syncable="YES"/>
+        <relationship name="categoryObjects" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CategoryObject" inverseName="setObject" inverseEntity="CategoryObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CardObject" positionX="333" positionY="-126" width="128" height="178"/>
+        <element name="CardObject" positionX="333" positionY="-126" width="128" height="225"/>
         <element name="CategoryObject" positionX="153" positionY="-180" width="128" height="90"/>
         <element name="SectionObject" positionX="142" positionY="-45" width="128" height="90"/>
         <element name="SetObject" positionX="-20" positionY="-198" width="128" height="90"/>

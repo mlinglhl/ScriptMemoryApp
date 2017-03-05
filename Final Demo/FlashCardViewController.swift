@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FlashCardViewController: UIViewController {
     var anchorArray = [NSLayoutConstraint]()
@@ -25,6 +26,15 @@ class FlashCardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
+        AVAudioSession.sharedInstance().requestRecordPermission() { _ in
+//            [unowned self] allowed in
+//            if allowed {
+//                print ("YAY")
+//            } else {
+//                print ("NOOOO")
+//            }
+        }
+        
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "wood"))
         deckImageView.isUserInteractionEnabled = true
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")

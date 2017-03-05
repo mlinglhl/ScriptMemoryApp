@@ -20,16 +20,24 @@
                     <rect key="frame" x="8" y="334" width="342" height="334"/>
                     <subviews>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzj-rw-keh">
-                            <rect key="frame" x="0.0" y="0.0" width="342" height="24"/>
+                            <rect key="frame" x="0.0" y="21" width="342" height="24"/>
                             <gestureRecognizers/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnswerSpeaker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIX-tZ-e6l">
+                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="nzj-rw-keh" firstAttribute="top" secondItem="PNq-Ms-Cue" secondAttribute="top" id="R6t-TZ-Ifs"/>
+                        <constraint firstItem="bIX-tZ-e6l" firstAttribute="top" secondItem="PNq-Ms-Cue" secondAttribute="top" id="0hj-uv-2uL"/>
+                        <constraint firstItem="nzj-rw-keh" firstAttribute="top" secondItem="bIX-tZ-e6l" secondAttribute="bottom" id="8rt-c0-tbP"/>
+                        <constraint firstItem="bIX-tZ-e6l" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="Vl0-Xw-abm"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="nc3-gT-mB0"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="width" secondItem="PNq-Ms-Cue" secondAttribute="width" id="zmX-LR-5Uw"/>
                     </constraints>
@@ -38,52 +46,101 @@
                     <rect key="frame" x="8" y="0.0" width="342" height="334"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-Xf-v0y">
-                            <rect key="frame" x="0.0" y="0.0" width="342" height="24"/>
+                            <rect key="frame" x="0.0" y="21" width="342" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuestionSpeaker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsZ-j4-KxB">
+                            <rect key="frame" x="0.0" y="0.0" width="131.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="xW8-Xf-v0y" firstAttribute="top" secondItem="HyV-CB-gqp" secondAttribute="top" id="5Do-Ao-Wcm"/>
+                        <constraint firstItem="tsZ-j4-KxB" firstAttribute="leading" secondItem="HyV-CB-gqp" secondAttribute="leading" id="12J-XF-0gX"/>
+                        <constraint firstItem="xW8-Xf-v0y" firstAttribute="top" secondItem="tsZ-j4-KxB" secondAttribute="bottom" id="S4c-ox-t24"/>
                         <constraint firstItem="xW8-Xf-v0y" firstAttribute="width" secondItem="HyV-CB-gqp" secondAttribute="width" id="h5M-vV-WCm"/>
                         <constraint firstItem="xW8-Xf-v0y" firstAttribute="leading" secondItem="HyV-CB-gqp" secondAttribute="leading" id="qte-gC-wXR"/>
+                        <constraint firstItem="tsZ-j4-KxB" firstAttribute="top" secondItem="HyV-CB-gqp" secondAttribute="top" id="rdi-3V-gcV"/>
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mw-3S-UgU">
-                    <rect key="frame" x="350" y="155" width="25" height="25"/>
+                    <rect key="frame" x="350" y="97.5" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="PER-0V-eOr"/>
                         <constraint firstAttribute="height" constant="25" id="mG2-ze-VyC"/>
                     </constraints>
-                    <state key="normal" image="patience"/>
+                    <state key="normal" image="speaker"/>
                     <connections>
-                        <action selector="playSound:" destination="iN0-l3-epB" eventType="touchUpInside" id="hUc-L9-KV5"/>
+                        <action selector="playQuestion:" destination="iN0-l3-epB" eventType="touchUpInside" id="VPi-JF-3J8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL4-qX-kKY">
+                    <rect key="frame" x="350" y="207.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="6bn-v8-c6G"/>
+                        <constraint firstAttribute="height" constant="25" id="UVQ-AE-ZUs"/>
+                    </constraints>
+                    <state key="normal" image="mic"/>
+                    <connections>
+                        <action selector="recordQuestion:" destination="iN0-l3-epB" eventType="touchUpInside" id="QWg-Pc-QTq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSB-jj-j83">
+                    <rect key="frame" x="350" y="431" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="3HQ-rC-cwY"/>
+                        <constraint firstAttribute="width" constant="25" id="gy4-xp-cdY"/>
+                    </constraints>
+                    <state key="normal" image="speaker"/>
+                    <connections>
+                        <action selector="playAnswer:" destination="iN0-l3-epB" eventType="touchUpInside" id="C1e-Va-JFt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew9-d7-pDb">
+                    <rect key="frame" x="350" y="541" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="gDg-pl-mBB"/>
+                        <constraint firstAttribute="width" constant="25" id="oPl-5E-9GF"/>
+                    </constraints>
+                    <state key="normal" image="mic"/>
+                    <connections>
+                        <action selector="recordAnswer:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kxd-4D-kgX"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="9Mw-3S-UgU" firstAttribute="centerY" secondItem="HyV-CB-gqp" secondAttribute="centerY" id="02d-l1-402"/>
                 <constraint firstItem="PNq-Ms-Cue" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="0FZ-tI-A9b"/>
+                <constraint firstItem="OL4-qX-kKY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.66" id="0Pd-GJ-laM"/>
                 <constraint firstAttribute="trailing" secondItem="HyV-CB-gqp" secondAttribute="trailing" constant="25" id="3Xh-Ah-kNS"/>
                 <constraint firstItem="PNq-Ms-Cue" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="3jY-Ih-Ecm"/>
+                <constraint firstAttribute="trailing" secondItem="ew9-d7-pDb" secondAttribute="trailing" id="566-YQ-He4"/>
                 <constraint firstItem="HyV-CB-gqp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7hg-9E-tMK"/>
                 <constraint firstAttribute="bottom" secondItem="PNq-Ms-Cue" secondAttribute="bottom" id="FQi-Mh-OyZ"/>
                 <constraint firstItem="HyV-CB-gqp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="KOG-Ju-rFn"/>
                 <constraint firstItem="HyV-CB-gqp" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="Knh-AZ-yAt"/>
+                <constraint firstItem="ew9-d7-pDb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.66" id="NkI-GQ-b33"/>
+                <constraint firstAttribute="trailing" secondItem="OL4-qX-kKY" secondAttribute="trailing" id="Xgj-w9-L1n"/>
+                <constraint firstItem="GSB-jj-j83" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.33" id="hMw-wL-YpK"/>
                 <constraint firstAttribute="trailing" secondItem="PNq-Ms-Cue" secondAttribute="trailing" constant="25" id="otY-qC-KGd"/>
+                <constraint firstAttribute="trailing" secondItem="GSB-jj-j83" secondAttribute="trailing" id="qYv-Rg-MDb"/>
+                <constraint firstItem="9Mw-3S-UgU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.33" id="rZi-yH-qRC"/>
                 <constraint firstAttribute="trailing" secondItem="9Mw-3S-UgU" secondAttribute="trailing" id="zpf-Mx-Xhq"/>
             </constraints>
             <connections>
                 <outlet property="answerLabel" destination="nzj-rw-keh" id="TgK-zn-Q9s"/>
                 <outlet property="answerScrollView" destination="PNq-Ms-Cue" id="1GJ-jZ-XgR"/>
+                <outlet property="answerSpeakerLabel" destination="bIX-tZ-e6l" id="0g1-a5-ywT"/>
                 <outlet property="questionLabel" destination="xW8-Xf-v0y" id="He1-3T-A3E"/>
                 <outlet property="questionScrollView" destination="HyV-CB-gqp" id="cGT-D5-d7L"/>
+                <outlet property="questionSpeakerLabel" destination="tsZ-j4-KxB" id="q9L-27-ruL"/>
                 <outletCollection property="gestureRecognizers" destination="FVI-Zp-rvv" appends="YES" id="fcM-BC-U0v"/>
             </connections>
-            <point key="canvasLocation" x="115.5" y="34.5"/>
+            <point key="canvasLocation" x="114" y="-302"/>
         </view>
         <tapGestureRecognizer id="FVI-Zp-rvv">
             <connections>
@@ -92,6 +149,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="patience" width="517" height="562"/>
+        <image name="mic" width="256" height="256"/>
+        <image name="speaker" width="300" height="240"/>
     </resources>
 </document>
