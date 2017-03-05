@@ -20,6 +20,8 @@ class CardView: UIView, AVAudioRecorderDelegate {
     @IBOutlet weak var questionSpeakerLabel: UILabel!
     var recordingSession = AVAudioSession.sharedInstance()
     var audioRecorder: AVAudioRecorder!
+    var audioPlayer: AVAudioPlayer!
+    var recordingURL = ""
     
     class func initFromNib() -> CardView {
         let nib = UINib(nibName: "CardView", bundle: nil)
@@ -28,42 +30,19 @@ class CardView: UIView, AVAudioRecorderDelegate {
     }
     
     @IBAction func playQuestion(_ sender: UIButton) {
-        //                let sound = NSDataAsset(name: "SampleClip")
-        //                do {
-        //                    let player = try AVAudioPlayer(data: sound!.data)
-        //                    player.play()
-        //                    self.player = player
-        //                }
-        //                catch {
-        //                    return
-        //                }
+        playTapped()
     }
     
     @IBAction func recordQuestion(_ sender: UIButton) {
-        do {
-            print("Pressed")
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { allowed in
-                DispatchQueue.main.async {
-                    if allowed {
-                        print("Made it!")
-                    } else {
-                        print("Failed to record early")
-                        return
-                    }
-                }
-            }
-        } catch {
-            print("Failed to record")
-        }
         recordTapped()
     }
     
     @IBAction func playAnswer(_ sender: UIButton) {
+        playTapped()
     }
     
     @IBAction func recordAnswer(_ sender: UIButton) {
+        recordTapped()
     }
     
     
@@ -75,25 +54,14 @@ class CardView: UIView, AVAudioRecorderDelegate {
     }
     
     func startRecording() {
-//        let audioFileName = getDocumentsDirectory().appendingPathComponent("recording.m4a")
-//        
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
-//        do {
-//            audioRecorder = try AVAudioRecorder(url: audioFileName, settings: settings)
-//            audioRecorder.delegate = self
-//            audioRecorder.record()
-//            
-//            //toggle record button - started recording here
-//        } catch {
-//            finishRecording(success: false)
-//        }
         do {
-        audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
+            audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
         } catch {
@@ -110,10 +78,6 @@ class CardView: UIView, AVAudioRecorderDelegate {
         let path = getCacheDirectory().appending("recording.caf")
         let filePath = URL(fileURLWithPath: path)
         return filePath
-//        let path = getCacheDirectory().stringByAppendingPathComponent
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        let documentsDirectory = paths[0]
-//        return documentsDirectory
     }
     
     
@@ -122,18 +86,29 @@ class CardView: UIView, AVAudioRecorderDelegate {
         audioRecorder = nil
         
         if success {
-            // recording stopped and was successful
+            do {
+                audioPlayer = try AVAudioPlayer.init(contentsOf: getFileURL())
+            } catch {
+                return
+            }
         } else {
-            // recording stopped and never happened
         }
     }
     
     func recordTapped() {
         if audioRecorder == nil {
             startRecording()
+            print("RStart")
         }
         else {
             finishRecording(success: true)
+            print("RStop")
+        }
+    }
+    
+    func playTapped () {
+        if audioPlayer != nil {
+        audioPlayer.play()
         }
     }
     
@@ -142,5 +117,4 @@ class CardView: UIView, AVAudioRecorderDelegate {
             finishRecording(success: false)
         }
     }
-    
 }

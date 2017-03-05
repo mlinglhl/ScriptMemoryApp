@@ -98,5 +98,4 @@ class StatisticsViewController: SelectionTableViewController {
     @IBAction func goHome(_ sender: UIBarButtonItem) {
         _ = navigationController?.popToRootViewController(animated: true)
     }
-    
 }
