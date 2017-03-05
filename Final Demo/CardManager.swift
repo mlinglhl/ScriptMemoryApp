@@ -276,7 +276,6 @@ extension CardManager {
         }
         return false
     }
-    
 }
 
 //MARK: Statistics Extension

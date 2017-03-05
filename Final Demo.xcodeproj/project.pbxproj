@@ -43,14 +43,14 @@
 
 /* Begin PBXFileReference section */
 		89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
-		89356A8E1E68DFC5003989C6 /* CardObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356A8F1E68DFC5003989C6 /* CardObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89356A901E68DFC5003989C6 /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356A911E68DFC5003989C6 /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89356A921E68DFC5003989C6 /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356A931E68DFC5003989C6 /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89356A941E68DFC5003989C6 /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356A951E68DFC5003989C6 /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AB01E6B1054003989C6 /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AB11E6B1054003989C6 /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AB21E6B1054003989C6 /* CardObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AB31E6B1054003989C6 /* CardObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AB41E6B1054003989C6 /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AB51E6B1054003989C6 /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AB61E6B1054003989C6 /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AB71E6B1054003989C6 /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
 		89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCharacter.swift; sourceTree = "<group>"; };
@@ -100,14 +100,14 @@
 		89D279931E57B9B600CF4082 = {
 			isa = PBXGroup;
 			children = (
-				89356A8E1E68DFC5003989C6 /* CardObject+CoreDataClass.swift */,
-				89356A8F1E68DFC5003989C6 /* CardObject+CoreDataProperties.swift */,
-				89356A901E68DFC5003989C6 /* SectionObject+CoreDataClass.swift */,
-				89356A911E68DFC5003989C6 /* SectionObject+CoreDataProperties.swift */,
-				89356A921E68DFC5003989C6 /* SetObject+CoreDataClass.swift */,
-				89356A931E68DFC5003989C6 /* SetObject+CoreDataProperties.swift */,
-				89356A941E68DFC5003989C6 /* CategoryObject+CoreDataClass.swift */,
-				89356A951E68DFC5003989C6 /* CategoryObject+CoreDataProperties.swift */,
+				89356AB01E6B1054003989C6 /* SectionObject+CoreDataClass.swift */,
+				89356AB11E6B1054003989C6 /* SectionObject+CoreDataProperties.swift */,
+				89356AB21E6B1054003989C6 /* CardObject+CoreDataClass.swift */,
+				89356AB31E6B1054003989C6 /* CardObject+CoreDataProperties.swift */,
+				89356AB41E6B1054003989C6 /* SetObject+CoreDataClass.swift */,
+				89356AB51E6B1054003989C6 /* SetObject+CoreDataProperties.swift */,
+				89356AB61E6B1054003989C6 /* CategoryObject+CoreDataClass.swift */,
+				89356AB71E6B1054003989C6 /* CategoryObject+CoreDataProperties.swift */,
 				89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */,
 				89D2799E1E57B9B600CF4082 /* Final Demo */,
 				89D2799D1E57B9B600CF4082 /* Products */,

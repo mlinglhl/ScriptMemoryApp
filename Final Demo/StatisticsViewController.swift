@@ -69,7 +69,6 @@ class StatisticsViewController: SelectionTableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        cardManager.typeIndex = typeIndex
         cardManager.changeType(typeIndex)
         cardManager.setIndex = setIndex
         cardManager.categoryIndex = categoryIndex
