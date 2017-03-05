@@ -19,7 +19,6 @@ class FlashCardViewController: UIViewController {
     @IBOutlet weak var rightArrowImageView: UIImageView!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var wrongLabel: UILabel!
-    
     var deckEmpty = false
     var timer: Timer?
     var timeIndex = 0
@@ -40,6 +39,9 @@ class FlashCardViewController: UIViewController {
         deckImageView.isUserInteractionEnabled = true
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
         cardManager.startSession()
+        
+       
+        
         self.rightLabel.isHidden = true
         self.wrongLabel.isHidden = true
         self.rightArrowImageView.isHidden = true
@@ -106,7 +108,6 @@ class FlashCardViewController: UIViewController {
             self.deckImageView.layer.borderColor = UIColor.yellow.cgColor
             self.deckImageView.layer.borderWidth = 3
         }
-     
     }
     
     func markWrong(_ sender: UISwipeGestureRecognizer) {
@@ -144,6 +145,10 @@ class FlashCardViewController: UIViewController {
             })
         }
     }
+   
+    
+    
+   
     
     //MARK helper methods
     
@@ -155,6 +160,7 @@ class FlashCardViewController: UIViewController {
         card.clipsToBounds = true
         card.layer.cornerRadius = 8
         view.addSubview(card)
+        
         
         UIView.animate(withDuration: 0.2, animations: {
             card.frame = self.deckImageView.frame
@@ -211,6 +217,7 @@ class FlashCardViewController: UIViewController {
         
         cardFront.questionLabel.text = cardManager.setCardQuestion()
         cardFront.answerLabel.text = cardManager.setCardAnswer()
+     
         return cardFront
     }
 }

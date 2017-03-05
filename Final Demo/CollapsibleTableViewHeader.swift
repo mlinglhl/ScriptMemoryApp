@@ -49,12 +49,12 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.backgroundColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
+        contentView.backgroundColor = UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0)
         
         titleLabel.textColor = UIColor.white
         arrowLabel.textColor = UIColor.white
         
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)        
+        titleLabel.font = UIFont(name: "Copperplate", size: 19)
         //
         // Autolayout the lables
         //
