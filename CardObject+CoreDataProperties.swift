@@ -21,7 +21,7 @@ extension CardObject {
     @NSManaged public var questionAudio: NSData?
     @NSManaged public var correct: Int16
     @NSManaged public var multiPerson: Bool
-    @NSManaged public var order: Int16
+    @NSManaged public var index: Int16
     @NSManaged public var part: String?
     @NSManaged public var question: String?
     @NSManaged public var wrong: Int16
