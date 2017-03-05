@@ -44,7 +44,7 @@ class CardView: UIView, AVAudioRecorderDelegate {
             print("Pressed")
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { [unowned self] allowed in
+            recordingSession.requestRecordPermission() { allowed in
                 DispatchQueue.main.async {
                     if allowed {
                         print("Made it!")
@@ -97,7 +97,6 @@ class CardView: UIView, AVAudioRecorderDelegate {
             audioRecorder.delegate = self
             audioRecorder.record()
         } catch {
-            
         }
         
     }

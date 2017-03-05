@@ -19,8 +19,9 @@ class DownloadManager: NSObject {
         let questionSpeaker: String
         let answerSpeaker: String
         let multiPerson: Bool
+        let index: Int
         
-        init(question: String, answer: String, section: String, categoryIndex: Int, questionSpeaker: String, answerSpeaker: String, multiPerson: Bool) {
+        init(question: String, answer: String, section: String, categoryIndex: Int, questionSpeaker: String, answerSpeaker: String, multiPerson: Bool, index: Int) {
             self.question = question
             self.answer = answer
             self.section = section
@@ -28,6 +29,7 @@ class DownloadManager: NSObject {
             self.questionSpeaker = questionSpeaker
             self.answerSpeaker = answerSpeaker
             self.multiPerson = multiPerson
+            self.index = index
         }
     }
     
@@ -67,13 +69,13 @@ class DownloadManager: NSObject {
     
     let dataManager = DataManager.sharedInstance
     var cardArray = [Card]()
-    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false)
-    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false)
+    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
+    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
     var setName = ""
     var setType = ""
     var categories = NSMutableOrderedSet()
     var categoryArray = [CardCategory]()
-    var allCategorySection: SectionObject!
+    var cardIndex = 0
     
     func makeCardsWithUrl(_ urlString: String, completion: @escaping () -> Void) {
         
@@ -115,13 +117,13 @@ class DownloadManager: NSObject {
                         section = self.previousCard.section
                     }
                     if section != self.previousCard.section {
-                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false)
+                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
                     }
                     var multiPerson = false
                     if self.previousCard.answerSpeaker != dictCategory {
                         multiPerson = true
                     }
-                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, multiPerson: multiPerson)
+                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, multiPerson: multiPerson, index: self.cardIndex)
                     self.cardArray.append(card)
                     self.cardHolder = card
                 }
@@ -152,10 +154,6 @@ class DownloadManager: NSObject {
             categoryArray[card.categoryIndex] = category
         }
         
-        let allCategory = dataManager.generateCategoryObject()
-        allCategory.name = "All"
-        set.addToCategoryObjects(allCategory)
-        var currentAllCategorySection = ""
         for category in categoryArray {
             let categoryObject = dataManager.generateCategoryObject()
             set.addToCategoryObjects(categoryObject)
@@ -164,21 +162,15 @@ class DownloadManager: NSObject {
                 let sectionObject = dataManager.generateSectionObject()
                 categoryObject.addToSectionObjects(sectionObject)
                 sectionObject.name = section.name
-                if currentAllCategorySection != section.name || allCategorySection == nil {
-                    allCategorySection = dataManager.generateSectionObject()
-                    allCategorySection.name = section.name
-                    allCategory.addToSectionObjects(allCategorySection)
-                    currentAllCategorySection = section.name
-                }
                 for card in section.cards {
                     let cardObject = dataManager.generateCardObject()
                     sectionObject.addToCardObjects(cardObject)
-                    allCategorySection.addToCardObjects(cardObject)
                     cardObject.question = card.question
                     cardObject.answer = card.answer
                     cardObject.questionSpeaker = card.questionSpeaker
                     cardObject.answerSpeaker = card.answerSpeaker
                     cardObject.multiPerson = card.multiPerson
+                    cardObject.index = Int16(card.index)
                 }
             }
         }
