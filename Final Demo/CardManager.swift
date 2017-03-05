@@ -371,7 +371,12 @@ extension CardManager {
             return [String]()
         }
         for section in currentSections {
-            nameArray.append("\(section.name)")
+            var sectionName = section.name ?? ""
+            if sectionName.characters.count > 23 {
+                sectionName = sectionName.substring(to: sectionName.index(sectionName.startIndex, offsetBy: 20))
+                sectionName.append("...")
+            }
+            nameArray.append("\(sectionName)")
         }
         return nameArray
     }

@@ -34,7 +34,9 @@ class StatisticsViewController: SelectionTableViewController {
         graphView.shouldDrawDataPoint = false
         graphView.shouldDrawBarLayer = true
         
-        graphView.barWidth = 50
+        graphView.leftmostPointPadding = CGFloat(100)
+        
+        graphView.barWidth = 100
         graphView.barLineWidth = 1
         graphView.barLineColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
         graphView.barColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
@@ -46,14 +48,14 @@ class StatisticsViewController: SelectionTableViewController {
         graphView.numberOfIntermediateReferenceLines = 4
         graphView.dataPointLabelColor = UIColor.white.withAlphaComponent(0.5)
         
-        graphView.dataPointSpacing = 100
+        graphView.dataPointSpacing = 130
         
         graphView.shouldAnimateOnStartup = true
         graphView.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
         graphView.animationDuration = 1.5
         graphView.rangeMax = 100
         graphView.shouldRangeAlwaysStartAtZero = true
-        graphView.set(data: cardManager.getDataForSelectedTableViewSection(0), withLabels: cardManager.getLabelsForSelectedTableViewSection(0))
+        graphView.set(data: cardManager.getDataForSelectedTableViewSection(2), withLabels: cardManager.getLabelsForSelectedTableViewSection(2))
         view.addSubview(graphView)
     }
 
@@ -64,7 +66,26 @@ class StatisticsViewController: SelectionTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
-            graphView.set(data: cardManager.getDataForSelectedTableViewSection(indexPath.section), withLabels: cardManager.getLabelsForSelectedTableViewSection(indexPath.section))
+        graphView.set(data: cardManager.getDataForSelectedTableViewSection(indexPath.section), withLabels: cardManager.getLabelsForSelectedTableViewSection(indexPath.section))
+        switch indexPath.section {
+        case 0:
+            setAllForHeaderInSection(1)
+            setAllForHeaderInSection(2)
+            break
+        case 1:
+            setAllForHeaderInSection(2)
+            break
+        default:
+            break
+        }
+    }
+    
+    func setAllForHeaderInSection( _ index: Int) {
+        let header = selectionTableView.headerView(forSection: index) as? CollapsibleTableViewHeader
+        if let header = header {
+            header.titleLabel.text = "All"
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
