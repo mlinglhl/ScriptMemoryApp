@@ -45,11 +45,11 @@ class DownloadViewController: UIViewController {
             let _ = self.navigationController?.popViewController(animated: true)
             SwiftSpinner.hide()
         
-            self.progressTimer.invalidate()
+//            self.progressTimer.invalidate()
         })
     }
 
-    func advanceProgressBar() {
-           self.progressView.progress += 0.2 * (1 - self.progressView.progress);
-    }
+//    func advanceProgressBar() {
+     //      self.progressView.progress += 0.2 * (1 - self.progressView.progress);
+  //  }
 }
