@@ -12,6 +12,7 @@ class CardViewController: UIViewController {
     let cardManager = CardManager.sharedInstance
     var cardBack: UIView!
     var cardFront: UIView!
+    var cardIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,15 +68,15 @@ class CardViewController: UIViewController {
         cardFront.layer.borderWidth = 3.0
         cardFront.backgroundColor = UIColor.white
         cardFront.translatesAutoresizingMaskIntoConstraints = false
-        
+        let sessionIndex = cardManager.session.cardIndex
+        cardManager.session.cardIndex = cardIndex
         cardFront.questionLabel.text = cardManager.setCardQuestion()
         cardFront.answerLabel.text = cardManager.setCardAnswer()
+        cardManager.session.cardIndex = sessionIndex
         return cardFront
     }
 
     @IBAction func dismissViewController(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }

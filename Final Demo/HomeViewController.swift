@@ -9,18 +9,18 @@
 import UIKit
 
 protocol DownloadViewControllerDelegate {
-   func refreshTableView()
+    func refreshTableView()
 }
 
 class HomeViewController: SelectionTableViewController, DownloadViewControllerDelegate {
-        
+    
     override func viewDidLoad() {
         CardManager.sharedInstance.setUp()
         super.viewDidLoad()
         
         let newLayer = CAGradientLayer()
         newLayer.colors = [UIColor(red:1.00, green:0.00, blue:0.00, alpha:1.0).cgColor,UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor, UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0).cgColor]
-
+        
         
         newLayer.frame = view.frame
         
@@ -30,8 +30,10 @@ class HomeViewController: SelectionTableViewController, DownloadViewControllerDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dlvc = segue.destination as! DownloadViewController
-        dlvc.delegate = self
+        if segue.identifier == "DownloadViewController" {
+            let dlvc = segue.destination as! DownloadViewController
+            dlvc.delegate = self
+        }
     }
     
     func refreshTableView() {

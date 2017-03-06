@@ -614,7 +614,7 @@
                                         <connections>
                                             <outlet property="questionLabel" destination="Kz5-3Q-rAk" id="r8r-kV-XIu"/>
                                             <outlet property="scoreLabel" destination="AAA-AR-Cbo" id="gxB-kn-UwL"/>
-                                            <segue destination="6Ap-Xd-dsf" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="3mX-bX-HxY"/>
+                                            <segue destination="6Ap-Xd-dsf" kind="presentation" identifier="CardViewController" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="3mX-bX-HxY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
