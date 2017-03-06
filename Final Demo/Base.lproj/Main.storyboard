@@ -142,7 +142,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="FRb-A7-4sn">
                             <connections>
-                                <segue destination="EiD-TE-cNZ" kind="show" id="gi8-Ob-Wn2"/>
+                                <segue destination="EiD-TE-cNZ" kind="show" identifier="DownloadViewController" id="gi8-Ob-Wn2"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="jy8-an-oG6" customClass="SegControllerStyleManager" customModule="Final_Demo" customModuleProvider="target">

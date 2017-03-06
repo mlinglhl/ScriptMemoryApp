@@ -13,10 +13,6 @@ class CardManager: NSObject {
     var scriptArray = [SetObject]()
     var artistArray = [SetObject]()
     var activeArray = [SetObject]()
-    var sampleActiveArray = [SampleScript]()
-    var sampleScriptArray = [SampleScript]()
-    var sampleArtistArray = [SampleScript]()
-    var sampleCharacter: SampleCharacter?
     var setIndex = 0
     var categoryIndex = 0
     var sectionIndex = 0
@@ -28,6 +24,10 @@ class CardManager: NSObject {
     private override init() {}
     
     func setUp() {
+        setIndex = 0
+        categoryIndex = 0
+        sectionIndex = 0
+        typeIndex = 0
         setArray = dataManager.getSetObjects()
         scriptArray = setUpSetArray(type: "Script")
         artistArray = setUpSetArray(type: "Artist")

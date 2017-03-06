@@ -14,6 +14,7 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var urlTextField: UITextField!
     
     var progressTimer: Timer!
+    var delegate: DownloadViewControllerDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +30,16 @@ class DownloadViewController: UIViewController {
       
         self.urlTextField.isHidden = false
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func createCards(_ sender: UIBarButtonItem) {
         self.urlTextField.isHidden = true
         SwiftSpinner.show("Making Cards...")
-       
         
        let downloadManager = DownloadManager()
        downloadManager.makeCardsWithUrl(self.urlTextField.text ?? "", completion: {
             let _ = self.navigationController?.popViewController(animated: true)
+            self.delegate.refreshTableView()
             SwiftSpinner.hide()
-        
-//            self.progressTimer.invalidate()
         })
     }
-
-//    func advanceProgressBar() {
-     //      self.progressView.progress += 0.2 * (1 - self.progressView.progress);
-  //  }
 }

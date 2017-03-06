@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HomeViewController: SelectionTableViewController {
+protocol DownloadViewControllerDelegate {
+   func refreshTableView()
+}
+
+class HomeViewController: SelectionTableViewController, DownloadViewControllerDelegate {
         
     override func viewDidLoad() {
         CardManager.sharedInstance.setUp()
@@ -23,5 +27,17 @@ class HomeViewController: SelectionTableViewController {
         view.layer.addSublayer(newLayer)
         
         view.layer.insertSublayer(newLayer, at: 0)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dlvc = segue.destination as! DownloadViewController
+        dlvc.delegate = self
+    }
+    
+    func refreshTableView() {
+        cardManager.setUp()
+        tableViewDataManager.updateData()
+        selectionTableView.reloadData()
+        refreshTableViewHeight()
     }
 }
