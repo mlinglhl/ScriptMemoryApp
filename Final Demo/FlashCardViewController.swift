@@ -43,6 +43,7 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
+        deckImageView.isUserInteractionEnabled = false
         makeCard()
     }
     
@@ -103,6 +104,7 @@ class FlashCardViewController: UIViewController {
         })
         cardManager.session.cardIndex += 1
         if cardManager.checkLast() {
+            self.deckImageView.isUserInteractionEnabled = true
             self.deckImageView.image = nil
             self.deckImageView.layer.borderColor = UIColor.yellow.cgColor
             self.deckImageView.layer.borderWidth = 3
@@ -123,7 +125,9 @@ class FlashCardViewController: UIViewController {
                 self.wrongLabel.isHidden = true
                 self.leftArrowImageView.isHidden = true
             })
-        checkSameLine()
+            if !cardManager.checkLast() {
+                makeCard()
+            }
         }
     }
     
@@ -141,13 +145,7 @@ class FlashCardViewController: UIViewController {
                 self.rightLabel.isHidden = true
                 self.rightArrowImageView.isHidden = true
             })
-            checkSameLine()
-        }
-    }
-   
-    func checkSameLine() {
-        if !cardManager.checkLast() {
-            if cardManager.nextCardSameLine() {
+            if !cardManager.checkLast() {
                 makeCard()
             }
         }
@@ -163,8 +161,11 @@ class FlashCardViewController: UIViewController {
         card.clipsToBounds = true
         card.layer.cornerRadius = 8
         view.addSubview(card)
-        
-        
+        var numberOfCards = 15
+        let cards = cardManager.getCardArray()
+        if let cards = cards {
+            numberOfCards = cards.count
+        }
         UIView.animate(withDuration: 0.2, animations: {
             card.frame = self.deckImageView.frame
         }, completion: { _ in
@@ -176,13 +177,13 @@ class FlashCardViewController: UIViewController {
             card.removeFromSuperview()
         })
         timeIndex += 1
-        if timeIndex <= 7 {
+        if timeIndex <= 7 && timeIndex < numberOfCards {
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
-        if timeIndex > 7 && timeIndex < 15 {
+        if timeIndex > 7 && timeIndex < numberOfCards {
             Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
-        if timeIndex == 15 {
+        if timeIndex == numberOfCards {
             deckImageView.isUserInteractionEnabled = true
         }
     }
@@ -204,6 +205,7 @@ class FlashCardViewController: UIViewController {
     
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
+        cardManager.setUpCardFront(cardFront)
         cardFront.tag = cardManager.session.cardIndex
         let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
         leftSGR.direction = UISwipeGestureRecognizerDirection.left
@@ -211,15 +213,13 @@ class FlashCardViewController: UIViewController {
         let rightSGR = UISwipeGestureRecognizer(target: self, action: #selector(markRight(_:)))
         rightSGR.direction = UISwipeGestureRecognizerDirection.right
         cardFront.addGestureRecognizer(rightSGR)
+        cardFront.answerSpeakerLabel.alpha = 0
         cardFront.answerLabel.alpha = 0
         cardFront.layer.cornerRadius = 8
         cardFront.layer.borderColor = UIColor.black.cgColor
         cardFront.layer.borderWidth = 3.0
         cardFront.backgroundColor = UIColor.white
         cardFront.translatesAutoresizingMaskIntoConstraints = false
-        
-        cardFront.questionLabel.text = cardManager.setCardQuestion()
-        cardFront.answerLabel.text = cardManager.setCardAnswer()
      
         return cardFront
     }

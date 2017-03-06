@@ -61,8 +61,10 @@ class CardView: UIView, AVAudioRecorderDelegate {
     
     @IBAction func showAnswer(_ sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.5, animations: {
-            self.answerLabel.alpha = 1
-            
+            if self.answerLabel.alpha != 1 {
+                self.answerSpeakerLabel.alpha = 1
+                self.answerLabel.alpha = 1
+            }
         })
     }
     

@@ -23,7 +23,6 @@ class CardViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let cardView = setUpCardView()
-        cardView.isUserInteractionEnabled = false
         cardView.addSubview(cardFront)
         cardView.addSubview(cardBack)
         view.addSubview(cardView)
@@ -63,16 +62,15 @@ class CardViewController: UIViewController {
     
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
+        let sessionIndex = cardManager.session.cardIndex
+        cardManager.session.cardIndex = cardIndex
+        cardManager.setUpCardFront(cardFront)
+        cardManager.session.cardIndex = sessionIndex
         cardFront.layer.cornerRadius = 8
         cardFront.layer.borderColor = UIColor.black.cgColor
         cardFront.layer.borderWidth = 3.0
         cardFront.backgroundColor = UIColor.white
         cardFront.translatesAutoresizingMaskIntoConstraints = false
-        let sessionIndex = cardManager.session.cardIndex
-        cardManager.session.cardIndex = cardIndex
-        cardFront.questionLabel.text = cardManager.setCardQuestion()
-        cardFront.answerLabel.text = cardManager.setCardAnswer()
-        cardManager.session.cardIndex = sessionIndex
         return cardFront
     }
 

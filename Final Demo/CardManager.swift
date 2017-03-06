@@ -160,6 +160,24 @@ extension CardManager {
         return
     }
     
+    func setUpCardFront(_ cardView: CardView) {
+        let card = getCurrentCard()
+        if let card = card {
+            cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
+            cardView.questionLabel.text = card.question ?? "No text"
+            cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
+            cardView.answerLabel.text = card.answer ?? "No text"
+        }
+    }
+    
+    func setCardQuestionSpeaker() -> String {
+        let card = getCurrentCard()
+        if let card = card {
+            return card.questionSpeaker ?? "No text"
+        }
+        return "No text"
+    }
+
     func setCardQuestion() -> String {
         let card = getCurrentCard()
         if let card = card {
@@ -168,7 +186,15 @@ extension CardManager {
         return "No text"
     }
     
-    func setCardAnswer() -> String {
+    func setCardAnswerSpeaker() -> String {
+        let card = getCurrentCard()
+        if let card = card {
+            return card.question ?? "No text"
+        }
+        return "No text"
+    }
+    
+func setCardAnswer() -> String {
         let card = getCurrentCard()
         if let card = card {
             return card.answer ?? "No text"
@@ -282,10 +308,6 @@ extension CardManager {
             return false
         }
         let card = currentCards[(session.cardIndex)]
-        print("\(card.sameLine)")
-        print ("\(card.question)")
-        print("\(card.answer)")
-        print ("next")
         return card.sameLine
     }
 }
