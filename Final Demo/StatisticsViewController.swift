@@ -22,6 +22,13 @@ class StatisticsViewController: SelectionTableViewController {
     var typeChanged = false
     
     override func viewDidLoad() {
+        
+        let newLayer = CAGradientLayer()
+        newLayer.colors = [UIColor(red:1.00, green:0.00, blue:0.00, alpha:1.0).cgColor,UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor, UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0).cgColor]
+        newLayer.frame = view.frame
+        view.layer.addSublayer(newLayer)
+        view.layer.insertSublayer(newLayer, at: 0)
+        
         setIndex = cardManager.setIndex
         categoryIndex = cardManager.categoryIndex
         typeIndex = cardManager.typeIndex

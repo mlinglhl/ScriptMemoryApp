@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esz-N1-XDI">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esz-N1-XDI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -335,10 +335,12 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="3qv-1g-eew" customClass="SegControllerStyleManager" customModule="Final_Demo" customModuleProvider="target">
                             <rect key="frame" x="136" y="7" width="103" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
                                 <segment title="Script"/>
                                 <segment title="Artist"/>
                             </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="changeType:" destination="XTV-f8-oHA" eventType="valueChanged" id="pwP-rG-f6c"/>
                             </connections>
@@ -419,10 +421,12 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="4bs-Qb-U2l" customClass="SegControllerStyleManager" customModule="Final_Demo" customModuleProvider="target">
                             <rect key="frame" x="136" y="8" width="103" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
                                 <segment title="Script"/>
                                 <segment title="Artist"/>
                             </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="changeSegment:" destination="oVZ-ne-Usr" eventType="valueChanged" id="l88-XC-kK7"/>
                             </connections>
@@ -564,15 +568,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oTJ-Ks-A1P" customClass="SegControllerStyleManager" customModule="Final_Demo" customModuleProvider="target">
-                                <rect key="frame" x="8" y="72" width="359" height="29"/>
-                                <segments>
-                                    <segment title="Act 1"/>
-                                    <segment title="Act 2"/>
-                                    <segment title="All"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hmV-1P-W7j" customClass="TableViewStyleManager" customModule="Final_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="137" width="375" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -585,13 +580,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kz5-3Q-rAk">
-                                                    <rect key="frame" x="8" y="11" width="306.5" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="306" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAA-AR-Cbo">
-                                                    <rect key="frame" x="322.5" y="11" width="44.5" height="21"/>
+                                                    <rect key="frame" x="322" y="11" width="45" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44.5" id="HIU-rb-fKd"/>
                                                     </constraints>
@@ -623,7 +618,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 80%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09t-b7-xxa">
-                                <rect key="frame" x="142" y="108" width="91.5" height="21"/>
+                                <rect key="frame" x="142" y="108" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -632,15 +627,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="oTJ-Ks-A1P" firstAttribute="top" secondItem="AtY-ci-bqC" secondAttribute="bottom" constant="8" id="41n-3V-h00"/>
                             <constraint firstItem="hmV-1P-W7j" firstAttribute="top" secondItem="09t-b7-xxa" secondAttribute="bottom" constant="8" id="47A-6k-vWw"/>
                             <constraint firstItem="3s5-js-87s" firstAttribute="top" secondItem="hmV-1P-W7j" secondAttribute="bottom" id="8Db-tk-SWg"/>
-                            <constraint firstItem="oTJ-Ks-A1P" firstAttribute="leading" secondItem="aQj-zZ-qaK" secondAttribute="leading" constant="8" id="8PU-Fl-sPF"/>
-                            <constraint firstItem="09t-b7-xxa" firstAttribute="top" secondItem="oTJ-Ks-A1P" secondAttribute="bottom" constant="8" id="Ao2-Fc-EBA"/>
                             <constraint firstItem="hmV-1P-W7j" firstAttribute="leading" secondItem="aQj-zZ-qaK" secondAttribute="leading" id="Dgf-Th-Nm7"/>
                             <constraint firstAttribute="trailing" secondItem="hmV-1P-W7j" secondAttribute="trailing" id="ImI-lb-KPm"/>
                             <constraint firstItem="09t-b7-xxa" firstAttribute="centerX" secondItem="aQj-zZ-qaK" secondAttribute="centerX" id="hkO-oJ-exO"/>
-                            <constraint firstAttribute="trailing" secondItem="oTJ-Ks-A1P" secondAttribute="trailing" constant="8" id="mlh-6o-Soq"/>
+                            <constraint firstItem="09t-b7-xxa" firstAttribute="top" secondItem="AtY-ci-bqC" secondAttribute="bottom" constant="44" id="ua5-gz-faG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dix-Qa-OOf">
