@@ -161,11 +161,7 @@ class FlashCardViewController: UIViewController {
         card.clipsToBounds = true
         card.layer.cornerRadius = 8
         view.addSubview(card)
-        var numberOfCards = 15
-        let cards = cardManager.getCardArray()
-        if let cards = cards {
-            numberOfCards = cards.count
-        }
+        let numberOfCards = cardManager.session.deck.count
         UIView.animate(withDuration: 0.2, animations: {
             card.frame = self.deckImageView.frame
         }, completion: { _ in

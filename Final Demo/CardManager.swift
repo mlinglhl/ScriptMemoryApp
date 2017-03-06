@@ -119,7 +119,7 @@ extension CardManager {
         var numberWrong = 0
         var isDone = false
         var cardRecord = [Int: (Int, Int)]()
-        var sessionIndex = 0
+        var deck = [CardObject]()
         
         init(setName: String, categoryName: String) {
             self.setName = setName
@@ -131,6 +131,10 @@ extension CardManager {
         let setName = activeArray[setIndex].name!
         let category = activeArray[setIndex].categoryObjects?.object(at: categoryIndex) as! CategoryObject
         session = CardSession(setName: setName, categoryName: category.name!)
+        let cards = getCardArray()
+        if let cards = cards {
+            session.deck = cards
+        }
     }
     
     func markCard(_ index: Int, isCorrect: Bool) {
@@ -139,72 +143,30 @@ extension CardManager {
         }
         var correctAmount = session.cardRecord[index]!.0
         var wrongAmount = session.cardRecord[index]!.1
-        let cards = getCardArray()
+        let cards = session.deck
         if isCorrect {
             correctAmount += 1
             session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
-            if let cards = cards {
-                cards[index].correct += 1
-                dataManager.saveContext()
-                return
-            }
-        }
-        wrongAmount += 1
-        session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
-        if let cards = cards {
-            cards[index].wrong += 1
+            cards[index].correct += 1
             dataManager.saveContext()
             return
         }
-        print("Could not reach card")
-        return
-    }
-    
+        wrongAmount += 1
+        session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
+            cards[index].wrong += 1
+            dataManager.saveContext()
+        }
+
     func setUpCardFront(_ cardView: CardView) {
-        let card = getCurrentCard()
-        if let card = card {
+        let card = session.deck[session.cardIndex]
             cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
             cardView.questionLabel.text = card.question ?? "No text"
             cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
             cardView.answerLabel.text = card.answer ?? "No text"
-        }
-    }
-    
-    func setCardQuestionSpeaker() -> String {
-        let card = getCurrentCard()
-        if let card = card {
-            return card.questionSpeaker ?? "No text"
-        }
-        return "No text"
-    }
-
-    func setCardQuestion() -> String {
-        let card = getCurrentCard()
-        if let card = card {
-            return card.question ?? "No text"
-        }
-        return "No text"
-    }
-    
-    func setCardAnswerSpeaker() -> String {
-        let card = getCurrentCard()
-        if let card = card {
-            return card.question ?? "No text"
-        }
-        return "No text"
-    }
-    
-func setCardAnswer() -> String {
-        let card = getCurrentCard()
-        if let card = card {
-            return card.answer ?? "No text"
-        }
-        return "No text"
     }
     
     func getCurrentCard() -> CardObject? {
-        let cards = getCardArray()
-        return cards?[session.cardIndex]
+        return session.deck[session.cardIndex]
     }
     
     func getScore() -> String {
@@ -273,7 +235,6 @@ func setCardAnswer() -> String {
     
     func resetDeck() {
         session.cardIndex = 0
-        session.sessionIndex += 1
     }
     
     func getSessionResults() -> [Int] {
@@ -281,21 +242,7 @@ func setCardAnswer() -> String {
     }
     
     func checkLast() -> Bool {
-        if activeArray.count < setIndex + 1 {
-            print ("No sets found")
-            return true
-        }
-        let categories = activeArray[setIndex].categoryObjectsArray()
-        if categories.count < categoryIndex + 1 {
-            print ("No categories found")
-            return true
-        }
-        let sections = categories[categoryIndex].sectionObjectsArray()
-        if sections.count < sectionIndex + 1 {
-            print ("No sections found")
-            return true
-        }
-        let cards = sections[sectionIndex].cardObjectsArray()
+        let cards = session.deck
         if session.cardIndex == cards.count {
             return true
         }
@@ -303,11 +250,8 @@ func setCardAnswer() -> String {
     }
     
     func nextCardSameLine() -> Bool {
-        let cards = getCardArray()
-        guard let currentCards = cards else {
-            return false
-        }
-        let card = currentCards[(session.cardIndex)]
+        let cards = session.deck
+        let card = cards[session.cardIndex]
         return card.sameLine
     }
 }
