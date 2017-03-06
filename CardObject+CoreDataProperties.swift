@@ -2,7 +2,7 @@
 //  CardObject+CoreDataProperties.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-03-04.
+//  Created by Minhung Ling on 2017-03-05.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -18,16 +18,16 @@ extension CardObject {
     }
 
     @NSManaged public var answer: String?
-    @NSManaged public var questionAudio: NSData?
-    @NSManaged public var correct: Int16
-    @NSManaged public var multiPerson: Bool
-    @NSManaged public var index: Int16
-    @NSManaged public var part: String?
-    @NSManaged public var question: String?
-    @NSManaged public var wrong: Int16
     @NSManaged public var answerAudio: NSData?
     @NSManaged public var answerSpeaker: String?
+    @NSManaged public var correct: Int16
+    @NSManaged public var index: Int16
+    @NSManaged public var sameLine: Bool
+    @NSManaged public var part: String?
+    @NSManaged public var question: String?
+    @NSManaged public var questionAudio: NSData?
     @NSManaged public var questionSpeaker: String?
+    @NSManaged public var wrong: Int16
     @NSManaged public var sectionObject: NSSet?
 
 }

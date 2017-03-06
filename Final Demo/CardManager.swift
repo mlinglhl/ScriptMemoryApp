@@ -255,7 +255,6 @@ extension CardManager {
     }
     
     func checkLast() -> Bool {
-        session.cardIndex += 1
         if activeArray.count < setIndex + 1 {
             print ("No sets found")
             return true
@@ -275,6 +274,19 @@ extension CardManager {
             return true
         }
         return false
+    }
+    
+    func nextCardSameLine() -> Bool {
+        let cards = getCardArray()
+        guard let currentCards = cards else {
+            return false
+        }
+        let card = currentCards[(session.cardIndex)]
+        print("\(card.sameLine)")
+        print ("\(card.question)")
+        print("\(card.answer)")
+        print ("next")
+        return card.sameLine
     }
 }
 
@@ -358,7 +370,7 @@ extension CardManager {
             }
             let cardCorrect = Double(correct)
             let cardWrong = Double(wrong)
-
+            
             statsArray.append(Double(cardCorrect/(cardCorrect + cardWrong)*100))
         }
         return statsArray

@@ -27,12 +27,6 @@ class FlashCardViewController: UIViewController {
         super.viewDidLoad()
    
         AVAudioSession.sharedInstance().requestRecordPermission() { _ in
-//            [unowned self] allowed in
-//            if allowed {
-//                print ("YAY")
-//            } else {
-//                print ("NOOOO")
-//            }
         }
         
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "wood"))
@@ -49,6 +43,10 @@ class FlashCardViewController: UIViewController {
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
+        makeCard()
+    }
+    
+    func makeCard() {
         if deckImageView.image == nil {
             self.deckImageView.isUserInteractionEnabled = false
             self.cardManager.resetDeck()
@@ -103,6 +101,7 @@ class FlashCardViewController: UIViewController {
         }, completion: { _ in
             UIView.transition(from: cardBack, to: cardFront, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
         })
+        cardManager.session.cardIndex += 1
         if cardManager.checkLast() {
             self.deckImageView.image = nil
             self.deckImageView.layer.borderColor = UIColor.yellow.cgColor
@@ -124,6 +123,7 @@ class FlashCardViewController: UIViewController {
                 self.wrongLabel.isHidden = true
                 self.leftArrowImageView.isHidden = true
             })
+        checkSameLine()
         }
     }
     
@@ -136,19 +136,22 @@ class FlashCardViewController: UIViewController {
                 card.frame = newFrame
                 self.rightLabel.isHidden = false
                 self.rightArrowImageView.isHidden = false
-
-                
             }, completion: { _ in
                 card.superview?.removeFromSuperview()
                 self.rightLabel.isHidden = true
                 self.rightArrowImageView.isHidden = true
             })
+            checkSameLine()
         }
     }
    
-    
-    
-   
+    func checkSameLine() {
+        if !cardManager.checkLast() {
+            if cardManager.nextCardSameLine() {
+                makeCard()
+            }
+        }
+    }
     
     //MARK helper methods
     

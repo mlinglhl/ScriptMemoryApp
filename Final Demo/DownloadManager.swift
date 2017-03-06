@@ -18,17 +18,15 @@ class DownloadManager: NSObject {
         let categoryIndex: Int
         let questionSpeaker: String
         let answerSpeaker: String
-        let multiPerson: Bool
         let index: Int
         
-        init(question: String, answer: String, section: String, categoryIndex: Int, questionSpeaker: String, answerSpeaker: String, multiPerson: Bool, index: Int) {
+        init(question: String, answer: String, section: String, categoryIndex: Int, questionSpeaker: String, answerSpeaker: String, index: Int) {
             self.question = question
             self.answer = answer
             self.section = section
             self.categoryIndex = categoryIndex
             self.questionSpeaker = questionSpeaker
             self.answerSpeaker = answerSpeaker
-            self.multiPerson = multiPerson
             self.index = index
         }
     }
@@ -53,29 +51,16 @@ class DownloadManager: NSObject {
         }
     }
     
-    struct HelperObject {
-        var line: String
-        var section: String
-        var category: String
-        
-        init(line: String, section: String, category: String) {
-            self.line = line
-            self.section = section
-            self.category = category
-        }
-    }
-    
-    @IBOutlet weak var textview: UITextView!
-    
     let dataManager = DataManager.sharedInstance
     var cardArray = [Card]()
-    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
-    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
+    var cardHolder = Card(question: "", answer: "", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", index: 9999)
+    var previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", index: 9999)
     var setName = ""
     var setType = ""
     var categories = NSMutableOrderedSet()
     var categoryArray = [CardCategory]()
     var cardIndex = 0
+    var previousAnswer: String?
     
     func makeCardsWithUrl(_ urlString: String, completion: @escaping () -> Void) {
         
@@ -117,13 +102,9 @@ class DownloadManager: NSObject {
                         section = self.previousCard.section
                     }
                     if section != self.previousCard.section {
-                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", multiPerson: false, index: 9999)
+                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", index: 9999)
                     }
-                    var multiPerson = false
-                    if self.previousCard.answerSpeaker != dictCategory {
-                        multiPerson = true
-                    }
-                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, multiPerson: multiPerson, index: self.cardIndex)
+                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, index: self.cardIndex)
                     self.cardArray.append(card)
                     self.cardHolder = card
                 }
@@ -159,6 +140,7 @@ class DownloadManager: NSObject {
             set.addToCategoryObjects(categoryObject)
             categoryObject.name = category.name
             for section in category.sections {
+                self.previousAnswer = nil
                 let sectionObject = dataManager.generateSectionObject()
                 categoryObject.addToSectionObjects(sectionObject)
                 sectionObject.name = section.name
@@ -169,8 +151,12 @@ class DownloadManager: NSObject {
                     cardObject.answer = card.answer
                     cardObject.questionSpeaker = card.questionSpeaker
                     cardObject.answerSpeaker = card.answerSpeaker
-                    cardObject.multiPerson = card.multiPerson
+                    cardObject.sameLine = false
+                    if card.question == previousAnswer {
+                        cardObject.sameLine = true
+                    }
                     cardObject.index = Int16(card.index)
+                    previousAnswer = cardObject.answer
                 }
             }
         }

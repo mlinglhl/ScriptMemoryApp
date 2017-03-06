@@ -45,14 +45,14 @@
 
 /* Begin PBXFileReference section */
 		89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
-		89356AC01E6BA328003989C6 /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356AC11E6BA328003989C6 /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89356AC21E6BA328003989C6 /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356AC31E6BA328003989C6 /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89356AC41E6BA328003989C6 /* CardObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356AC51E6BA328003989C6 /* CardObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		89356AC61E6BA328003989C6 /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		89356AC71E6BA328003989C6 /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AD11E6CE896003989C6 /* CardObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AD21E6CE896003989C6 /* CardObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AD31E6CE896003989C6 /* CategoryObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AD41E6CE896003989C6 /* CategoryObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AD51E6CE896003989C6 /* SetObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AD61E6CE896003989C6 /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AD71E6CE896003989C6 /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		89356AD81E6CE896003989C6 /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
 		89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCharacter.swift; sourceTree = "<group>"; };
@@ -104,14 +104,14 @@
 		89D279931E57B9B600CF4082 = {
 			isa = PBXGroup;
 			children = (
-				89356AC01E6BA328003989C6 /* CategoryObject+CoreDataClass.swift */,
-				89356AC11E6BA328003989C6 /* CategoryObject+CoreDataProperties.swift */,
-				89356AC21E6BA328003989C6 /* SetObject+CoreDataClass.swift */,
-				89356AC31E6BA328003989C6 /* SetObject+CoreDataProperties.swift */,
-				89356AC41E6BA328003989C6 /* CardObject+CoreDataClass.swift */,
-				89356AC51E6BA328003989C6 /* CardObject+CoreDataProperties.swift */,
-				89356AC61E6BA328003989C6 /* SectionObject+CoreDataClass.swift */,
-				89356AC71E6BA328003989C6 /* SectionObject+CoreDataProperties.swift */,
+				89356AD11E6CE896003989C6 /* CardObject+CoreDataClass.swift */,
+				89356AD21E6CE896003989C6 /* CardObject+CoreDataProperties.swift */,
+				89356AD31E6CE896003989C6 /* CategoryObject+CoreDataClass.swift */,
+				89356AD41E6CE896003989C6 /* CategoryObject+CoreDataProperties.swift */,
+				89356AD51E6CE896003989C6 /* SetObject+CoreDataClass.swift */,
+				89356AD61E6CE896003989C6 /* SetObject+CoreDataProperties.swift */,
+				89356AD71E6CE896003989C6 /* SectionObject+CoreDataClass.swift */,
+				89356AD81E6CE896003989C6 /* SectionObject+CoreDataProperties.swift */,
 				89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */,
 				89D2799E1E57B9B600CF4082 /* Final Demo */,
 				89D2799D1E57B9B600CF4082 /* Products */,
@@ -141,8 +141,6 @@
 				89D279A31E57B9B600CF4082 /* Main.storyboard */,
 				89D279A91E57B9B600CF4082 /* Assets.xcassets */,
 				89D279AB1E57B9B600CF4082 /* LaunchScreen.storyboard */,
-				89D279AE1E57B9B600CF4082 /* Info.plist */,
-				89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */,
 				89D2799F1E57B9B600CF4082 /* AppDelegate.swift */,
 				89D279C61E58C38A00CF4082 /* CardView.swift */,
 				89D279C81E58C4A200CF4082 /* CardView.xib */,
@@ -163,6 +161,8 @@
 				A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */,
 				A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */,
 				A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */,
+				89D279AE1E57B9B600CF4082 /* Info.plist */,
+				89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */,
 			);
 			path = "Final Demo";
 			sourceTree = "<group>";
