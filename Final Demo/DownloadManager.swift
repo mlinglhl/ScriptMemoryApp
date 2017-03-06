@@ -85,28 +85,54 @@ class DownloadManager: NSObject {
                     self.setType = dict["Type"] ?? ""
                 }
                 var dictCategory = dict["Category"] ?? ""
-                if dictCategory == "" {
-                    dictCategory = self.previousCard.answerSpeaker
+                let answer = dict["Line"] ?? ""
+                var section = dict["Section"] ?? ""
+                if section == "" {
+                    section = self.previousCard.section
                 }
-                let whiteSpaceReducedDictCategory = dictCategory.replacingOccurrences(of: ", ", with: ",")
-                let tempCategoryArray = whiteSpaceReducedDictCategory.components(separatedBy: ",")
-                for category in tempCategoryArray {
-                    if !self.categories.contains(category){
-                        self.categories.add(category)
-                        self.categoryArray.append(CardCategory(name: category))
+                if section != self.previousCard.section {
+                    self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", index: 9999)
+                }
+                switch self.setType {
+                case "Script":
+                    if dictCategory == "" {
+                        dictCategory = self.previousCard.answerSpeaker
                     }
-                    let categoryIndex = self.categories.index(of: category)
-                    let answer = dict["Line"] ?? ""
-                    var section = dict["Section"] ?? ""
-                    if section == "" {
-                        section = self.previousCard.section
+                    let whiteSpaceReducedDictCategory = dictCategory.replacingOccurrences(of: ", ", with: ",")
+                    let tempCategoryArray = whiteSpaceReducedDictCategory.components(separatedBy: ",")
+                    for category in tempCategoryArray {
+                        if !self.categories.contains(category){
+                            self.categories.add(category)
+                            self.categoryArray.append(CardCategory(name: category))
+                        }
+                        let categoryIndex = self.categories.index(of: category)
+                        let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, index: self.cardIndex)
+                        self.cardArray.append(card)
+                        self.cardHolder = card
                     }
-                    if section != self.previousCard.section {
-                        self.previousCard = Card(question: "", answer: "First line", section: "", categoryIndex: 0, questionSpeaker: "", answerSpeaker: "", index: 9999)
+                    break
+                case "Artist":
+                    if dictCategory != "" {
+                        if !self.categories.contains(dictCategory){
+                            self.categories.add(dictCategory)
+                            self.categoryArray.append(CardCategory(name: dictCategory))
+                        }
                     }
-                    let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, index: self.cardIndex)
-                    self.cardArray.append(card)
-                    self.cardHolder = card
+                    let categoryIndex = self.categoryArray.count - 1
+                    let whiteSpaceReducedAnswer = answer.replacingOccurrences(of: ": ", with: ":")
+                    let tempAnswerArray = whiteSpaceReducedAnswer.components(separatedBy: ":")
+                    if tempAnswerArray.count == 2 {
+                        let card = Card(question: self.previousCard.answer, answer: tempAnswerArray[1], section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: tempAnswerArray[0], index: self.cardIndex)
+                        self.cardArray.append(card)
+                        self.cardHolder = card
+                    } else {
+                        let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, index: self.cardIndex)
+                        self.cardArray.append(card)
+                        self.cardHolder = card
+                    }
+                    break
+                default:
+                    break
                 }
                 self.previousCard = self.cardHolder
             }

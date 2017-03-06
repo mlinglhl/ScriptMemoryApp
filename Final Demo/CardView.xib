@@ -26,8 +26,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnswerSpeaker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIX-tZ-e6l">
-                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnswerSpeaker" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIX-tZ-e6l">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -38,6 +38,7 @@
                         <constraint firstItem="bIX-tZ-e6l" firstAttribute="top" secondItem="PNq-Ms-Cue" secondAttribute="top" id="0hj-uv-2uL"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="top" secondItem="bIX-tZ-e6l" secondAttribute="bottom" id="8rt-c0-tbP"/>
                         <constraint firstItem="bIX-tZ-e6l" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="Vl0-Xw-abm"/>
+                        <constraint firstItem="bIX-tZ-e6l" firstAttribute="width" secondItem="PNq-Ms-Cue" secondAttribute="width" id="gft-Lq-3ZP"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="nc3-gT-mB0"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="width" secondItem="PNq-Ms-Cue" secondAttribute="width" id="zmX-LR-5Uw"/>
                     </constraints>
@@ -51,8 +52,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuestionSpeaker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsZ-j4-KxB">
-                            <rect key="frame" x="0.0" y="0.0" width="131.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuestionSpeaker" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsZ-j4-KxB">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -60,6 +61,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="tsZ-j4-KxB" firstAttribute="leading" secondItem="HyV-CB-gqp" secondAttribute="leading" id="12J-XF-0gX"/>
+                        <constraint firstItem="tsZ-j4-KxB" firstAttribute="width" secondItem="HyV-CB-gqp" secondAttribute="width" id="BCG-VU-aT0"/>
                         <constraint firstItem="xW8-Xf-v0y" firstAttribute="top" secondItem="tsZ-j4-KxB" secondAttribute="bottom" id="S4c-ox-t24"/>
                         <constraint firstItem="xW8-Xf-v0y" firstAttribute="width" secondItem="HyV-CB-gqp" secondAttribute="width" id="h5M-vV-WCm"/>
                         <constraint firstItem="xW8-Xf-v0y" firstAttribute="leading" secondItem="HyV-CB-gqp" secondAttribute="leading" id="qte-gC-wXR"/>
@@ -140,7 +142,7 @@
                 <outlet property="questionSpeakerLabel" destination="tsZ-j4-KxB" id="q9L-27-ruL"/>
                 <outletCollection property="gestureRecognizers" destination="FVI-Zp-rvv" appends="YES" id="fcM-BC-U0v"/>
             </connections>
-            <point key="canvasLocation" x="114" y="-302"/>
+            <point key="canvasLocation" x="113.5" y="-302.5"/>
         </view>
         <tapGestureRecognizer id="FVI-Zp-rvv">
             <connections>

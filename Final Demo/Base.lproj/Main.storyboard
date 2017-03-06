@@ -365,7 +365,6 @@
                         <outlet property="setTextField" destination="Quk-4z-hcL" id="ahS-tl-6qF"/>
                         <outlet property="songLabel" destination="Poc-pE-ClG" id="Y4g-UU-e3E"/>
                         <outlet property="songLabelHeight" destination="uQZ-Pq-g1R" id="TQm-cb-Iaj"/>
-                        <outlet property="tableViewHeightConstraint" destination="sRp-b3-OOo" id="fuo-sY-699"/>
                         <outlet property="typeSegmentedControl" destination="3qv-1g-eew" id="SyE-sa-4Uu"/>
                     </connections>
                 </viewController>

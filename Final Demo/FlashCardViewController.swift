@@ -97,7 +97,7 @@ class FlashCardViewController: UIViewController {
             }
             self.activeAnchorArray.append(tempArray)
             self.view.layoutIfNeeded()
-            cardFront.questionScrollView.contentSize = cardFront.questionLabel.frame.size
+            cardFront.questionScrollView.contentSize = CGSize(width: cardFront.frame.width, height: cardFront.questionSpeakerLabel.frame.height + cardFront.questionLabel.frame.height)
             cardFront.answerScrollView.contentSize = cardFront.answerLabel.frame.size
         }, completion: { _ in
             UIView.transition(from: cardBack, to: cardFront, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
