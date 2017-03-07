@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AddCardViewController: SelectionTableViewController {
+class AddCardViewController: UIViewController {
     
     var constraintArrayScript: [NSLayoutConstraint]!
     var constraintArraySong: [NSLayoutConstraint]!
     
     @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var setTextField: UITextField!
+    @IBOutlet weak var typeSegmentedControl: SegControllerStyleManager!
     
     @IBOutlet weak var questionLabel: UILabel!
   
@@ -121,16 +122,16 @@ class AddCardViewController: SelectionTableViewController {
     }
     
     func setUp() {
-        questionTextView.layer.borderColor = UIColor.lightGray.cgColor
-        questionTextView.layer.borderWidth = 3
-        answerTextView.layer.borderColor = UIColor.lightGray.cgColor
-        answerTextView.layer.borderWidth = 3
+       // questionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        //questionTextView.layer.borderWidth = 3
+        //answerTextView.layer.borderColor = UIColor.lightGray.cgColor
+       // answerTextView.layer.borderWidth = 3
 
-        constraintArrayScript = [
+        /*constraintArrayScript = [
             categoryLabelLeadingSpaceScript,
             questionCharacterTextFieldYAnchorScript,
             categoryTextFieldYAnchorScript
-        ]
+        ]*/
         
         constraintArraySong = [
             categoryTextField.leadingAnchor.constraint(equalTo: songLabel.trailingAnchor, constant: 8),
@@ -138,7 +139,7 @@ class AddCardViewController: SelectionTableViewController {
             questionCharacterTextField.centerYAnchor.constraint(equalTo: songLabel.centerYAnchor)
         ]
     }
-    
+ 
     @IBAction func goHome(_ sender: UIBarButtonItem) {
         _ = navigationController?.popToRootViewController(animated: true)
     }
