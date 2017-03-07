@@ -11,7 +11,7 @@ import UIKit
 class CardViewController: UIViewController {
     let cardManager = CardManager.sharedInstance
     var cardBack: UIView!
-    var cardFront: UIView!
+    var cardFront: CardView!
     var cardIndex = 0
     
     override func viewDidLoad() {
@@ -39,6 +39,8 @@ class CardViewController: UIViewController {
         cardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
         cardView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cardView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        cardFront.questionScrollView.contentSize = CGSize(width: cardFront.questionLabel.frame.width, height: cardFront.questionSpeakerLabel.frame.height + cardFront.questionLabel.frame.height + 10)
+        cardFront.answerScrollView.contentSize = CGSize(width: cardFront.answerLabel.frame.width, height: cardFront.answerSpeakerLabel.frame.height + cardFront.answerLabel.frame.height + 10)
     }
     
     override func viewDidAppear(_ animated: Bool) {
