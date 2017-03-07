@@ -17,8 +17,9 @@ class CardManager: NSObject {
     var categoryIndex = 0
     var sectionIndex = 0
     var typeIndex = 0
-    var session = CardSession(setName: "Default", categoryName: "Default")
+    var session = CardSession()
     let dataManager = DataManager.sharedInstance
+    var randomMode = false
     
     static let sharedInstance = CardManager()
     private override init() {}
@@ -112,28 +113,28 @@ class CardManager: NSObject {
 
 extension CardManager {
     struct CardSession {
-        var setName: String!
-        var categoryName: String!
         var cardIndex = 0
         var numberCorrect = 0
         var numberWrong = 0
-        var isDone = false
         var cardRecord = [Int: (Int, Int)]()
         var deck = [CardObject]()
-        
-        init(setName: String, categoryName: String) {
-            self.setName = setName
-            self.categoryName = categoryName
-        }
     }
     
     func startSession() {
-        let setName = activeArray[setIndex].name!
-        let category = activeArray[setIndex].categoryObjects?.object(at: categoryIndex) as! CategoryObject
-        session = CardSession(setName: setName, categoryName: category.name!)
+        session = CardSession()
         let cards = getCardArray()
         if let cards = cards {
-            session.deck = cards
+            var cardArray = cards
+            if randomMode == true {
+                var tempArray = [CardObject]()
+                for _ in 0..<cards.count {
+                    let randomNumber = Int(arc4random_uniform(UInt32(cardArray.count)))
+                    tempArray.append(cards[randomNumber])
+                    cardArray.remove(at: randomNumber)
+                }
+                cardArray = tempArray
+            }
+            session.deck = cardArray
         }
     }
     
