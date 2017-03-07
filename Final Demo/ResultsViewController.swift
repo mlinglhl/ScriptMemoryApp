@@ -17,6 +17,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
+        cardManager.trimExtraCards()
         super.viewDidLoad()
         orderedSession = cardManager.getSessionResults()
         scoreLabel.text = cardManager.getScore()
@@ -66,5 +67,10 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cvc = segue.destination as! CardViewController
             cvc.cardIndex = resultsTableView.indexPathForSelectedRow!.row
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cardManager.restoreExtraCards()
     }
 }

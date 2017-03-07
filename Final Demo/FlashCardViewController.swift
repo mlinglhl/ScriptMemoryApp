@@ -25,7 +25,7 @@ class FlashCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
         AVAudioSession.sharedInstance().requestRecordPermission() { _ in
         }
         
@@ -34,7 +34,7 @@ class FlashCardViewController: UIViewController {
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
         cardManager.startSession()
         
-       
+        
         
         self.rightLabel.isHidden = true
         self.wrongLabel.isHidden = true
@@ -102,7 +102,6 @@ class FlashCardViewController: UIViewController {
         }, completion: { _ in
             UIView.transition(from: cardBack, to: cardFront, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
         })
-        cardManager.session.cardIndex += 1
         if cardManager.checkLast() {
             self.deckImageView.isUserInteractionEnabled = true
             self.deckImageView.image = nil
@@ -126,6 +125,10 @@ class FlashCardViewController: UIViewController {
                 self.leftArrowImageView.isHidden = true
             })
             if !cardManager.checkLast() {
+                if deckImageView.image == nil {
+                    deckImageView.image = #imageLiteral(resourceName: "cardBack")
+                }
+                cardManager.session.cardIndex += 1
                 makeCard()
             }
         }
@@ -146,6 +149,7 @@ class FlashCardViewController: UIViewController {
                 self.rightArrowImageView.isHidden = true
             })
             if !cardManager.checkLast() {
+                cardManager.session.cardIndex += 1
                 makeCard()
             }
         }
@@ -202,7 +206,7 @@ class FlashCardViewController: UIViewController {
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
         cardManager.setUpCardFront(cardFront)
-        cardFront.tag = cardManager.session.cardIndex
+        cardFront.tag = Int(cardManager.session.deck[cardManager.session.cardIndex].index)
         let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
         leftSGR.direction = UISwipeGestureRecognizerDirection.left
         cardFront.addGestureRecognizer(leftSGR)
@@ -216,7 +220,7 @@ class FlashCardViewController: UIViewController {
         cardFront.layer.borderWidth = 3.0
         cardFront.backgroundColor = UIColor.white
         cardFront.translatesAutoresizingMaskIntoConstraints = false
-     
+        
         return cardFront
     }
 }

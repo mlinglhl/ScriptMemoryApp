@@ -20,6 +20,7 @@ class CardManager: NSObject {
     var session = CardSession()
     let dataManager = DataManager.sharedInstance
     var randomMode = false
+    var failedCardsAtEnd = false
     
     static let sharedInstance = CardManager()
     private override init() {}
@@ -118,6 +119,8 @@ extension CardManager {
         var numberWrong = 0
         var cardRecord = [Int: (Int, Int)]()
         var deck = [CardObject]()
+        var extraCardCount = 0
+        var extraCards = [CardObject]()
     }
     
     func startSession() {
@@ -148,13 +151,17 @@ extension CardManager {
         if isCorrect {
             correctAmount += 1
             session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
-            cards[index].correct += 1
+            cards[session.cardIndex].correct += 1
             dataManager.saveContext()
             return
         }
         wrongAmount += 1
         session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
-        cards[index].wrong += 1
+        cards[session.cardIndex].wrong += 1
+        if failedCardsAtEnd {
+            session.deck.append(cards[session.cardIndex])
+            session.extraCardCount += 1
+        }
         dataManager.saveContext()
     }
     
@@ -236,6 +243,9 @@ extension CardManager {
     
     func resetDeck() {
         session.cardIndex = 0
+        trimExtraCards()
+        session.extraCards.removeAll()
+        session.extraCardCount = 0
     }
     
     func getSessionResults() -> [Int] {
@@ -244,7 +254,7 @@ extension CardManager {
     
     func checkLast() -> Bool {
         let cards = session.deck
-        if session.cardIndex == cards.count {
+        if session.cardIndex == cards.count - 1 {
             return true
         }
         return false
@@ -254,6 +264,24 @@ extension CardManager {
         let cards = session.deck
         let card = cards[session.cardIndex]
         return card.sameLine
+    }
+    
+    func trimExtraCards() {
+        if session.extraCardCount > 0 {
+            for _ in 0..<session.extraCardCount {
+                session.extraCards.append(session.deck.last!)
+                session.deck.removeLast()
+            }
+        }
+    }
+    
+    func restoreExtraCards() {
+        if session.extraCardCount > 0 {
+            for _ in 0..<session.extraCardCount {
+                session.deck.append(session.extraCards.first!)
+                session.extraCards.removeFirst()
+            }
+        }
     }
 }
 

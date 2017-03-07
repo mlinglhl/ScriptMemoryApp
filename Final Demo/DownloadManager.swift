@@ -107,6 +107,7 @@ class DownloadManager: NSObject {
                         }
                         let categoryIndex = self.categories.index(of: category)
                         let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, index: self.cardIndex)
+                        self.cardIndex += 1
                         self.cardArray.append(card)
                         self.cardHolder = card
                     }
@@ -123,10 +124,12 @@ class DownloadManager: NSObject {
                     let tempAnswerArray = whiteSpaceReducedAnswer.components(separatedBy: ":")
                     if tempAnswerArray.count == 2 {
                         let card = Card(question: self.previousCard.answer, answer: tempAnswerArray[1], section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: tempAnswerArray[0], index: self.cardIndex)
+                        self.cardIndex += 1
                         self.cardArray.append(card)
                         self.cardHolder = card
                     } else {
                         let card = Card(question: self.previousCard.answer, answer: answer, section: section, categoryIndex: categoryIndex, questionSpeaker: self.previousCard.answerSpeaker, answerSpeaker: dictCategory, index: self.cardIndex)
+                        self.cardIndex += 1
                         self.cardArray.append(card)
                         self.cardHolder = card
                     }
