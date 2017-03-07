@@ -41,9 +41,11 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCell(withIdentifier: "ResultsTableViewCell", for: indexPath) as! ResultsTableViewCell
+        let card = cardManager.session.deck[indexPath.row]
         let session = cardManager.session.cardRecord[orderedSession[indexPath.row]]
         // get the card here with number orderedSession[indexPath.row] and attach its question to the questionLabel
-        cell.questionLabel.text = "\(orderedSession[indexPath.row])"
+        let question = card.question ?? ""
+        cell.questionLabel.text = "\(question)"
         
         if let session = session {
             if session.0 + session.1 > 0 {

@@ -153,16 +153,16 @@ extension CardManager {
         }
         wrongAmount += 1
         session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
-            cards[index].wrong += 1
-            dataManager.saveContext()
-        }
-
+        cards[index].wrong += 1
+        dataManager.saveContext()
+    }
+    
     func setUpCardFront(_ cardView: CardView) {
         let card = session.deck[session.cardIndex]
-            cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
-            cardView.questionLabel.text = card.question ?? "No text"
-            cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
-            cardView.answerLabel.text = card.answer ?? "No text"
+        cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
+        cardView.questionLabel.text = card.question ?? "No text"
+        cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
+        cardView.answerLabel.text = card.answer ?? "No text"
     }
     
     func getCurrentCard() -> CardObject? {
