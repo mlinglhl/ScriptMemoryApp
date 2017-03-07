@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1Ig-Jz-Ytc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cards transparent" translatesAutoresizingMaskIntoConstraints="NO" id="qV5-KP-ymT">
                                 <rect key="frame" x="62" y="238" width="250" height="250"/>
@@ -46,8 +46,8 @@
                             <constraint firstItem="qV5-KP-ymT" firstAttribute="top" secondItem="KJd-An-n9w" secondAttribute="bottom" constant="59" id="F5D-br-egF"/>
                             <constraint firstItem="KJd-An-n9w" firstAttribute="centerX" secondItem="1Ig-Jz-Ytc" secondAttribute="centerX" id="Out-Ns-8BK"/>
                             <constraint firstAttribute="trailing" secondItem="1Ig-Jz-Ytc" secondAttribute="trailing" id="Q1q-kJ-miV"/>
-                            <constraint firstItem="qV5-KP-ymT" firstAttribute="centerY" secondItem="1Ig-Jz-Ytc" secondAttribute="centerY" constant="19.5" id="UaJ-G7-BVX"/>
-                            <constraint firstItem="1Ig-Jz-Ytc" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="YIq-Fi-V0o"/>
+                            <constraint firstItem="qV5-KP-ymT" firstAttribute="centerY" secondItem="1Ig-Jz-Ytc" secondAttribute="centerY" constant="29.5" id="UaJ-G7-BVX"/>
+                            <constraint firstItem="1Ig-Jz-Ytc" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="YIq-Fi-V0o"/>
                             <constraint firstItem="qV5-KP-ymT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dDR-e3-Cpa"/>
                             <constraint firstItem="qV5-KP-ymT" firstAttribute="leading" secondItem="KJd-An-n9w" secondAttribute="leading" constant="62" id="fRg-yf-hat"/>
                             <constraint firstItem="1Ig-Jz-Ytc" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kDK-2J-ac0"/>

@@ -39,8 +39,9 @@
 		A13C09491E68A7F300039BE1 /* TableViewStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09481E68A7F300039BE1 /* TableViewStyleManager.swift */; };
 		A13C094B1E68A80700039BE1 /* SaveButtonStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */; };
 		A13C094D1E68A82700039BE1 /* SegmentedControllerStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */; };
-		A13C09511E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */; };
 		A13C09531E6B6E3900039BE1 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */; };
+		A13C09591E6E2B9B00039BE1 /* EditScriptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C09581E6E2B9B00039BE1 /* EditScriptViewController.swift */; };
+		A16C47D41E6E462B004CC845 /* TextViewStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C47D31E6E462B004CC845 /* TextViewStyleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,8 +87,9 @@
 		A13C09481E68A7F300039BE1 /* TableViewStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewStyleManager.swift; sourceTree = "<group>"; };
 		A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveButtonStyleManager.swift; sourceTree = "<group>"; };
 		A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControllerStyleManager.swift; sourceTree = "<group>"; };
-		A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		A13C09581E6E2B9B00039BE1 /* EditScriptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditScriptViewController.swift; sourceTree = "<group>"; };
+		A16C47D31E6E462B004CC845 /* TextViewStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewStyleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +161,9 @@
 				A13C09481E68A7F300039BE1 /* TableViewStyleManager.swift */,
 				A13C094A1E68A80700039BE1 /* SaveButtonStyleManager.swift */,
 				A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */,
-				A13C09501E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift */,
+				A16C47D31E6E462B004CC845 /* TextViewStyleManager.swift */,
 				A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */,
+				A13C09581E6E2B9B00039BE1 /* EditScriptViewController.swift */,
 				89D279AE1E57B9B600CF4082 /* Info.plist */,
 				89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */,
 			);
@@ -247,12 +250,13 @@
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
 				A13C09531E6B6E3900039BE1 /* SwiftSpinner.swift in Sources */,
 				89AD6D061E661CE200E6B3CB /* ResultsTableViewCell.swift in Sources */,
-				A13C09511E6A0A4F00039BE1 /* DirectionPanGestureRecognizer.swift in Sources */,
 				89D279CB1E58CC0600CF4082 /* SampleCard.swift in Sources */,
+				A16C47D41E6E462B004CC845 /* TextViewStyleManager.swift in Sources */,
 				89D279B91E58B07000CF4082 /* SampleScript.swift in Sources */,
 				89A07CA01E60C35800A80BB4 /* SampleCharacter.swift in Sources */,
 				A13C09491E68A7F300039BE1 /* TableViewStyleManager.swift in Sources */,
 				89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */,
+				A13C09591E6E2B9B00039BE1 /* EditScriptViewController.swift in Sources */,
 				89D279DD1E5BB41E00CF4082 /* AddCardViewController.swift in Sources */,
 				89D27A131E5E26C700CF4082 /* CollapsibleTableViewHeader.swift in Sources */,
 				89D279E91E5D35FB00CF4082 /* ResultsViewController.swift in Sources */,
