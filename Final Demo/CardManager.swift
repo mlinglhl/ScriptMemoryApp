@@ -113,9 +113,9 @@ class CardManager: NSObject {
 //MARK: Setup extension
 extension CardManager {
     struct SessionSettings {
-        var randomMode = true
-        var weakCardsMoreFrequentMode = true
-        var failedCardsAtEndMode = true
+        var randomMode = false
+        var weakCardsMoreFrequentMode = false
+        var failedCardsAtEndMode = false
         var soundCueMode = false
     }
 }
@@ -217,11 +217,9 @@ extension CardManager {
     }
     
     func setUpCardFrontWithUnmodifiedDeck(_ cardView: CardView) {
-        let cards = getCardArray()
-        guard let currentCards = cards else {
+        guard let card = getCurrentCard() else {
             return
         }
-        let card = currentCards[session.cardIndex]
         cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
         cardView.questionLabel.text = card.question ?? "No text"
         cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
@@ -229,7 +227,8 @@ extension CardManager {
     }
     
     func getCurrentCard() -> CardObject? {
-        return session.deck[session.cardIndex]
+        let cards = getCardArray()
+        return cards?[session.cardIndex]
     }
     
     func getScore() -> String {

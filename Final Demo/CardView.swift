@@ -23,7 +23,7 @@ class CardView: UIView, AVAudioRecorderDelegate {
     var audioPlayer: AVAudioPlayer?
     var recordingURL = ""
     let cardManager = CardManager.sharedInstance
-    
+    var cardForSound: CardObject?
     class func initFromNib() -> CardView {
         let nib = UINib(nibName: "CardView", bundle: nil)
         let cardView = nib.instantiate(withOwner: nil, options: nil)[0] as! CardView
@@ -107,13 +107,23 @@ class CardView: UIView, AVAudioRecorderDelegate {
             do {
                 let data = try Data.init(contentsOf: getFileURL())
                 let cards = cardManager.getCardArray()
-                let card = cards?[index]
+                guard let currentCards = cards else {
+                    return
+                }
+                for card in currentCards {
+                    if card.index == Int16(index) {
+                        cardForSound = card
+                    }
+                }
+                guard let card = cardForSound else {
+                    return
+                }
                 switch type {
                 case 0:
-                    card?.questionAudio = data as NSData?
+                    card.questionAudio = data as NSData?
                     break
                 case 1:
-                    card?.answerAudio = data as NSData?
+                    card.answerAudio = data as NSData?
                     break
                 default:
                     break
@@ -144,16 +154,27 @@ class CardView: UIView, AVAudioRecorderDelegate {
         }
         do {
             let cards = cardManager.getCardArray()
-            let card = cards?[index]
+            guard let currentCards = cards else {
+                return
+            }
+            for card in currentCards {
+                if card.index == Int16(index) {
+                    cardForSound = card
+                }
+            }
+            guard let card = cardForSound else {
+                return
+            }
+
             switch type {
             case 0:
-                if card?.questionAudio != nil {
-                    audioPlayer = try AVAudioPlayer.init(data: card?.questionAudio as! Data)
+                if card.questionAudio != nil {
+                    audioPlayer = try AVAudioPlayer.init(data: card.questionAudio as! Data)
                 }
                 break
             case 1:
-                if card?.answerAudio != nil {
-                    audioPlayer = try AVAudioPlayer.init(data: card?.answerAudio as! Data)
+                if card.answerAudio != nil {
+                    audioPlayer = try AVAudioPlayer.init(data: card.answerAudio as! Data)
                 }
                 break
             default:

@@ -66,6 +66,10 @@ class CardViewController: UIViewController {
         let cardFront = CardView.initFromNib()
         let sessionIndex = cardManager.session.cardIndex
         cardManager.session.cardIndex = cardIndex
+        guard let card = cardManager.getCurrentCard() else {
+            return cardFront
+        }
+        cardFront.tag = Int(card.index)
         cardManager.setUpCardFrontWithUnmodifiedDeck(cardFront)
         cardManager.session.cardIndex = sessionIndex
         cardFront.layer.cornerRadius = 8
