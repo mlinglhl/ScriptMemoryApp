@@ -15,10 +15,6 @@ class FlashCardViewController: UIViewController {
     let cardManager = CardManager.sharedInstance
     
     @IBOutlet weak var deckImageView: UIImageView!
-    @IBOutlet weak var leftArrowImageView: UIImageView!
-    @IBOutlet weak var rightArrowImageView: UIImageView!
-    @IBOutlet weak var rightLabel: UILabel!
-    @IBOutlet weak var wrongLabel: UILabel!
     var deckEmpty = false
     var timer: Timer?
     var timeIndex = 0
@@ -33,11 +29,6 @@ class FlashCardViewController: UIViewController {
         deckImageView.isUserInteractionEnabled = true
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
         cardManager.startSession()
-        
-        self.rightLabel.isHidden = true
-        self.wrongLabel.isHidden = true
-        self.rightArrowImageView.isHidden = true
-        self.leftArrowImageView.isHidden = true
     }
     
     @IBAction func drawCard(_ sender: UITapGestureRecognizer) {
@@ -114,12 +105,8 @@ class FlashCardViewController: UIViewController {
             let newFrame = CGRect(x: -400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
-                self.wrongLabel.isHidden = false
-                self.leftArrowImageView.isHidden = false
             }, completion: { _ in
                 card.superview?.removeFromSuperview()
-                self.wrongLabel.isHidden = true
-                self.leftArrowImageView.isHidden = true
             })
             if !cardManager.checkLast() {
                 if deckImageView.image == nil {
@@ -138,12 +125,8 @@ class FlashCardViewController: UIViewController {
             let newFrame = CGRect(x: 400, y: card.frame.origin.y, width: card.frame.width, height: card.frame.height)
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = newFrame
-                self.rightLabel.isHidden = false
-                self.rightArrowImageView.isHidden = false
             }, completion: { _ in
                 card.superview?.removeFromSuperview()
-                self.rightLabel.isHidden = true
-                self.rightArrowImageView.isHidden = true
             })
             if !cardManager.checkLast() {
                 cardManager.session.cardIndex += 1
