@@ -17,9 +17,9 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
-        cardManager.trimExtraCards()
+//        cardManager.trimExtraCards()
         super.viewDidLoad()
-        orderedSession = cardManager.getSessionResults()
+  //      orderedSession = cardManager.getSessionResults()
         scoreLabel.text = cardManager.getScore()
         
         let newLayer = CAGradientLayer()
@@ -37,13 +37,22 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardManager.session.cardRecord.count
+        let cards = cardManager.getCardArray()
+        guard let currentCards = cards else {
+            return 0
+        }
+        return currentCards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCell(withIdentifier: "ResultsTableViewCell", for: indexPath) as! ResultsTableViewCell
-        let card = cardManager.session.deck[indexPath.row]
-        let session = cardManager.session.cardRecord[orderedSession[indexPath.row]]
+        let cards = cardManager.getCardArray()
+        guard let currentCards = cards else {
+            return cell
+        }
+        let card = currentCards[indexPath.row]
+//        let card = cardManager.session.deck[indexPath.row]
+        let session = cardManager.session.cardRecord[Int(card.index)]
         // get the card here with number orderedSession[indexPath.row] and attach its question to the questionLabel
         let question = card.question ?? ""
         cell.questionLabel.text = "\(question)"
@@ -54,7 +63,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return cell
             }
         }
-        cell.scoreLabel.text = "No results found"
+        cell.scoreLabel.text = "0%"
         return cell
     }
     
@@ -71,6 +80,6 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        cardManager.restoreExtraCards()
+//        cardManager.restoreExtraCards()
     }
 }

@@ -18,9 +18,9 @@ class CardManager: NSObject {
     var sectionIndex = 0
     var typeIndex = 0
     var session = CardSession()
+    var settings = SessionSettings()
     let dataManager = DataManager.sharedInstance
-    var randomMode = false
-    var failedCardsAtEnd = false
+
     
     static let sharedInstance = CardManager()
     private override init() {}
@@ -110,6 +110,16 @@ class CardManager: NSObject {
     }
 }
 
+//MARK: Setup extension
+extension CardManager {
+    struct SessionSettings {
+        var randomMode = true
+        var weakCardsMoreFrequentMode = true
+        var failedCardsAtEndMode = true
+        var soundCueMode = false
+    }
+}
+
 //MARK: Session extension
 
 extension CardManager {
@@ -125,14 +135,47 @@ extension CardManager {
     
     func startSession() {
         session = CardSession()
+        makeDeck()
+    }
+    
+    func makeDeck() {
+        resetDeck()
         let cards = getCardArray()
         if let cards = cards {
             var cardArray = cards
-            if randomMode == true {
+            if settings.randomMode {
+                if settings.weakCardsMoreFrequentMode {
+                    for card in cardArray {
+                        if card.correct + card.wrong > 0 {
+                            let score = Double(card.correct)/Double(card.correct + card.wrong)
+                            if score < 0.8 {
+                                cardArray.append(card)
+                                self.session.extraCardCount += 1
+                                self.session.extraCards.append(card)
+                            }
+                            if score < 0.6 {
+                                cardArray.append(card)
+                                self.session.extraCardCount += 1
+                                self.session.extraCards.append(card)
+                            }
+                            if score < 0.4 {
+                                cardArray.append(card)
+                                self.session.extraCardCount += 1
+                                self.session.extraCards.append(card)
+                            }
+                            if score < 0.2 {
+                                cardArray.append(card)
+                                self.session.extraCardCount += 1
+                                self.session.extraCards.append(card)
+                            }
+                        }
+                    }
+                }
+                let end = cardArray.count
                 var tempArray = [CardObject]()
-                for _ in 0..<cards.count {
+                for _ in 0..<end {
                     let randomNumber = Int(arc4random_uniform(UInt32(cardArray.count)))
-                    tempArray.append(cards[randomNumber])
+                    tempArray.append(cardArray[randomNumber])
                     cardArray.remove(at: randomNumber)
                 }
                 cardArray = tempArray
@@ -158,15 +201,27 @@ extension CardManager {
         wrongAmount += 1
         session.cardRecord.updateValue((correctAmount, wrongAmount), forKey: index)
         cards[session.cardIndex].wrong += 1
-        if failedCardsAtEnd {
+        if settings.failedCardsAtEndMode {
             session.deck.append(cards[session.cardIndex])
             session.extraCardCount += 1
         }
         dataManager.saveContext()
     }
     
-    func setUpCardFront(_ cardView: CardView) {
+    func setUpCardFrontWithModifiedDeck(_ cardView: CardView) {
         let card = session.deck[session.cardIndex]
+        cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
+        cardView.questionLabel.text = card.question ?? "No text"
+        cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
+        cardView.answerLabel.text = card.answer ?? "No text"
+    }
+    
+    func setUpCardFrontWithUnmodifiedDeck(_ cardView: CardView) {
+        let cards = getCardArray()
+        guard let currentCards = cards else {
+            return
+        }
+        let card = currentCards[session.cardIndex]
         cardView.questionSpeakerLabel.text = card.questionSpeaker ?? "No text"
         cardView.questionLabel.text = card.question ?? "No text"
         cardView.answerSpeakerLabel.text = card.answerSpeaker ?? "No text"
@@ -234,7 +289,7 @@ extension CardManager {
             return nil
         }
         let cards = currentSections[sectionIndex].cardObjectsArray()
-        if cards.count < session.cardIndex + 1 {
+        if cards.count < 1 {
             print ("No cards found")
             return nil
         }

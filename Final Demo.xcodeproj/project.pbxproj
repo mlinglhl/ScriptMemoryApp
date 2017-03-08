@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		89356A8D1E677C00003989C6 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */; };
+		89356AE31E6F9D1A003989C6 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89356AE21E6F9D1A003989C6 /* SetUpViewController.swift */; };
 		89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */; };
 		89A07C9E1E60B3E300A80BB4 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */; };
 		89A07CA01E60C35800A80BB4 /* SampleCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */; };
@@ -54,6 +55,7 @@
 		89356AD61E6CE896003989C6 /* SetObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SetObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89356AD71E6CE896003989C6 /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		89356AD81E6CE896003989C6 /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		89356AE21E6F9D1A003989C6 /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
 		89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
 		89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCharacter.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */,
+				89356AE21E6F9D1A003989C6 /* SetUpViewController.swift */,
 				A13C09581E6E2B9B00039BE1 /* EditScriptViewController.swift */,
 				89D279DA1E5BB2A800CF4082 /* CardManager.swift */,
 				89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */,
@@ -247,6 +250,7 @@
 				89D27A151E5E271C00CF4082 /* Extensions.swift in Sources */,
 				A13C094D1E68A82700039BE1 /* SegmentedControllerStyleManager.swift in Sources */,
 				89AD6D1A1E67554700E6B3CB /* DownloadViewController.swift in Sources */,
+				89356AE31E6F9D1A003989C6 /* SetUpViewController.swift in Sources */,
 				89D279D91E5BB0D000CF4082 /* DataManager.swift in Sources */,
 				A13C09531E6B6E3900039BE1 /* SwiftSpinner.swift in Sources */,
 				89AD6D061E661CE200E6B3CB /* ResultsTableViewCell.swift in Sources */,

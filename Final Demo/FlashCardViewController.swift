@@ -34,8 +34,6 @@ class FlashCardViewController: UIViewController {
         self.deckImageView.image = #imageLiteral(resourceName: "cardBack")
         cardManager.startSession()
         
-        
-        
         self.rightLabel.isHidden = true
         self.wrongLabel.isHidden = true
         self.rightArrowImageView.isHidden = true
@@ -50,7 +48,6 @@ class FlashCardViewController: UIViewController {
     func makeCard() {
         if deckImageView.image == nil {
             self.deckImageView.isUserInteractionEnabled = false
-            self.cardManager.resetDeck()
             self.timeIndex = 0
             reshuffleDeck()
             return
@@ -165,6 +162,7 @@ class FlashCardViewController: UIViewController {
         card.clipsToBounds = true
         card.layer.cornerRadius = 8
         view.addSubview(card)
+        cardManager.makeDeck()
         let numberOfCards = cardManager.session.deck.count
         UIView.animate(withDuration: 0.2, animations: {
             card.frame = self.deckImageView.frame
@@ -205,7 +203,7 @@ class FlashCardViewController: UIViewController {
     
     func setUpCardFront() -> CardView {
         let cardFront = CardView.initFromNib()
-        cardManager.setUpCardFront(cardFront)
+        cardManager.setUpCardFrontWithModifiedDeck(cardFront)
         cardFront.tag = Int(cardManager.session.deck[cardManager.session.cardIndex].index)
         let leftSGR = UISwipeGestureRecognizer(target: self, action: #selector(markWrong(_:)))
         leftSGR.direction = UISwipeGestureRecognizerDirection.left

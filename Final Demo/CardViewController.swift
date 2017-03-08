@@ -66,7 +66,7 @@ class CardViewController: UIViewController {
         let cardFront = CardView.initFromNib()
         let sessionIndex = cardManager.session.cardIndex
         cardManager.session.cardIndex = cardIndex
-        cardManager.setUpCardFront(cardFront)
+        cardManager.setUpCardFrontWithUnmodifiedDeck(cardFront)
         cardManager.session.cardIndex = sessionIndex
         cardFront.layer.cornerRadius = 8
         cardFront.layer.borderColor = UIColor.black.cgColor
