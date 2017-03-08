@@ -126,16 +126,16 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
                 DataManager.sharedInstance.deleteObject(set)
                 cardManager.resetIndexes()
                 updateData()
-                if cardManager.activeArray.count > 0 {
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
-                    tableView.beginUpdates()
-                    for i in indexPath.section + 1 ..< activeSection.count {
-                        tableView.reloadSections(IndexSet(integer: i), with: UITableViewRowAnimation.none)
-                    }
-                    tableView.endUpdates()
-                } else {
+//                if cardManager.activeArray.count > 0 {
+//                    tableView.deleteRows(at: [indexPath], with: .automatic)
+//                    tableView.beginUpdates()
+//                    for i in indexPath.section + 1 ..< activeSection.count {
+//                        tableView.reloadSections(IndexSet(integer: i), with: UITableViewRowAnimation.none)
+//                    }
+//                    tableView.endUpdates()
+//                } else {
                     tableView.reloadData()
-                }
+//                }
                 NotificationCenter.default.post(name: NSNotification.Name("refreshTableViewHeight"), object: nil)
                 //triggers refreshTableViewHeight method in SelectionTableViewController
                 break

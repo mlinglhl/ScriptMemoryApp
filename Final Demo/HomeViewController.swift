@@ -37,6 +37,7 @@ class HomeViewController: SelectionTableViewController, DownloadViewControllerDe
     }
     
     func refreshTableView() {
+        typeSegmentedControl.selectedSegmentIndex = 0
         cardManager.setUp()
         tableViewDataManager.updateData()
         selectionTableView.reloadData()
