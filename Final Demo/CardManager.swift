@@ -20,7 +20,7 @@ class CardManager: NSObject {
     var session = CardSession()
     var settings = SessionSettings()
     let dataManager = DataManager.sharedInstance
-
+    
     
     static let sharedInstance = CardManager()
     private override init() {}
@@ -52,23 +52,25 @@ class CardManager: NSObject {
             if activeArray.description != scriptArray.description {
                 activeArray = scriptArray
                 typeIndex = 0
-                setIndex = 0
-                categoryIndex = 0
-                sectionIndex = 0
+                resetIndexes()
             }
             break
         case 1:
             if activeArray.description != artistArray.description {
                 activeArray = artistArray
                 typeIndex = 1
-                setIndex = 0
-                categoryIndex = 0
-                sectionIndex = 0
+                resetIndexes()
             }
             break
         default:
             break
         }
+    }
+    
+    func resetIndexes() {
+        setIndex = 0
+        categoryIndex = 0
+        sectionIndex = 0
     }
     
     func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: Int) {
@@ -488,6 +490,19 @@ extension CardManager {
             nameArray.append(category.name ?? "")
         }
         return nameArray
+    }
+    
+    func updateSetArrays() {
+        switch typeIndex {
+        case 0:
+            scriptArray = activeArray
+            break
+        case 1:
+            artistArray = activeArray
+            break
+        default:
+            break
+        }
     }
 }
 

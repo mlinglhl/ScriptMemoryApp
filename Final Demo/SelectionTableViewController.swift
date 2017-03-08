@@ -22,6 +22,8 @@ class SelectionTableViewController: UIViewController, UITableViewDelegate, Colla
         selectionTableView.dataSource = tableViewDataManager
         selectionTableView.delegate = self
         refreshTableViewHeight()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableViewHeight), name: NSNotification.Name("refreshTableViewHeight"), object: nil)
+        //Triggered in TableViewDataManager commiteditingstyle method
     }
     
     @IBAction func changeSegment(_ sender: UISegmentedControl) {

@@ -27,7 +27,7 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     var sectionArray = [String]()
     var dataArray = [[Double]]()
     var cardManager = CardManager.sharedInstance
-
+    
     func changeType() {
         updateData()
     }
@@ -91,7 +91,7 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
                          Section(name: category, items: categoryArray),
                          Section(name: section, items: sectionArray)]
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return activeSection.count
     }
@@ -110,29 +110,38 @@ class TableViewDataManager: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        if indexPath.section == 0 {
+            return true
+        }
+        return false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("Baleeten")
+            switch indexPath.section {
+            case 0:
+                let set = cardManager.activeArray[indexPath.row]
+                cardManager.activeArray.remove(at: indexPath.row)
+                cardManager.updateSetArrays()
+                DataManager.sharedInstance.deleteObject(set)
+                cardManager.resetIndexes()
+                updateData()
+                if cardManager.activeArray.count > 0 {
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    tableView.beginUpdates()
+                    for i in indexPath.section + 1 ..< activeSection.count {
+                        tableView.reloadSections(IndexSet(integer: i), with: UITableViewRowAnimation.none)
+                    }
+                    tableView.endUpdates()
+                } else {
+                    tableView.reloadData()
+                }
+                NotificationCenter.default.post(name: NSNotification.Name("refreshTableViewHeight"), object: nil)
+                //triggers refreshTableViewHeight method in SelectionTableViewController
+                break
+            default:
+                break
+            }
         }
     }
 }
-
-//
-//override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//    if editingStyle == .Delete {
-//        let context = self.fetchedResultsController.managedObjectContext
-//        context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
-//        
-//        do {
-//            try context.save()
-//        } catch {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            //print("Unresolved error \(error), \(error.userInfo)")
-//            abort()
-//        }
-//    }
-//}
