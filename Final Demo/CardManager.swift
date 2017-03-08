@@ -226,6 +226,11 @@ extension CardManager {
         cardView.answerLabel.text = card.answer ?? "No text"
     }
     
+    func getCurrentCardFromDeck() -> CardObject {
+        let cards = session.deck
+        return cards[session.cardIndex]
+    }
+    
     func getCurrentCard() -> CardObject? {
         let cards = getCardArray()
         return cards?[session.cardIndex]

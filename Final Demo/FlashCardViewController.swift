@@ -18,6 +18,7 @@ class FlashCardViewController: UIViewController {
     var deckEmpty = false
     var timer: Timer?
     var timeIndex = 0
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,15 @@ class FlashCardViewController: UIViewController {
             cardFront.questionScrollView.contentSize = CGSize(width: cardFront.questionLabel.frame.width, height: cardFront.questionSpeakerLabel.frame.height + cardFront.questionLabel.frame.height + 10)
             cardFront.answerScrollView.contentSize = CGSize(width: cardFront.answerLabel.frame.width, height: cardFront.answerSpeakerLabel.frame.height + cardFront.answerLabel.frame.height + 10)
         }, completion: { _ in
+            if self.cardManager.settings.soundCueMode {
+                let card = self.cardManager.getCurrentCardFromDeck()
+                do {
+                    if card.questionAudio != nil {
+                        self.audioPlayer = try AVAudioPlayer.init(data: card.questionAudio as! Data)
+                        self.audioPlayer!.play()
+                    }
+                } catch {}
+            }
             UIView.transition(from: cardBack, to: cardFront, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
         })
         if cardManager.checkLast() {
