@@ -22,7 +22,7 @@ public class SaveButtonStyleManager: UIButton {
         
         self.layer.cornerRadius = 5.0
         self.layer.borderWidth = 2
-        
+        self.layer.borderColor = UIColor.white.cgColor
     }
     
 }
