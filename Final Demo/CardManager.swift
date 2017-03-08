@@ -73,20 +73,55 @@ class CardManager: NSObject {
         sectionIndex = 0
     }
     
-    func createCardWith(set: String, category: String, question: String, questionSpeaker: String, answer: String, type: Int) {
-        //        let cardSet = getSetWithName(set)
-        //        let cardCategory = getCategoryWithName(category, set: cardSet)
-        //        let cardSection = getSectionWithName(
-        //        let newCard = DataManager.sharedInstance.generateCard()
-        //        newCard.sectionObject = cardCategory
-        //        newCard.question = "\(questionSpeaker): \(question)"
-        //        newCard.answer = "\(answer)"
-        //        if type == 1 {
-        //            newCard.answer = "\(category): \(answer)"
-        //        }
-        //        DataManager.sharedInstance.saveContext()
+    func createCardWith(set: String, category: String, section: String, question: String, questionSpeaker: String, answer: String, answerSpeaker: String) {
+        let newSet = dataManager.generateSetObject()
+            newSet.name = set
+        switch typeIndex {
+        case 0:
+            newSet.type = "Script"
+            break
+        case 1:
+            newSet.type = "Artist"
+            break
+        default:
+            newSet.type = "Script"
+            break
+        }
+        let newCategory = dataManager.generateCategoryObject()
+        newCategory.name = category
+        newSet.addToCategoryObjects(newCategory)
+        let newSection = dataManager.generateSectionObject()
+        newSection.name = section
+        newCategory.addToSectionObjects(newSection)
+        let newCard = dataManager.generateCardObject()
+        newCard.question = question
+        newCard.questionSpeaker = questionSpeaker
+        newCard.answer = answer
+        newCard.answerSpeaker = answerSpeaker
+        newSection.addToCardObjects(newCard)
+        dataManager.saveContext()
     }
     
+    func createCardWithCurrentSettingsAnd(question: String, questionSpeaker: String, answer: String, answerSpeaker: String) {
+        let sections = getSectionArray()
+        guard let currentSections = sections else {
+            print("Something went wrong")
+            return
+        }
+        if currentSections.count < sectionIndex {
+            print("Not enough items")
+            return
+        }
+        let section = currentSections[sectionIndex]
+        let newCard = dataManager.generateCardObject()
+        newCard.question = question
+        newCard.questionSpeaker = questionSpeaker
+        newCard.answer = answer
+        newCard.answerSpeaker = answerSpeaker
+        section.addToCardObjects(newCard)
+        dataManager.saveContext()
+    }
+
     func getSetWithName(_ name: String) -> SetObject{
         for setObject in setArray {
             if setObject.name == name {

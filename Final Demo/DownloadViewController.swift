@@ -14,7 +14,7 @@ class DownloadViewController: UIViewController {
     @IBOutlet weak var urlTextField: UITextField!
     
     var progressTimer: Timer!
-    var delegate: DownloadViewControllerDelegate!
+    var delegate: RefreshDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()

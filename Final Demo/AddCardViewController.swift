@@ -1,53 +1,46 @@
 //
-//  AddCardViewController.swift
+//  EditScriptViewController.swift
 //  Final Demo
 //
-//  Created by Minhung Ling on 2017-02-20.
+//  Created by Tristan Wolf on 2017-03-06.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
 import UIKit
 
-class AddCardViewController: UIViewController {
-    
-    var constraintArrayScript: [NSLayoutConstraint]!
-    var constraintArraySong: [NSLayoutConstraint]!
+class AddCardViewController: SelectionTableViewController {
+    var delegate: RefreshDelegate!
     
     @IBOutlet weak var setLabel: UILabel!
-    @IBOutlet weak var categoryTextField: UITextField!
-    @IBOutlet weak var characterLabel: UILabel!
-    @IBOutlet weak var typeSegmentedControl: SegControllerStyleManager!
-    @IBOutlet weak var setTextField: UITextField!
     
-    @IBOutlet weak var questionLabel: UILabel!
-  
-    @IBOutlet weak var sectionLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var categoryLabel: UILabel!
     
-    @IBOutlet weak var sectionTextField: UITextField!
-    @IBOutlet var categoryLabelLeadingSpaceScript: NSLayoutConstraint!
+    @IBOutlet weak var questionTextView: TextViewStyleManager!
     
-    @IBOutlet weak var questionCharacterTextField: UITextField!
+    @IBOutlet weak var answerTextView: TextViewStyleManager!
     
-    @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var songLabel: UILabel!
-    @IBOutlet weak var songLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var questionSpeakerTextField: UITextField!
+    @IBOutlet weak var answerSpeakerTextField: UITextField!
     
-    @IBOutlet var questionCharacterTextFieldYAnchorScript: NSLayoutConstraint!
+    var collapsibleTableViewHeader: CollapsibleTableViewHeader!
     
-    @IBOutlet weak var answerCharacterTextField: UITextField!
-    
-    @IBOutlet var categoryTextFieldYAnchorScript: NSLayoutConstraint!
-    
-    @IBOutlet weak var answerTextView: UITextView!
+    @IBOutlet weak var newSetTextField: UITextField!
+    @IBOutlet weak var newCategoryTextField: UITextField!
+    @IBOutlet weak var newSectionTextField: UITextField!
+    @IBOutlet weak var chooseSetButton: UIBarButtonItem!
+    @IBOutlet weak var newSetButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
-        self.answerCharacterTextField.isHidden = true
+        self.newSetTextField.isHidden = true
+        self.newCategoryTextField.isHidden = true
+        self.newSectionTextField.isHidden = true
+        self.chooseSetButton.isEnabled = false
         
         let newLayer = CAGradientLayer()
-        newLayer.colors = [UIColor(red:0.76, green:0.00, blue:0.00, alpha:1.0).cgColor,UIColor(red:0.67, green:0.03, blue:0.04, alpha:1.0).cgColor, UIColor(red:0.57, green:0.06, blue:0.08, alpha:1.0).cgColor,UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor]
+        newLayer.colors = [UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0).cgColor, UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor, UIColor(red:1.00, green:0.00, blue:0.00, alpha:1.0).cgColor]
         
         newLayer.frame = view.frame
         
@@ -55,14 +48,33 @@ class AddCardViewController: UIViewController {
         
         view.layer.insertSublayer(newLayer, at: 0)
     }
+    @IBAction func addSet(_ sender: UIBarButtonItem) {
+        self.selectionTableView.isHidden = true
+        self.newSetTextField.isHidden = false
+        self.newCategoryTextField.isHidden = false
+        self.newSectionTextField.isHidden = false
+        self.chooseSetButton.isEnabled = true
+        self.newSetButton.isEnabled = false
+    }
+    
+    @IBAction func setFromLibrary(_ sender: UIBarButtonItem) {
+        self.selectionTableView.isHidden = false
+        self.newSetTextField.isHidden = true
+        self.newCategoryTextField.isHidden = true
+        self.newSectionTextField.isHidden = true
+        self.chooseSetButton.isEnabled = false
+        self.newSetButton.isEnabled = true
+    }
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             self.setUIForScript()
+            changeSegment(segmentedControl)
             break
         case 1:
-            self.setUIForSong()
+            self.setUIForArtist()
+            changeSegment(segmentedControl)
             break
         default:
             break
@@ -70,81 +82,64 @@ class AddCardViewController: UIViewController {
     }
     
     @IBAction func saveCard(_ sender: UIButton) {
-        let type = typeSegmentedControl.selectedSegmentIndex
-        CardManager.sharedInstance.createCardWith(set: setTextField.text!, category: categoryTextField.text!, question: questionTextView.text!, questionSpeaker: questionCharacterTextField.text!, answer: answerTextView.text!, type: type)
-        dismiss(animated: true, completion: nil)
+        if self.chooseSetButton.isEnabled == true {
+            if newSetTextField.text != "" && newCategoryTextField.text != "" && newSectionTextField.text != "" && questionTextView.text != "" && answerTextView.text != "" {
+                cardManager.createCardWith(set: newSetTextField.text!, category: newCategoryTextField.text!, section: newSectionTextField.text!, question: questionTextView.text!, questionSpeaker: questionSpeakerTextField.text!, answer: answerTextView.text!, answerSpeaker: answerSpeakerTextField.text!)
+                delegate.refreshTableView()
+                _ = navigationController?.popViewController(animated: true)
+                return
+            }
+            else {
+                if newSetTextField.text == "" {
+                    newSetTextField.placeholder = "This field is required"
+                }
+                if newCategoryTextField.text == "" {
+                    newCategoryTextField.placeholder = "This field is required"
+                }
+                if newSectionTextField.text == "" {
+                    newSectionTextField.placeholder = "This field is required"
+                }
+                if questionTextView.text == "" {
+                    questionTextView.text = "This field is required"
+                }
+                if answerTextView.text == "" {
+                    answerTextView.text = "This field is required"
+                }
+                return
+            }
+        }
+        if questionTextView.text != "" && answerTextView.text != "" {
+            cardManager.createCardWithCurrentSettingsAnd(question: questionTextView.text!, questionSpeaker: questionSpeakerTextField.text!, answer: answerTextView.text!, answerSpeaker: answerSpeakerTextField.text!)
+            delegate.refreshTableView()
+            _ = navigationController?.popViewController(animated: true)
+            return
+        }
+        if questionTextView.text == "" {
+            questionTextView.text = "This field is required"
+        }
+        if answerTextView.text == "" {
+            answerTextView.text = "This field is required"
+        }
     }
     
     func setUIForScript() {
-        self.songLabel.isHidden = true
-        
-       // for constraint in constraintArraySong {
-       //     constraint.isActive = false
-       // }
-        
-       // for constraint in constraintArrayScript {
-       //     constraint.isActive = true
-       // }
-
-        self.questionCharacterTextField.isHidden = false
-        self.questionCharacterTextField.placeholder = "Said by..."
-        
-        self.categoryTextField.placeholder = "Said by..."
-        
-        self.setLabel.text = "Title:"
-        self.characterLabel.text = "Character:"
-        //self.songLabelHeight.constant = 0
-        //self.sectionLabelTopConstraint.constant = 0
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 20, options: UIViewAnimationOptions.curveLinear, animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.setLabel.text = "Title:"
+            self.categoryLabel.text = "Character:"
             self.view.layoutIfNeeded()
         }, completion: { _ in
         })
     }
     
-    func setUIForSong() {
-        self.songLabel.isHidden = false
-
-      //  for constraint in constraintArrayScript {
-      //      constraint.isActive = false
-       // }
-        
-       // for constraint in constraintArraySong {
-       //     constraint.isActive = true
-       // }
-        
-        self.questionCharacterTextField.placeholder = ""
-        self.questionCharacterTextField.isHidden = true
-        self.categoryTextField.placeholder = ""
-        //self.sectionLabelTopConstraint.constant = 16 //was 16
-        view.layoutIfNeeded()
-        self.setLabel.text = "Artist:"
-        self.characterLabel.text = "Song:"
-        //self.songLabelHeight.constant = 21
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 20, options: UIViewAnimationOptions.curveLinear, animations: {
+    func setUIForArtist() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.95, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.setLabel.text = "Artist:"
+            self.categoryLabel.text = "Song:"
             self.view.layoutIfNeeded()
         }, completion: { _ in
         })
     }
     
-    func setUp() {
-       // questionTextView.layer.borderColor = UIColor.lightGray.cgColor
-        //questionTextView.layer.borderWidth = 3
-        //answerTextView.layer.borderColor = UIColor.lightGray.cgColor
-       // answerTextView.layer.borderWidth = 3
-
-        /*constraintArrayScript = [
-            categoryLabelLeadingSpaceScript,
-            questionCharacterTextFieldYAnchorScript,
-            categoryTextFieldYAnchorScript
-        ]*/
-        
-        constraintArraySong = [
-            categoryTextField.leadingAnchor.constraint(equalTo: songLabel.trailingAnchor, constant: 8),
-            categoryTextField.centerYAnchor.constraint(equalTo: songLabel.centerYAnchor),
-            questionCharacterTextField.centerYAnchor.constraint(equalTo: songLabel.centerYAnchor)
-        ]
-    }
- 
     @IBAction func goHome(_ sender: UIBarButtonItem) {
         _ = navigationController?.popToRootViewController(animated: true)
     }

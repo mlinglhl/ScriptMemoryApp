@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esz-N1-XDI">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esz-N1-XDI">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -206,7 +206,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FuC-Fs-iiz">
                             <connections>
-                                <segue destination="mUz-LW-lwK" kind="show" id="7Da-kh-m45"/>
+                                <segue destination="mUz-LW-lwK" kind="show" identifier="AddCardViewController" id="7Da-kh-m45"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,10 +318,10 @@
             </objects>
             <point key="canvasLocation" x="310" y="885"/>
         </scene>
-        <!--Edit Script View Controller-->
+        <!--Add Card View Controller-->
         <scene sceneID="Gw5-TA-IdY">
             <objects>
-                <viewController id="mUz-LW-lwK" customClass="EditScriptViewController" customModule="Final_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mUz-LW-lwK" customClass="AddCardViewController" customModule="Final_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="leT-fK-bcU"/>
                         <viewControllerLayoutGuide type="bottom" id="XIG-5s-34w"/>
@@ -374,32 +374,32 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R08-8c-2Vh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Said by..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R08-8c-2Vh">
                                 <rect key="frame" x="92.5" y="200" width="211.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-hn-jFv" customClass="TextViewStyleManager" customModule="Final_Demo" customModuleProvider="target">
-                                <rect key="frame" x="6" y="238" width="298" height="96"/>
+                                <rect key="frame" x="6" y="238" width="298" height="72"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hd7-Pi-eFy">
-                                <rect key="frame" x="92.5" y="342" width="211.5" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Said by..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hd7-Pi-eFy">
+                                <rect key="frame" x="92.5" y="318" width="211.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fze-6k-8Zq" customClass="TextViewStyleManager" customModule="Final_Demo" customModuleProvider="target">
-                                <rect key="frame" x="6" y="380" width="298" height="96"/>
+                                <rect key="frame" x="6" y="356" width="298" height="72"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edA-hd-Jub" customClass="SaveButtonStyleManager" customModule="Final_Demo" customModuleProvider="target">
-                                <rect key="frame" x="82.5" y="484" width="130" height="38"/>
+                                <rect key="frame" x="82.5" y="436" width="130" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="PuF-HI-bsK"/>
                                 </constraints>
@@ -412,7 +412,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAg-6k-Uac">
-                                <rect key="frame" x="19" y="345" width="61.5" height="21"/>
+                                <rect key="frame" x="19" y="321" width="61.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -452,7 +452,7 @@
                             <constraint firstItem="TGN-zl-snk" firstAttribute="leading" secondItem="eq1-go-UFU" secondAttribute="leadingMargin" constant="2" id="ETP-wQ-818"/>
                             <constraint firstItem="EAg-6k-Uac" firstAttribute="trailing" secondItem="cMl-jH-bYF" secondAttribute="trailing" id="FOi-Cf-pWz"/>
                             <constraint firstItem="edA-hd-Jub" firstAttribute="top" secondItem="Fze-6k-8Zq" secondAttribute="bottom" constant="8" id="GL9-oL-mZC"/>
-                            <constraint firstItem="Ops-hn-jFv" firstAttribute="height" secondItem="eq1-go-UFU" secondAttribute="height" multiplier="0.2" id="Glx-rA-zLu"/>
+                            <constraint firstItem="Ops-hn-jFv" firstAttribute="height" secondItem="eq1-go-UFU" secondAttribute="height" multiplier="0.15" id="Glx-rA-zLu"/>
                             <constraint firstItem="xQK-m9-cnB" firstAttribute="leading" secondItem="M69-ua-W22" secondAttribute="trailing" constant="5" id="KOx-HA-5pY"/>
                             <constraint firstItem="y0C-HK-Vq9" firstAttribute="leading" secondItem="gBr-hL-tnA" secondAttribute="leading" id="PGg-T9-cwa"/>
                             <constraint firstItem="Hd7-Pi-eFy" firstAttribute="leading" secondItem="EAg-6k-Uac" secondAttribute="trailing" constant="12" id="R7I-At-kU4"/>
@@ -461,7 +461,7 @@
                             <constraint firstItem="edA-hd-Jub" firstAttribute="centerX" secondItem="Fze-6k-8Zq" secondAttribute="centerX" constant="-8" id="YEg-tS-gnJ"/>
                             <constraint firstItem="y0C-HK-Vq9" firstAttribute="width" secondItem="xQK-m9-cnB" secondAttribute="width" constant="-7" id="YYg-Py-qdM"/>
                             <constraint firstItem="Hd7-Pi-eFy" firstAttribute="top" secondItem="Ops-hn-jFv" secondAttribute="bottom" constant="8" id="Zst-7y-xWn"/>
-                            <constraint firstItem="Fze-6k-8Zq" firstAttribute="height" secondItem="eq1-go-UFU" secondAttribute="height" multiplier="0.2" id="cGl-T6-eS6"/>
+                            <constraint firstItem="Fze-6k-8Zq" firstAttribute="height" secondItem="eq1-go-UFU" secondAttribute="height" multiplier="0.15" id="cGl-T6-eS6"/>
                             <constraint firstItem="XVQ-H0-HEa" firstAttribute="bottom" secondItem="leT-fK-bcU" secondAttribute="bottom" id="clY-lw-K7S"/>
                             <constraint firstItem="R08-8c-2Vh" firstAttribute="top" secondItem="xQK-m9-cnB" secondAttribute="bottom" constant="8" id="dn2-Q9-liQ"/>
                             <constraint firstItem="xQK-m9-cnB" firstAttribute="leading" secondItem="TGN-zl-snk" secondAttribute="trailing" constant="5" id="e6E-sH-CaR"/>
@@ -517,15 +517,15 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="answerCharacterTextField" destination="Hd7-Pi-eFy" id="bXI-Up-mYr"/>
+                        <outlet property="answerSpeakerTextField" destination="Hd7-Pi-eFy" id="sbq-u1-0Lp"/>
                         <outlet property="answerTextView" destination="Fze-6k-8Zq" id="SSZ-bo-ZIe"/>
                         <outlet property="categoryLabel" destination="M69-ua-W22" id="vxc-DO-nRz"/>
                         <outlet property="chooseSetButton" destination="p7i-Il-te1" id="Y4d-Sc-d2S"/>
                         <outlet property="newCategoryTextField" destination="nRF-q4-F6d" id="Xqb-KN-gRY"/>
-                        <outlet property="newScriptTextField" destination="gBr-hL-tnA" id="xpY-H0-3Px"/>
                         <outlet property="newSectionTextField" destination="y0C-HK-Vq9" id="6s1-8j-gFM"/>
                         <outlet property="newSetButton" destination="Cky-oi-oY3" id="aur-vl-GrQ"/>
-                        <outlet property="questionCharacterTextField" destination="R08-8c-2Vh" id="CKt-E4-6MN"/>
+                        <outlet property="newSetTextField" destination="gBr-hL-tnA" id="bSf-Xl-Hvh"/>
+                        <outlet property="questionSpeakerTextField" destination="R08-8c-2Vh" id="1VX-Rd-rPC"/>
                         <outlet property="questionTextView" destination="Ops-hn-jFv" id="FHt-rv-UQv"/>
                         <outlet property="segmentedControl" destination="A30-y8-0EE" id="0xF-Q3-2gY"/>
                         <outlet property="selectionTableView" destination="xQK-m9-cnB" id="d0G-Ej-5Am"/>
@@ -865,8 +865,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-3H-rEQ">
-                                            <rect key="frame" x="131" y="376" width="58" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-3H-rEQ">
+                                            <rect key="frame" x="96" y="376" width="128.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -908,9 +908,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="correctLabel" destination="LOi-3H-rEQ" id="U4E-Mh-aXO"/>
                         <outlet property="percentageLabel" destination="yXR-91-rVy" id="0eW-UX-BHT"/>
-                        <outlet property="wrongLabel" destination="fmg-Qa-RrJ" id="hrj-I1-lhm"/>
+                        <outlet property="statsLabel" destination="fmg-Qa-RrJ" id="xRy-8w-UCz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdI-uV-uZd" userLabel="First Responder" sceneMemberID="firstResponder"/>

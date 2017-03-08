@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol DownloadViewControllerDelegate {
+protocol RefreshDelegate {
     func refreshTableView()
 }
 
-class HomeViewController: SelectionTableViewController, DownloadViewControllerDelegate {
+class HomeViewController: SelectionTableViewController, RefreshDelegate {
     
     override func viewDidLoad() {
         CardManager.sharedInstance.setUp()
@@ -33,6 +33,10 @@ class HomeViewController: SelectionTableViewController, DownloadViewControllerDe
         if segue.identifier == "DownloadViewController" {
             let dlvc = segue.destination as! DownloadViewController
             dlvc.delegate = self
+        }
+        if segue.identifier == "AddCardViewController" {
+            let acvc = segue.destination as! AddCardViewController
+            acvc.delegate = self
         }
     }
     
