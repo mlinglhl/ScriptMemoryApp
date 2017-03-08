@@ -45,8 +45,8 @@ class StatisticsViewController: SelectionTableViewController {
         
         graphView.barWidth = 100
         graphView.barLineWidth = 1
-        graphView.barLineColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
-        graphView.barColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
+        graphView.barLineColor = UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0)
+        graphView.barColor = UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0)
         graphView.backgroundFillColor = UIColor(red:0.57, green:0.06, blue:0.08, alpha:1.0)
         
         graphView.referenceLineLabelFont = UIFont.boldSystemFont(ofSize: 8)
