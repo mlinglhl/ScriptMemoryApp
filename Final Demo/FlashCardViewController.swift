@@ -44,6 +44,7 @@ class FlashCardViewController: UIViewController {
             reshuffleDeck()
             return
         }
+        playCardSound()
         let cardView = setUpCardView()
         let cardBack = setUpCardBack()
         let cardFront = setUpCardFront()
@@ -167,14 +168,18 @@ class FlashCardViewController: UIViewController {
             }
             card.removeFromSuperview()
         })
+        if timeIndex == 0 {
+            playReshuffleSound()
+        }
         timeIndex += 1
         if timeIndex <= 7 && timeIndex < numberOfCards {
-            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
-        }
-        if timeIndex > 7 && timeIndex < numberOfCards {
             Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
         }
+        if timeIndex > 7 && timeIndex < numberOfCards {
+            Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(reshuffleDeck), userInfo: nil, repeats: false)
+        }
         if timeIndex == numberOfCards {
+            audioPlayer?.stop()
             deckImageView.isUserInteractionEnabled = true
         }
     }
@@ -213,5 +218,27 @@ class FlashCardViewController: UIViewController {
         cardFront.translatesAutoresizingMaskIntoConstraints = false
         
         return cardFront
+    }
+    
+    func playCardSound() {
+        if let sound = NSDataAsset(name: "DealCard") {
+            do {
+                self.audioPlayer = try AVAudioPlayer.init(data: sound.data )
+                self.audioPlayer!.play()
+            } catch {
+                print("Failure")
+            }
+        }
+    }
+    
+    func playReshuffleSound() {
+        if let sound = NSDataAsset(name: "ReshuffleDeck") {
+            do {
+                self.audioPlayer = try AVAudioPlayer.init(data: sound.data )
+                self.audioPlayer!.play()
+            } catch {
+                print("Failure")
+            }
+        }
     }
 }
