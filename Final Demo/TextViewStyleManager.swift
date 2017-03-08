@@ -10,20 +10,10 @@ import Foundation
 import UIKit
 
 public class TextViewStyleManager: UITextView {
-    
-    
-    
-    
-    
     required public init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
-        
-        
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 3
         self.layer.cornerRadius = 8.0
-        
     }
-    
 }

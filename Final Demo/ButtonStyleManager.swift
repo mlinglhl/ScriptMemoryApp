@@ -10,22 +10,11 @@ import Foundation
 import UIKit
 
 public class ButtonStyleManager: UIButton {
-    
-    
-    
-    
-    
     required public init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
-        
         self.layer.masksToBounds = true
         self.layer.cornerRadius = self.frame.width/2
         self.layer.borderWidth = 3
         self.layer.borderColor = UIColor.lightGray.cgColor
-        
-        
-        
     }
-    
 }

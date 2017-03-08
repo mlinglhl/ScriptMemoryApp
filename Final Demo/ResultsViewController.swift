@@ -17,9 +17,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
-//        cardManager.trimExtraCards()
         super.viewDidLoad()
-  //      orderedSession = cardManager.getSessionResults()
         scoreLabel.text = cardManager.getScore()
         
         let newLayer = CAGradientLayer()
@@ -51,9 +49,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
         let card = currentCards[indexPath.row]
-//        let card = cardManager.session.deck[indexPath.row]
         let session = cardManager.session.cardRecord[Int(card.index)]
-        // get the card here with number orderedSession[indexPath.row] and attach its question to the questionLabel
         let question = card.question ?? ""
         cell.questionLabel.text = "\(question)"
         
@@ -76,10 +72,5 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cvc = segue.destination as! CardViewController
             cvc.cardIndex = resultsTableView.indexPathForSelectedRow!.row
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        cardManager.restoreExtraCards()
     }
 }

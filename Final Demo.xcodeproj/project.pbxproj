@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		89356A8D1E677C00003989C6 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89356A8C1E677C00003989C6 /* CoreDataExtensions.swift */; };
 		89356AE31E6F9D1A003989C6 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89356AE21E6F9D1A003989C6 /* SetUpViewController.swift */; };
+		89356AE51E6FD1B7003989C6 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89356AE41E6FD1B7003989C6 /* ReViewController.swift */; };
 		89A07C791E5F63A600A80BB4 /* TableViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */; };
 		89A07C9E1E60B3E300A80BB4 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */; };
 		89A07CA01E60C35800A80BB4 /* SampleCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */; };
@@ -56,6 +57,7 @@
 		89356AD71E6CE896003989C6 /* SectionObject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		89356AD81E6CE896003989C6 /* SectionObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SectionObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		89356AE21E6F9D1A003989C6 /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		89356AE41E6FD1B7003989C6 /* ReViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReViewController.swift; sourceTree = "<group>"; };
 		89A07C781E5F63A600A80BB4 /* TableViewDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataManager.swift; sourceTree = "<group>"; };
 		89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		89A07C9F1E60C35800A80BB4 /* SampleCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCharacter.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				89AD6D191E67554700E6B3CB /* DownloadViewController.swift */,
 				89D279E21E5CBBD700CF4082 /* HomeViewController.swift */,
 				89D279E81E5D35FB00CF4082 /* ResultsViewController.swift */,
+				89356AE41E6FD1B7003989C6 /* ReViewController.swift */,
 				89D279E41E5CDF5600CF4082 /* StatisticsViewController.swift */,
 				89D279A31E57B9B600CF4082 /* Main.storyboard */,
 				89D279A91E57B9B600CF4082 /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 				A13C09491E68A7F300039BE1 /* TableViewStyleManager.swift in Sources */,
 				89D279A81E57B9B600CF4082 /* Final_Demo.xcdatamodeld in Sources */,
 				A13C09591E6E2B9B00039BE1 /* EditScriptViewController.swift in Sources */,
+				89356AE51E6FD1B7003989C6 /* ReViewController.swift in Sources */,
 				89D279DD1E5BB41E00CF4082 /* AddCardViewController.swift in Sources */,
 				89D27A131E5E26C700CF4082 /* CollapsibleTableViewHeader.swift in Sources */,
 				89D279E91E5D35FB00CF4082 /* ResultsViewController.swift in Sources */,

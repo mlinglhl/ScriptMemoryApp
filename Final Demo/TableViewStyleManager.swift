@@ -10,19 +10,9 @@ import Foundation
 import UIKit
 
 public class TableViewStyleManager: UITableView {
-    
-    
-    
-    
-    
     required public init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
-        
         self.layer.masksToBounds = true
-        //self.layer.cornerRadius = 10.0
         self.layer.borderWidth = 2
-        
     }
-    
 }
