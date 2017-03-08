@@ -54,6 +54,7 @@ class CardManager: NSObject {
                 typeIndex = 0
                 setIndex = 0
                 categoryIndex = 0
+                sectionIndex = 0
             }
             break
         case 1:
@@ -62,6 +63,7 @@ class CardManager: NSObject {
                 typeIndex = 1
                 setIndex = 0
                 categoryIndex = 0
+                sectionIndex = 0
             }
             break
         default:
