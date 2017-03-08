@@ -26,20 +26,46 @@ class EditScriptViewController: SelectionTableViewController {
 
     var collapsibleTableViewHeader: CollapsibleTableViewHeader!
   
+    @IBOutlet weak var newScriptTextField: UITextField!
+    @IBOutlet weak var newCategoryTextField: UITextField!
+    @IBOutlet weak var newSectionTextField: UITextField!
+    @IBOutlet weak var chooseSetButton: UIBarButtonItem!
+    @IBOutlet weak var newSetButton: UIBarButtonItem!
   
     override func viewDidLoad() {
         super.viewDidLoad()
         //setUp()
         self.answerCharacterTextField.isHidden = true
+        self.newScriptTextField.isHidden = true
+        self.newCategoryTextField.isHidden = true
+        self.newSectionTextField.isHidden = true
+        self.chooseSetButton.isEnabled = false
         
         let newLayer = CAGradientLayer()
-        newLayer.colors = [UIColor(red:0.76, green:0.00, blue:0.00, alpha:1.0).cgColor,UIColor(red:0.67, green:0.03, blue:0.04, alpha:1.0).cgColor, UIColor(red:0.57, green:0.06, blue:0.08, alpha:1.0).cgColor,UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor]
+        newLayer.colors = [UIColor(red:0.29, green:0.13, blue:0.45, alpha:1.0).cgColor, UIColor(red:0.47, green:0.09, blue:0.12, alpha:1.0).cgColor, UIColor(red:1.00, green:0.00, blue:0.00, alpha:1.0).cgColor]
         
         newLayer.frame = view.frame
         
         view.layer.addSublayer(newLayer)
         
         view.layer.insertSublayer(newLayer, at: 0)
+    }
+    @IBAction func addSet(_ sender: UIBarButtonItem) {
+        self.selectionTableView.isHidden = true
+        self.newScriptTextField.isHidden = false
+        self.newCategoryTextField.isHidden = false
+        self.newSectionTextField.isHidden = false
+        self.chooseSetButton.isEnabled = true
+        self.newSetButton.isEnabled = false
+    }
+    
+    @IBAction func setFromLibrary(_ sender: UIBarButtonItem) {
+        self.selectionTableView.isHidden = false
+        self.newScriptTextField.isHidden = true
+        self.newCategoryTextField.isHidden = true
+        self.newSectionTextField.isHidden = true
+        self.chooseSetButton.isEnabled = false
+        self.newSetButton.isEnabled = true
     }
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
@@ -59,11 +85,20 @@ class EditScriptViewController: SelectionTableViewController {
     
     @IBAction func saveCard(_ sender: UIButton) {
         
+        if self.chooseSetButton.isEnabled == true {
+            
+            let type = typeSegmentedControl.selectedSegmentIndex
+            CardManager.sharedInstance.createCardWith(set: newScriptTextField.text!, category: newCategoryTextField.text!, question: questionTextView.text!, questionSpeaker: questionCharacterTextField.text!, answer: answerTextView.text!, type: type)
+            dismiss(animated: true, completion: nil)
+            
+            
+        } else if self.chooseSetButton.isEnabled == false {
         
-        let type = typeSegmentedControl.selectedSegmentIndex
-        //CardManager.sharedInstance.createCardWith(set:, category:, question: questionTextView.text!, questionSpeaker: questionCharacterTextField.text!, answer: answerTextView.text!, type: type)
+        /*let type = typeSegmentedControl.selectedSegmentIndex
+        CardManager.sharedInstance.createCardWith(set:, category:, question: questionTextView.text!, questionSpeaker: questionCharacterTextField.text!, answer: answerTextView.text!, type: type)
         
-         //   dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)*/
+        }
     }
     
     func setUIForScript() {
