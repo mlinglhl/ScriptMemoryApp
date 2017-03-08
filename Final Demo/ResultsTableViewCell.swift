@@ -13,6 +13,9 @@ class ResultsTableViewCell: UITableViewCell {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
+ 
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
