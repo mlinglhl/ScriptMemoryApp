@@ -14,10 +14,26 @@ class CardViewController: UIViewController {
     var cardFront: CardView!
     var cardIndex = 0
     
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var wrongLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cardBack = setUpCardBack()
         cardFront = setUpCardFront()
+        let sessionIndex = cardManager.session.cardIndex
+        cardManager.session.cardIndex = cardIndex
+        guard let card = cardManager.getCurrentCard() else {
+            return
+        }
+        correctLabel.text = "Correct: \(card.correct)"
+        wrongLabel.text = "Wrong: \(card.wrong)"
+        percentageLabel.text = "0%"
+        if card.correct + card.wrong > 0 {
+            percentageLabel.text = "\(card.correct*100/(card.correct + card.wrong))%"
+        }
+        cardManager.session.cardIndex = sessionIndex
     }
     
     override func viewDidLayoutSubviews() {

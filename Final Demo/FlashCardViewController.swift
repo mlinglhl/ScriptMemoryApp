@@ -98,7 +98,7 @@ class FlashCardViewController: UIViewController {
                     }
                 } catch {}
             }
-            UIView.transition(from: cardBack, to: cardFront, duration: 1, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
+            UIView.transition(from: cardBack, to: cardFront, duration: 0.75, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
         })
         if cardManager.checkLast() {
             self.deckImageView.isUserInteractionEnabled = true
