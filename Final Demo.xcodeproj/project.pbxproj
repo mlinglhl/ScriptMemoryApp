@@ -132,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				89D279DC1E5BB41E00CF4082 /* AddCardViewController.swift */,
+				A13C09581E6E2B9B00039BE1 /* EditScriptViewController.swift */,
 				89D279DA1E5BB2A800CF4082 /* CardManager.swift */,
 				89A07C9D1E60B3E300A80BB4 /* FlashCardViewController.swift */,
 				89AD6D071E662BA700E6B3CB /* CardViewController.swift */,
@@ -163,7 +164,6 @@
 				A13C094C1E68A82700039BE1 /* SegmentedControllerStyleManager.swift */,
 				A16C47D31E6E462B004CC845 /* TextViewStyleManager.swift */,
 				A13C09521E6B6E3900039BE1 /* SwiftSpinner.swift */,
-				A13C09581E6E2B9B00039BE1 /* EditScriptViewController.swift */,
 				89D279AE1E57B9B600CF4082 /* Info.plist */,
 				89D279A61E57B9B600CF4082 /* Final_Demo.xcdatamodeld */,
 			);
