@@ -18,6 +18,7 @@ class StatisticsViewController: SelectionTableViewController {
     
     var setIndex = 0
     var categoryIndex = 0
+    var sectionIndex = 0
     var typeIndex = 0
     var typeChanged = false
     
@@ -31,9 +32,11 @@ class StatisticsViewController: SelectionTableViewController {
         
         setIndex = cardManager.setIndex
         categoryIndex = cardManager.categoryIndex
+        sectionIndex = cardManager.sectionIndex
         typeIndex = cardManager.typeIndex
         cardManager.setIndex = 0
         cardManager.categoryIndex = 0
+        cardManager.sectionIndex = 0
         cardManager.changeType(0)
         super.viewDidLoad()
         graphView.rangeMax = 100
@@ -99,6 +102,7 @@ class StatisticsViewController: SelectionTableViewController {
         super.viewWillDisappear(animated)
         cardManager.changeType(typeIndex)
         cardManager.setIndex = setIndex
+        cardManager.sectionIndex = sectionIndex
         cardManager.categoryIndex = categoryIndex
     }
     
