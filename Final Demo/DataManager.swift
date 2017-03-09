@@ -32,7 +32,6 @@ class DataManager: NSObject {
             let folderArray = try context.fetch(request)
             return folderArray
         } catch {
-            print("Failed to get results")
             return [SetObject]()
         }
     }

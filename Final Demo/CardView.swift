@@ -138,11 +138,9 @@ class CardView: UIView, AVAudioRecorderDelegate {
     func recordTapped(_ type: Int, index: Int) {
         if audioRecorder == nil {
             startRecording()
-            print("RStart")
         }
         else {
             finishRecording(success: true, type: type, index: index)
-            print("RStop")
         }
     }
     

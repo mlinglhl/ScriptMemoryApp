@@ -105,11 +105,9 @@ class CardManager: NSObject {
     func createCardWithCurrentSettingsAnd(question: String, questionSpeaker: String, answer: String, answerSpeaker: String) {
         let sections = getSectionArray()
         guard let currentSections = sections else {
-            print("Something went wrong")
             return
         }
         if currentSections.count < sectionIndex {
-            print("Not enough items")
             return
         }
         let section = currentSections[sectionIndex]
@@ -291,7 +289,6 @@ extension CardManager {
     
     func getSetArray() -> [SetObject]? {
         if activeArray.count < setIndex + 1 {
-            print ("No sets found")
             return nil
         }
         return activeArray
@@ -300,12 +297,10 @@ extension CardManager {
     func getCategoryArray() -> [CategoryObject]? {
         let sets = getSetArray()
         guard let currentSets = sets else {
-            print("No sets found")
             return nil
         }
         let categories = currentSets[setIndex].categoryObjectsArray()
         if categories.count < categoryIndex + 1 {
-            print ("No categories found")
             return nil
         }
         return categories
@@ -314,12 +309,10 @@ extension CardManager {
     func getSectionArray() -> [SectionObject]? {
         let categories = getCategoryArray()
         guard let currentCategories = categories else {
-            print("No categories found")
             return nil
         }
         let sections = currentCategories[categoryIndex].sectionObjectsArray()
         if sections.count < sectionIndex + 1 {
-            print ("No sections found")
             return nil
         }
         return sections
@@ -328,12 +321,10 @@ extension CardManager {
     func getCardArray() -> [CardObject]? {
         let sections = getSectionArray()
         guard let currentSections = sections else {
-            print ("No sections found")
             return nil
         }
         let cards = currentSections[sectionIndex].cardObjectsArray()
         if cards.count < 1 {
-            print ("No cards found")
             return nil
         }
         return cards

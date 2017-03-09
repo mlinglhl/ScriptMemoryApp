@@ -226,7 +226,6 @@ class FlashCardViewController: UIViewController {
                 self.audioPlayer = try AVAudioPlayer.init(data: sound.data )
                 self.audioPlayer!.play()
             } catch {
-                print("Failure")
             }
         }
     }
@@ -237,7 +236,6 @@ class FlashCardViewController: UIViewController {
                 self.audioPlayer = try AVAudioPlayer.init(data: sound.data )
                 self.audioPlayer!.play()
             } catch {
-                print("Failure")
             }
         }
     }
