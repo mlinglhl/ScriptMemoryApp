@@ -230,6 +230,7 @@
 				TargetAttributes = {
 					89D2799B1E57B9B600CF4082 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 728VJ25T5V;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -422,9 +423,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 728VJ25T5V;
 				INFOPLIST_FILE = "Final Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mling.Final-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MinhungLing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -434,9 +436,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 728VJ25T5V;
 				INFOPLIST_FILE = "Final Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mling.Final-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MinhungLing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

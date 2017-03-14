@@ -32,14 +32,22 @@
                             <color key="textColor" red="1" green="0.12941185189467563" blue="0.079026675101151245" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyA-rH-RdN">
+                            <rect key="frame" x="0.0" y="21" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="bIX-tZ-e6l" firstAttribute="top" secondItem="PNq-Ms-Cue" secondAttribute="top" id="0hj-uv-2uL"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="top" secondItem="bIX-tZ-e6l" secondAttribute="bottom" id="8rt-c0-tbP"/>
                         <constraint firstItem="bIX-tZ-e6l" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="Vl0-Xw-abm"/>
+                        <constraint firstItem="UyA-rH-RdN" firstAttribute="top" secondItem="bIX-tZ-e6l" secondAttribute="bottom" id="WIc-8j-ne7"/>
                         <constraint firstItem="bIX-tZ-e6l" firstAttribute="width" secondItem="PNq-Ms-Cue" secondAttribute="width" id="gft-Lq-3ZP"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="nc3-gT-mB0"/>
+                        <constraint firstItem="UyA-rH-RdN" firstAttribute="leading" secondItem="PNq-Ms-Cue" secondAttribute="leading" id="wV7-Bo-9Ev"/>
                         <constraint firstItem="nzj-rw-keh" firstAttribute="width" secondItem="PNq-Ms-Cue" secondAttribute="width" id="zmX-LR-5Uw"/>
                     </constraints>
                 </scrollView>
@@ -137,9 +145,11 @@
                 <outlet property="answerLabel" destination="nzj-rw-keh" id="TgK-zn-Q9s"/>
                 <outlet property="answerScrollView" destination="PNq-Ms-Cue" id="1GJ-jZ-XgR"/>
                 <outlet property="answerSpeakerLabel" destination="bIX-tZ-e6l" id="0g1-a5-ywT"/>
+                <outlet property="microphoneButton" destination="ew9-d7-pDb" id="azK-13-t8K"/>
                 <outlet property="questionLabel" destination="xW8-Xf-v0y" id="He1-3T-A3E"/>
                 <outlet property="questionScrollView" destination="HyV-CB-gqp" id="cGT-D5-d7L"/>
                 <outlet property="questionSpeakerLabel" destination="tsZ-j4-KxB" id="q9L-27-ruL"/>
+                <outlet property="speechToTextLabel" destination="UyA-rH-RdN" id="tDf-JJ-vrD"/>
                 <outletCollection property="gestureRecognizers" destination="FVI-Zp-rvv" appends="YES" id="fcM-BC-U0v"/>
             </connections>
             <point key="canvasLocation" x="113.5" y="-302.5"/>

@@ -55,42 +55,10 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         arrowLabel.textColor = UIColor.white
         
         titleLabel.font = UIFont(name: "Copperplate", size: 19)
-        //
-        // Autolayout the lables
-        //
-//        let views = [
-//            "titleLabel" : titleLabel,
-//            "arrowLabel" : arrowLabel,
-//            ]
-        
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
-//        titleLabel.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor).isActive = true
-//        arrowLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-//        arrowLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-//        contentView.addConstraints(NSLayoutConstraint.constraints(
-//            withVisualFormat: "H:|-20-[titleLabel]-[arrowLabel]-20-|",
-//            options: [],
-//            metrics: nil,
-//            views: views
-//        ))
-        
-//        contentView.addConstraints(NSLayoutConstraint.constraints(
-//            withVisualFormat: "V:|-[titleLabel]-|",
-//            options: [],
-//            metrics: nil,
-//            views: views
-//        ))
-        
-//        contentView.addConstraints(NSLayoutConstraint.constraints(
-//            withVisualFormat: "V:|-[arrowLabel]-|",
-//            options: [],
-//            metrics: nil,
-//            views: views
-//        ))
-    }
+        }
     
     //
     // Trigger toggle section when tapping on the header
